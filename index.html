@@ -201,57 +201,113 @@
   <section class="revelar blog-portada">
     <div class="blog-cabecera blog-cabecera--adelanto">
       <span class="kicker tono-azul blog-cabecera__rotulo">Blog</span>
-      <!-- El margen del blog: los "bla bla" de puño y letra de Coni. Cada palabra
-           se escribe siguiendo su propia línea —la máscara es el esqueleto de la
-           letra, sacado de la imagen y recorrido en el orden en que se escribió—,
-           se queda un momento y se borra por donde empezó. Entran salteados, como
-           una conversación. Decorativo: aria-hidden y se detiene si el equipo
-           pide menos movimiento. -->
+      <!-- El margen del blog: los "bla bla" de puño y letra de Coni, catorce en
+           total —los mismos cinco repetidos, cada uno con su tamaño y su giro—,
+           amontonados a propósito para que se vea una conversación y no una
+           lista. Cada palabra se escribe siguiendo su propia línea (la máscara es
+           el esqueleto de la letra, recorrido en el orden en que se escribió), se
+           queda un momento y se borra por donde empezó. El sitio de cada una va
+           aquí mismo, en el style, porque son catorce y en la hoja de estilos
+           serían catorce reglas de una línea que nadie querría mantener.
+           Decorativo: aria-hidden y se detiene si el equipo pide menos movimiento. -->
       <div class="blabla" aria-hidden="true">
-        <svg class="blabla__palabra blabla--a" viewBox="0 0 161 155"
-             aria-hidden="true" focusable="false">
-          <mask id="bi-a" maskUnits="userSpaceOnUse"
-                x="-20" y="-20" width="201" height="195">
+        <svg class="blabla__palabra" style="left:4%;top:2%;width:20%;transform:rotate(-13deg)"
+             viewBox="0 0 161 155" aria-hidden="true" focusable="false">
+          <mask id="bi01" maskUnits="userSpaceOnUse" x="-20" y="-20" width="201" height="195">
             <path class="blabla__trazo" pathLength="1" style="--d:0s" d="M 24.0 10.0 L 5.0 119.0 L 8.0 123.0 L 2.0 137.0 L 3.0 150.0 L 11.0 154.0 L 26.0 137.0 L 34.0 116.0 L 33.0 101.0 L 48.0 91.0 L 51.0 67.0 L 62.0 34.0 L 68.0 28.0 L 71.0 29.0 L 74.0 37.0 L 74.0 52.0 L 71.0 63.0 L 64.0 75.0 L 52.0 87.0 L 50.0 87.0 L 54.0 86.0 L 63.0 77.0 L 48.0 92.0 L 48.0 103.0 L 53.0 118.0 L 60.0 124.0 L 69.0 124.0 L 79.0 115.0 L 88.0 102.0 L 92.0 88.0 L 92.0 82.0 L 87.0 83.0 L 78.0 99.0 L 76.0 109.0 L 77.0 112.0 L 80.0 112.0 L 89.0 100.0 L 95.0 99.0 L 102.0 113.0 L 110.0 121.0 L 116.0 123.0 L 131.0 121.0 L 147.0 111.0 L 159.0 100.0 L 157.0 103.0 L 32.0 102.0 L 25.0 108.0 L 20.0 109.0 L 8.0 122.0 L 15.0 150.0 L 21.0 144.0 L 21.0 105.0 L 27.0 100.0 L 31.0 100.0 L 30.0 102.0 L 29.0 101.0"/>
           </mask>
-          <image href="assets/img/blog/bla-a.png" width="161" height="155"
-                 mask="url(#bi-a)"/>
+          <image href="assets/img/blog/bla-a.png" width="161" height="155" mask="url(#bi01)"/>
         </svg>
-        <svg class="blabla__palabra blabla--b" viewBox="0 0 142 120"
-             aria-hidden="true" focusable="false">
-          <mask id="bi-b" maskUnits="userSpaceOnUse"
-                x="-20" y="-20" width="182" height="160">
-            <path class="blabla__trazo" pathLength="1" style="--d:1.1s" d="M 38.0 9.0 L 36.0 9.0 L 32.0 13.0 L 28.0 21.0 L 7.0 83.0 L 8.0 89.0 L 14.0 89.0 L 23.0 83.0 L 31.0 84.0 L 34.0 89.0 L 34.0 97.0 L 25.0 109.0 L 18.0 114.0 L 5.0 119.0 L 0.0 115.0 L 0.0 107.0 L 3.0 105.0 L 12.0 90.0 L 26.0 82.0 L 42.0 68.0 L 47.0 65.0 L 51.0 65.0 L 54.0 53.0 L 62.0 34.0 L 68.0 24.0 L 76.0 16.0 L 79.0 17.0 L 79.0 23.0 L 73.0 39.0 L 68.0 46.0 L 58.0 56.0 L 55.0 57.0 L 50.0 66.0 L 47.0 83.0 L 47.0 98.0 L 49.0 104.0 L 53.0 108.0 L 61.0 107.0 L 73.0 99.0 L 75.0 97.0 L 75.0 94.0 L 88.0 79.0 L 93.0 68.0 L 96.0 66.0 L 99.0 67.0 L 98.0 84.0 L 100.0 95.0 L 103.0 102.0 L 109.0 109.0 L 116.0 112.0 L 125.0 112.0 L 140.0 106.0 L 75.0 92.0 L 71.0 92.0 L 70.0 88.0 L 84.0 60.0 L 94.0 49.0 L 99.0 49.0 L 97.0 57.0 L 98.0 65.0"/>
+        <svg class="blabla__palabra" style="left:33%;top:7%;width:19%;transform:rotate(7deg)"
+             viewBox="0 0 156 154" aria-hidden="true" focusable="false">
+          <mask id="bi02" maskUnits="userSpaceOnUse" x="-20" y="-20" width="196" height="194">
+            <path class="blabla__trazo" pathLength="1" style="--d:2.8s" d="M 31.0 9.0 L 27.0 16.0 L 23.0 31.0 L 20.0 51.0 L 10.0 94.0 L 8.0 119.0 L 11.0 123.0 L 13.0 123.0 L 19.0 119.0 L 28.0 117.0 L 42.0 117.0 L 48.0 123.0 L 48.0 130.0 L 47.0 134.0 L 36.0 146.0 L 23.0 152.0 L 14.0 153.0 L 8.0 150.0 L 0.0 140.0 L 0.0 135.0 L 3.0 134.0 L 10.0 123.0 L 56.0 114.0 L 60.0 124.0 L 64.0 128.0 L 73.0 128.0 L 79.0 121.0 L 83.0 119.0 L 92.0 101.0 L 95.0 98.0 L 99.0 82.0 L 97.0 79.0 L 87.0 87.0 L 81.0 98.0 L 76.0 115.0 L 76.0 123.0 L 57.0 114.0 L 57.0 76.0 L 65.0 40.0 L 71.0 23.0 L 77.0 16.0 L 79.0 16.0 L 81.0 20.0 L 82.0 38.0 L 79.0 53.0 L 72.0 69.0 L 62.0 82.0 L 58.0 84.0 L 55.0 92.0 L 23.0 115.0 L 21.0 118.0 L 95.0 99.0 L 98.0 101.0 L 99.0 106.0 L 106.0 119.0 L 112.0 126.0 L 118.0 130.0 L 126.0 133.0 L 138.0 133.0 L 155.0 126.0"/>
           </mask>
-          <image href="assets/img/blog/bla-b.png" width="142" height="120"
-                 mask="url(#bi-b)"/>
+          <image href="assets/img/blog/bla-c.png" width="156" height="154" mask="url(#bi02)"/>
         </svg>
-        <svg class="blabla__palabra blabla--c" viewBox="0 0 156 154"
-             aria-hidden="true" focusable="false">
-          <mask id="bi-c" maskUnits="userSpaceOnUse"
-                x="-20" y="-20" width="196" height="194">
-            <path class="blabla__trazo" pathLength="1" style="--d:2.4s" d="M 31.0 9.0 L 27.0 16.0 L 23.0 31.0 L 20.0 51.0 L 10.0 94.0 L 8.0 119.0 L 11.0 123.0 L 13.0 123.0 L 19.0 119.0 L 28.0 117.0 L 42.0 117.0 L 48.0 123.0 L 48.0 130.0 L 47.0 134.0 L 36.0 146.0 L 23.0 152.0 L 14.0 153.0 L 8.0 150.0 L 0.0 140.0 L 0.0 135.0 L 3.0 134.0 L 10.0 123.0 L 56.0 114.0 L 60.0 124.0 L 64.0 128.0 L 73.0 128.0 L 79.0 121.0 L 83.0 119.0 L 92.0 101.0 L 95.0 98.0 L 99.0 82.0 L 97.0 79.0 L 87.0 87.0 L 81.0 98.0 L 76.0 115.0 L 76.0 123.0 L 57.0 114.0 L 57.0 76.0 L 65.0 40.0 L 71.0 23.0 L 77.0 16.0 L 79.0 16.0 L 81.0 20.0 L 82.0 38.0 L 79.0 53.0 L 72.0 69.0 L 62.0 82.0 L 58.0 84.0 L 55.0 92.0 L 23.0 115.0 L 21.0 118.0 L 95.0 99.0 L 98.0 101.0 L 99.0 106.0 L 106.0 119.0 L 112.0 126.0 L 118.0 130.0 L 126.0 133.0 L 138.0 133.0 L 155.0 126.0"/>
+        <svg class="blabla__palabra" style="left:2%;top:18%;width:16%;transform:rotate(-4deg)"
+             viewBox="0 0 142 120" aria-hidden="true" focusable="false">
+          <mask id="bi03" maskUnits="userSpaceOnUse" x="-20" y="-20" width="182" height="160">
+            <path class="blabla__trazo" pathLength="1" style="--d:5.2s" d="M 38.0 9.0 L 36.0 9.0 L 32.0 13.0 L 28.0 21.0 L 7.0 83.0 L 8.0 89.0 L 14.0 89.0 L 23.0 83.0 L 31.0 84.0 L 34.0 89.0 L 34.0 97.0 L 25.0 109.0 L 18.0 114.0 L 5.0 119.0 L 0.0 115.0 L 0.0 107.0 L 3.0 105.0 L 12.0 90.0 L 26.0 82.0 L 42.0 68.0 L 47.0 65.0 L 51.0 65.0 L 54.0 53.0 L 62.0 34.0 L 68.0 24.0 L 76.0 16.0 L 79.0 17.0 L 79.0 23.0 L 73.0 39.0 L 68.0 46.0 L 58.0 56.0 L 55.0 57.0 L 50.0 66.0 L 47.0 83.0 L 47.0 98.0 L 49.0 104.0 L 53.0 108.0 L 61.0 107.0 L 73.0 99.0 L 75.0 97.0 L 75.0 94.0 L 88.0 79.0 L 93.0 68.0 L 96.0 66.0 L 99.0 67.0 L 98.0 84.0 L 100.0 95.0 L 103.0 102.0 L 109.0 109.0 L 116.0 112.0 L 125.0 112.0 L 140.0 106.0 L 75.0 92.0 L 71.0 92.0 L 70.0 88.0 L 84.0 60.0 L 94.0 49.0 L 99.0 49.0 L 97.0 57.0 L 98.0 65.0"/>
           </mask>
-          <image href="assets/img/blog/bla-c.png" width="156" height="154"
-                 mask="url(#bi-c)"/>
+          <image href="assets/img/blog/bla-b.png" width="142" height="120" mask="url(#bi03)"/>
         </svg>
-        <svg class="blabla__palabra blabla--d" viewBox="0 0 155 118"
-             aria-hidden="true" focusable="false">
-          <mask id="bi-d" maskUnits="userSpaceOnUse"
-                x="-20" y="-20" width="195" height="158">
-            <path class="blabla__trazo" pathLength="1" style="--d:3.6s" d="M 14.0 10.0 L 11.0 13.0 L 10.0 21.0 L 8.0 91.0 L 4.0 96.0 L 2.0 103.0 L 0.0 104.0 L 2.0 111.0 L 7.0 116.0 L 11.0 117.0 L 18.0 115.0 L 29.0 105.0 L 33.0 97.0 L 33.0 84.0 L 29.0 78.0 L 49.0 63.0 L 52.0 63.0 L 52.0 31.0 L 57.0 13.0 L 59.0 11.0 L 62.0 11.0 L 65.0 15.0 L 67.0 23.0 L 67.0 35.0 L 60.0 51.0 L 55.0 56.0 L 53.0 56.0 L 52.0 64.0 L 54.0 74.0 L 59.0 84.0 L 64.0 89.0 L 71.0 90.0 L 79.0 83.0 L 80.0 79.0 L 85.0 76.0 L 92.0 65.0 L 102.0 41.0 L 101.0 32.0 L 96.0 33.0 L 87.0 45.0 L 79.0 67.0 L 78.0 76.0 L 80.0 77.0 L 30.0 81.0 L 28.0 79.0 L 24.0 80.0 L 9.0 90.0 L 98.0 54.0 L 101.0 56.0 L 106.0 70.0 L 117.0 89.0 L 125.0 97.0 L 134.0 102.0 L 140.0 104.0 L 148.0 104.0"/>
+        <svg class="blabla__palabra" style="left:60%;top:14%;width:17%;transform:rotate(10deg)"
+             viewBox="0 0 155 118" aria-hidden="true" focusable="false">
+          <mask id="bi04" maskUnits="userSpaceOnUse" x="-20" y="-20" width="195" height="158">
+            <path class="blabla__trazo" pathLength="1" style="--d:1.4s" d="M 14.0 10.0 L 11.0 13.0 L 10.0 21.0 L 8.0 91.0 L 4.0 96.0 L 2.0 103.0 L 0.0 104.0 L 2.0 111.0 L 7.0 116.0 L 11.0 117.0 L 18.0 115.0 L 29.0 105.0 L 33.0 97.0 L 33.0 84.0 L 29.0 78.0 L 49.0 63.0 L 52.0 63.0 L 52.0 31.0 L 57.0 13.0 L 59.0 11.0 L 62.0 11.0 L 65.0 15.0 L 67.0 23.0 L 67.0 35.0 L 60.0 51.0 L 55.0 56.0 L 53.0 56.0 L 52.0 64.0 L 54.0 74.0 L 59.0 84.0 L 64.0 89.0 L 71.0 90.0 L 79.0 83.0 L 80.0 79.0 L 85.0 76.0 L 92.0 65.0 L 102.0 41.0 L 101.0 32.0 L 96.0 33.0 L 87.0 45.0 L 79.0 67.0 L 78.0 76.0 L 80.0 77.0 L 30.0 81.0 L 28.0 79.0 L 24.0 80.0 L 9.0 90.0 L 98.0 54.0 L 101.0 56.0 L 106.0 70.0 L 117.0 89.0 L 125.0 97.0 L 134.0 102.0 L 140.0 104.0 L 148.0 104.0"/>
           </mask>
-          <image href="assets/img/blog/bla-d.png" width="155" height="118"
-                 mask="url(#bi-d)"/>
+          <image href="assets/img/blog/bla-d.png" width="155" height="118" mask="url(#bi04)"/>
         </svg>
-        <svg class="blabla__palabra blabla--e" viewBox="0 0 166 174"
-             aria-hidden="true" focusable="false">
-          <mask id="bi-e" maskUnits="userSpaceOnUse"
-                x="-20" y="-20" width="206" height="214">
-            <path class="blabla__trazo" pathLength="1" style="--d:5s" d="M 35.0 23.0 L 31.0 33.0 L 25.0 76.0 L 13.0 130.0 L 8.0 132.0 L 3.0 140.0 L 2.0 145.0 L 0.0 146.0 L 0.0 158.0 L 2.0 158.0 L 5.0 166.0 L 10.0 171.0 L 13.0 173.0 L 22.0 173.0 L 30.0 169.0 L 40.0 160.0 L 48.0 146.0 L 48.0 134.0 L 43.0 128.0 L 33.0 126.0 L 25.0 128.0 L 18.0 132.0 L 14.0 131.0 L 36.0 113.0 L 15.0 125.0 L 77.0 43.0 L 71.0 63.0 L 64.0 100.0 L 65.0 115.0 L 69.0 127.0 L 75.0 134.0 L 85.0 136.0 L 89.0 134.0 L 106.0 116.0 L 106.0 110.0 L 110.0 107.0 L 110.0 104.0 L 112.0 102.0 L 113.0 91.0 L 110.0 85.0 L 105.0 85.0 L 97.0 93.0 L 91.0 105.0 L 91.0 109.0 L 95.0 109.0 L 98.0 106.0 L 101.0 106.0 L 104.0 110.0 L 92.0 75.0 L 76.0 90.0 L 70.0 94.0 L 67.0 94.0 L 64.0 99.0 L 37.0 112.0 L 88.0 78.0 L 97.0 68.0 L 103.0 54.0 L 106.0 39.0 L 104.0 18.0 L 102.0 13.0 L 98.0 9.0 L 94.0 10.0 L 85.0 23.0 L 78.0 42.0 L 106.0 117.0 L 115.0 129.0 L 127.0 134.0 L 136.0 133.0 L 146.0 128.0 L 164.0 112.0 L 160.0 117.0"/>
+        <svg class="blabla__palabra" style="left:24%;top:22%;width:20%;transform:rotate(-8deg)"
+             viewBox="0 0 166 174" aria-hidden="true" focusable="false">
+          <mask id="bi05" maskUnits="userSpaceOnUse" x="-20" y="-20" width="206" height="214">
+            <path class="blabla__trazo" pathLength="1" style="--d:3.9s" d="M 35.0 23.0 L 31.0 33.0 L 25.0 76.0 L 13.0 130.0 L 8.0 132.0 L 3.0 140.0 L 2.0 145.0 L 0.0 146.0 L 0.0 158.0 L 2.0 158.0 L 5.0 166.0 L 10.0 171.0 L 13.0 173.0 L 22.0 173.0 L 30.0 169.0 L 40.0 160.0 L 48.0 146.0 L 48.0 134.0 L 43.0 128.0 L 33.0 126.0 L 25.0 128.0 L 18.0 132.0 L 14.0 131.0 L 36.0 113.0 L 15.0 125.0 L 77.0 43.0 L 71.0 63.0 L 64.0 100.0 L 65.0 115.0 L 69.0 127.0 L 75.0 134.0 L 85.0 136.0 L 89.0 134.0 L 106.0 116.0 L 106.0 110.0 L 110.0 107.0 L 110.0 104.0 L 112.0 102.0 L 113.0 91.0 L 110.0 85.0 L 105.0 85.0 L 97.0 93.0 L 91.0 105.0 L 91.0 109.0 L 95.0 109.0 L 98.0 106.0 L 101.0 106.0 L 104.0 110.0 L 92.0 75.0 L 76.0 90.0 L 70.0 94.0 L 67.0 94.0 L 64.0 99.0 L 37.0 112.0 L 88.0 78.0 L 97.0 68.0 L 103.0 54.0 L 106.0 39.0 L 104.0 18.0 L 102.0 13.0 L 98.0 9.0 L 94.0 10.0 L 85.0 23.0 L 78.0 42.0 L 106.0 117.0 L 115.0 129.0 L 127.0 134.0 L 136.0 133.0 L 146.0 128.0 L 164.0 112.0 L 160.0 117.0"/>
           </mask>
-          <image href="assets/img/blog/bla-e.png" width="166" height="174"
-                 mask="url(#bi-e)"/>
+          <image href="assets/img/blog/bla-e.png" width="166" height="174" mask="url(#bi05)"/>
+        </svg>
+        <svg class="blabla__palabra" style="left:4%;top:31%;width:18%;transform:rotate(12deg)"
+             viewBox="0 0 142 120" aria-hidden="true" focusable="false">
+          <mask id="bi06" maskUnits="userSpaceOnUse" x="-20" y="-20" width="182" height="160">
+            <path class="blabla__trazo" pathLength="1" style="--d:6.3s" d="M 38.0 9.0 L 36.0 9.0 L 32.0 13.0 L 28.0 21.0 L 7.0 83.0 L 8.0 89.0 L 14.0 89.0 L 23.0 83.0 L 31.0 84.0 L 34.0 89.0 L 34.0 97.0 L 25.0 109.0 L 18.0 114.0 L 5.0 119.0 L 0.0 115.0 L 0.0 107.0 L 3.0 105.0 L 12.0 90.0 L 26.0 82.0 L 42.0 68.0 L 47.0 65.0 L 51.0 65.0 L 54.0 53.0 L 62.0 34.0 L 68.0 24.0 L 76.0 16.0 L 79.0 17.0 L 79.0 23.0 L 73.0 39.0 L 68.0 46.0 L 58.0 56.0 L 55.0 57.0 L 50.0 66.0 L 47.0 83.0 L 47.0 98.0 L 49.0 104.0 L 53.0 108.0 L 61.0 107.0 L 73.0 99.0 L 75.0 97.0 L 75.0 94.0 L 88.0 79.0 L 93.0 68.0 L 96.0 66.0 L 99.0 67.0 L 98.0 84.0 L 100.0 95.0 L 103.0 102.0 L 109.0 109.0 L 116.0 112.0 L 125.0 112.0 L 140.0 106.0 L 75.0 92.0 L 71.0 92.0 L 70.0 88.0 L 84.0 60.0 L 94.0 49.0 L 99.0 49.0 L 97.0 57.0 L 98.0 65.0"/>
+          </mask>
+          <image href="assets/img/blog/bla-b.png" width="142" height="120" mask="url(#bi06)"/>
+        </svg>
+        <svg class="blabla__palabra" style="left:58%;top:29%;width:20%;transform:rotate(-6deg)"
+             viewBox="0 0 156 154" aria-hidden="true" focusable="false">
+          <mask id="bi07" maskUnits="userSpaceOnUse" x="-20" y="-20" width="196" height="194">
+            <path class="blabla__trazo" pathLength="1" style="--d:0.7s" d="M 31.0 9.0 L 27.0 16.0 L 23.0 31.0 L 20.0 51.0 L 10.0 94.0 L 8.0 119.0 L 11.0 123.0 L 13.0 123.0 L 19.0 119.0 L 28.0 117.0 L 42.0 117.0 L 48.0 123.0 L 48.0 130.0 L 47.0 134.0 L 36.0 146.0 L 23.0 152.0 L 14.0 153.0 L 8.0 150.0 L 0.0 140.0 L 0.0 135.0 L 3.0 134.0 L 10.0 123.0 L 56.0 114.0 L 60.0 124.0 L 64.0 128.0 L 73.0 128.0 L 79.0 121.0 L 83.0 119.0 L 92.0 101.0 L 95.0 98.0 L 99.0 82.0 L 97.0 79.0 L 87.0 87.0 L 81.0 98.0 L 76.0 115.0 L 76.0 123.0 L 57.0 114.0 L 57.0 76.0 L 65.0 40.0 L 71.0 23.0 L 77.0 16.0 L 79.0 16.0 L 81.0 20.0 L 82.0 38.0 L 79.0 53.0 L 72.0 69.0 L 62.0 82.0 L 58.0 84.0 L 55.0 92.0 L 23.0 115.0 L 21.0 118.0 L 95.0 99.0 L 98.0 101.0 L 99.0 106.0 L 106.0 119.0 L 112.0 126.0 L 118.0 130.0 L 126.0 133.0 L 138.0 133.0 L 155.0 126.0"/>
+          </mask>
+          <image href="assets/img/blog/bla-c.png" width="156" height="154" mask="url(#bi07)"/>
+        </svg>
+        <svg class="blabla__palabra" style="left:30%;top:40%;width:19%;transform:rotate(5deg)"
+             viewBox="0 0 161 155" aria-hidden="true" focusable="false">
+          <mask id="bi08" maskUnits="userSpaceOnUse" x="-20" y="-20" width="201" height="195">
+            <path class="blabla__trazo" pathLength="1" style="--d:4.6s" d="M 24.0 10.0 L 5.0 119.0 L 8.0 123.0 L 2.0 137.0 L 3.0 150.0 L 11.0 154.0 L 26.0 137.0 L 34.0 116.0 L 33.0 101.0 L 48.0 91.0 L 51.0 67.0 L 62.0 34.0 L 68.0 28.0 L 71.0 29.0 L 74.0 37.0 L 74.0 52.0 L 71.0 63.0 L 64.0 75.0 L 52.0 87.0 L 50.0 87.0 L 54.0 86.0 L 63.0 77.0 L 48.0 92.0 L 48.0 103.0 L 53.0 118.0 L 60.0 124.0 L 69.0 124.0 L 79.0 115.0 L 88.0 102.0 L 92.0 88.0 L 92.0 82.0 L 87.0 83.0 L 78.0 99.0 L 76.0 109.0 L 77.0 112.0 L 80.0 112.0 L 89.0 100.0 L 95.0 99.0 L 102.0 113.0 L 110.0 121.0 L 116.0 123.0 L 131.0 121.0 L 147.0 111.0 L 159.0 100.0 L 157.0 103.0 L 32.0 102.0 L 25.0 108.0 L 20.0 109.0 L 8.0 122.0 L 15.0 150.0 L 21.0 144.0 L 21.0 105.0 L 27.0 100.0 L 31.0 100.0 L 30.0 102.0 L 29.0 101.0"/>
+          </mask>
+          <image href="assets/img/blog/bla-a.png" width="161" height="155" mask="url(#bi08)"/>
+        </svg>
+        <svg class="blabla__palabra" style="left:6%;top:46%;width:16%;transform:rotate(-11deg)"
+             viewBox="0 0 155 118" aria-hidden="true" focusable="false">
+          <mask id="bi09" maskUnits="userSpaceOnUse" x="-20" y="-20" width="195" height="158">
+            <path class="blabla__trazo" pathLength="1" style="--d:2.1s" d="M 14.0 10.0 L 11.0 13.0 L 10.0 21.0 L 8.0 91.0 L 4.0 96.0 L 2.0 103.0 L 0.0 104.0 L 2.0 111.0 L 7.0 116.0 L 11.0 117.0 L 18.0 115.0 L 29.0 105.0 L 33.0 97.0 L 33.0 84.0 L 29.0 78.0 L 49.0 63.0 L 52.0 63.0 L 52.0 31.0 L 57.0 13.0 L 59.0 11.0 L 62.0 11.0 L 65.0 15.0 L 67.0 23.0 L 67.0 35.0 L 60.0 51.0 L 55.0 56.0 L 53.0 56.0 L 52.0 64.0 L 54.0 74.0 L 59.0 84.0 L 64.0 89.0 L 71.0 90.0 L 79.0 83.0 L 80.0 79.0 L 85.0 76.0 L 92.0 65.0 L 102.0 41.0 L 101.0 32.0 L 96.0 33.0 L 87.0 45.0 L 79.0 67.0 L 78.0 76.0 L 80.0 77.0 L 30.0 81.0 L 28.0 79.0 L 24.0 80.0 L 9.0 90.0 L 98.0 54.0 L 101.0 56.0 L 106.0 70.0 L 117.0 89.0 L 125.0 97.0 L 134.0 102.0 L 140.0 104.0 L 148.0 104.0"/>
+          </mask>
+          <image href="assets/img/blog/bla-d.png" width="155" height="118" mask="url(#bi09)"/>
+        </svg>
+        <svg class="blabla__palabra" style="left:54%;top:47%;width:19%;transform:rotate(8deg)"
+             viewBox="0 0 166 174" aria-hidden="true" focusable="false">
+          <mask id="bi10" maskUnits="userSpaceOnUse" x="-20" y="-20" width="206" height="214">
+            <path class="blabla__trazo" pathLength="1" style="--d:5.9s" d="M 35.0 23.0 L 31.0 33.0 L 25.0 76.0 L 13.0 130.0 L 8.0 132.0 L 3.0 140.0 L 2.0 145.0 L 0.0 146.0 L 0.0 158.0 L 2.0 158.0 L 5.0 166.0 L 10.0 171.0 L 13.0 173.0 L 22.0 173.0 L 30.0 169.0 L 40.0 160.0 L 48.0 146.0 L 48.0 134.0 L 43.0 128.0 L 33.0 126.0 L 25.0 128.0 L 18.0 132.0 L 14.0 131.0 L 36.0 113.0 L 15.0 125.0 L 77.0 43.0 L 71.0 63.0 L 64.0 100.0 L 65.0 115.0 L 69.0 127.0 L 75.0 134.0 L 85.0 136.0 L 89.0 134.0 L 106.0 116.0 L 106.0 110.0 L 110.0 107.0 L 110.0 104.0 L 112.0 102.0 L 113.0 91.0 L 110.0 85.0 L 105.0 85.0 L 97.0 93.0 L 91.0 105.0 L 91.0 109.0 L 95.0 109.0 L 98.0 106.0 L 101.0 106.0 L 104.0 110.0 L 92.0 75.0 L 76.0 90.0 L 70.0 94.0 L 67.0 94.0 L 64.0 99.0 L 37.0 112.0 L 88.0 78.0 L 97.0 68.0 L 103.0 54.0 L 106.0 39.0 L 104.0 18.0 L 102.0 13.0 L 98.0 9.0 L 94.0 10.0 L 85.0 23.0 L 78.0 42.0 L 106.0 117.0 L 115.0 129.0 L 127.0 134.0 L 136.0 133.0 L 146.0 128.0 L 164.0 112.0 L 160.0 117.0"/>
+          </mask>
+          <image href="assets/img/blog/bla-e.png" width="166" height="174" mask="url(#bi10)"/>
+        </svg>
+        <svg class="blabla__palabra" style="left:14%;top:58%;width:21%;transform:rotate(-3deg)"
+             viewBox="0 0 156 154" aria-hidden="true" focusable="false">
+          <mask id="bi11" maskUnits="userSpaceOnUse" x="-20" y="-20" width="196" height="194">
+            <path class="blabla__trazo" pathLength="1" style="--d:3.2s" d="M 31.0 9.0 L 27.0 16.0 L 23.0 31.0 L 20.0 51.0 L 10.0 94.0 L 8.0 119.0 L 11.0 123.0 L 13.0 123.0 L 19.0 119.0 L 28.0 117.0 L 42.0 117.0 L 48.0 123.0 L 48.0 130.0 L 47.0 134.0 L 36.0 146.0 L 23.0 152.0 L 14.0 153.0 L 8.0 150.0 L 0.0 140.0 L 0.0 135.0 L 3.0 134.0 L 10.0 123.0 L 56.0 114.0 L 60.0 124.0 L 64.0 128.0 L 73.0 128.0 L 79.0 121.0 L 83.0 119.0 L 92.0 101.0 L 95.0 98.0 L 99.0 82.0 L 97.0 79.0 L 87.0 87.0 L 81.0 98.0 L 76.0 115.0 L 76.0 123.0 L 57.0 114.0 L 57.0 76.0 L 65.0 40.0 L 71.0 23.0 L 77.0 16.0 L 79.0 16.0 L 81.0 20.0 L 82.0 38.0 L 79.0 53.0 L 72.0 69.0 L 62.0 82.0 L 58.0 84.0 L 55.0 92.0 L 23.0 115.0 L 21.0 118.0 L 95.0 99.0 L 98.0 101.0 L 99.0 106.0 L 106.0 119.0 L 112.0 126.0 L 118.0 130.0 L 126.0 133.0 L 138.0 133.0 L 155.0 126.0"/>
+          </mask>
+          <image href="assets/img/blog/bla-c.png" width="156" height="154" mask="url(#bi11)"/>
+        </svg>
+        <svg class="blabla__palabra" style="left:48%;top:64%;width:17%;transform:rotate(13deg)"
+             viewBox="0 0 142 120" aria-hidden="true" focusable="false">
+          <mask id="bi12" maskUnits="userSpaceOnUse" x="-20" y="-20" width="182" height="160">
+            <path class="blabla__trazo" pathLength="1" style="--d:1s" d="M 38.0 9.0 L 36.0 9.0 L 32.0 13.0 L 28.0 21.0 L 7.0 83.0 L 8.0 89.0 L 14.0 89.0 L 23.0 83.0 L 31.0 84.0 L 34.0 89.0 L 34.0 97.0 L 25.0 109.0 L 18.0 114.0 L 5.0 119.0 L 0.0 115.0 L 0.0 107.0 L 3.0 105.0 L 12.0 90.0 L 26.0 82.0 L 42.0 68.0 L 47.0 65.0 L 51.0 65.0 L 54.0 53.0 L 62.0 34.0 L 68.0 24.0 L 76.0 16.0 L 79.0 17.0 L 79.0 23.0 L 73.0 39.0 L 68.0 46.0 L 58.0 56.0 L 55.0 57.0 L 50.0 66.0 L 47.0 83.0 L 47.0 98.0 L 49.0 104.0 L 53.0 108.0 L 61.0 107.0 L 73.0 99.0 L 75.0 97.0 L 75.0 94.0 L 88.0 79.0 L 93.0 68.0 L 96.0 66.0 L 99.0 67.0 L 98.0 84.0 L 100.0 95.0 L 103.0 102.0 L 109.0 109.0 L 116.0 112.0 L 125.0 112.0 L 140.0 106.0 L 75.0 92.0 L 71.0 92.0 L 70.0 88.0 L 84.0 60.0 L 94.0 49.0 L 99.0 49.0 L 97.0 57.0 L 98.0 65.0"/>
+          </mask>
+          <image href="assets/img/blog/bla-b.png" width="142" height="120" mask="url(#bi12)"/>
+        </svg>
+        <svg class="blabla__palabra" style="left:20%;top:74%;width:18%;transform:rotate(-9deg)"
+             viewBox="0 0 161 155" aria-hidden="true" focusable="false">
+          <mask id="bi13" maskUnits="userSpaceOnUse" x="-20" y="-20" width="201" height="195">
+            <path class="blabla__trazo" pathLength="1" style="--d:6.7s" d="M 24.0 10.0 L 5.0 119.0 L 8.0 123.0 L 2.0 137.0 L 3.0 150.0 L 11.0 154.0 L 26.0 137.0 L 34.0 116.0 L 33.0 101.0 L 48.0 91.0 L 51.0 67.0 L 62.0 34.0 L 68.0 28.0 L 71.0 29.0 L 74.0 37.0 L 74.0 52.0 L 71.0 63.0 L 64.0 75.0 L 52.0 87.0 L 50.0 87.0 L 54.0 86.0 L 63.0 77.0 L 48.0 92.0 L 48.0 103.0 L 53.0 118.0 L 60.0 124.0 L 69.0 124.0 L 79.0 115.0 L 88.0 102.0 L 92.0 88.0 L 92.0 82.0 L 87.0 83.0 L 78.0 99.0 L 76.0 109.0 L 77.0 112.0 L 80.0 112.0 L 89.0 100.0 L 95.0 99.0 L 102.0 113.0 L 110.0 121.0 L 116.0 123.0 L 131.0 121.0 L 147.0 111.0 L 159.0 100.0 L 157.0 103.0 L 32.0 102.0 L 25.0 108.0 L 20.0 109.0 L 8.0 122.0 L 15.0 150.0 L 21.0 144.0 L 21.0 105.0 L 27.0 100.0 L 31.0 100.0 L 30.0 102.0 L 29.0 101.0"/>
+          </mask>
+          <image href="assets/img/blog/bla-a.png" width="161" height="155" mask="url(#bi13)"/>
+        </svg>
+        <svg class="blabla__palabra" style="left:56%;top:80%;width:16%;transform:rotate(6deg)"
+             viewBox="0 0 155 118" aria-hidden="true" focusable="false">
+          <mask id="bi14" maskUnits="userSpaceOnUse" x="-20" y="-20" width="195" height="158">
+            <path class="blabla__trazo" pathLength="1" style="--d:4.2s" d="M 14.0 10.0 L 11.0 13.0 L 10.0 21.0 L 8.0 91.0 L 4.0 96.0 L 2.0 103.0 L 0.0 104.0 L 2.0 111.0 L 7.0 116.0 L 11.0 117.0 L 18.0 115.0 L 29.0 105.0 L 33.0 97.0 L 33.0 84.0 L 29.0 78.0 L 49.0 63.0 L 52.0 63.0 L 52.0 31.0 L 57.0 13.0 L 59.0 11.0 L 62.0 11.0 L 65.0 15.0 L 67.0 23.0 L 67.0 35.0 L 60.0 51.0 L 55.0 56.0 L 53.0 56.0 L 52.0 64.0 L 54.0 74.0 L 59.0 84.0 L 64.0 89.0 L 71.0 90.0 L 79.0 83.0 L 80.0 79.0 L 85.0 76.0 L 92.0 65.0 L 102.0 41.0 L 101.0 32.0 L 96.0 33.0 L 87.0 45.0 L 79.0 67.0 L 78.0 76.0 L 80.0 77.0 L 30.0 81.0 L 28.0 79.0 L 24.0 80.0 L 9.0 90.0 L 98.0 54.0 L 101.0 56.0 L 106.0 70.0 L 117.0 89.0 L 125.0 97.0 L 134.0 102.0 L 140.0 104.0 L 148.0 104.0"/>
+          </mask>
+          <image href="assets/img/blog/bla-d.png" width="155" height="118" mask="url(#bi14)"/>
         </svg>
       </div>
       <h2 class="titulo-manuscrito blog-cabecera__titulo">

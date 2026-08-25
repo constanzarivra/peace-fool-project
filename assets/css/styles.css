@@ -1574,13 +1574,8 @@ img.persona__retrato {
   .blabla__trazo { animation: none; stroke-dashoffset: 0; }
   .blabla__palabra { opacity: .55; }
 }
-/* Sitio e inclinación de cada palabra. La hora a la que entra cada una va en
-   el propio marcado (style="--d:..."), junto al trazo que anima. */
-.blabla--a { left: 2%;  top: 3%;  width: 30%; transform: rotate(-12deg); }
-.blabla--b { left: 52%; top: 21%; width: 24%; transform: rotate(7deg); }
-.blabla--c { left: 6%;  top: 36%; width: 34%; transform: rotate(-4deg); }
-.blabla--d { left: 50%; top: 57%; width: 26%; transform: rotate(12deg); }
-.blabla--e { left: 16%; top: 73%; width: 31%; transform: rotate(-9deg); }
+/* El sitio, el tamaño y el giro de cada palabra van en el marcado, y la hora
+   a la que entra también (style="--d:..."), junto al trazo que anima. */
 
 /* El título es una imagen: se coloca derecha y el giro lo hace el navegador
    desde su centro. Su caja mide 43,32 % y arranca en 28,34 %, o sea que su
