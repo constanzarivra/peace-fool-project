@@ -1,0 +1,1730 @@
+/* ==========================================================================
+   PEACE—FOOL PROJECT — hoja de estilos única
+   Paleta y tipografías de marca. Fondo claro, sobrio, cálido.
+   ========================================================================== */
+
+:root {
+  /* --- Paleta de marca (moodboard) --- */
+  --verde-agua:   #7eb0a5;
+  --azul:         #6c87c0;
+  --azul-acero:   #7189bb;
+  --verde:        #6fa98b;
+  --salvia:       #c8ceb9;
+  --oliva:        #6f8b54;
+  --gris-lavanda: #abaac1;
+  --lila:         #e0d0d9;
+  --morado:       #4a4368;
+  --rosa:         #e0bdb2;
+  --amarillo:     #e0e088;
+  --burdeo:       #8e5060;   /* para el botón de ayuda */
+  --azul-titular: #203385;   /* el azul del título del banner */
+  --azul-fool:    #6585ae;   /* el azul pastel del "Fool Talks" manuscrito */
+  --morado-marca: #5a5277;   /* la tinta exacta de las letras del título */
+
+  /* --- Roles --- */
+  --fondo:        #fbf9f6;   /* beige muy sutil */
+  --fondo-alt:    #f5f2ec;   /* bloques alternos */
+  --tinta:        #3e3a52;   /* texto principal */
+  --tinta-suave:  #6c6880;   /* texto secundario */
+  --linea:        #e6e1d8;   /* bordes finos */
+  --acento:       var(--morado);
+
+  /* --- Tipografías --- */
+  /* Encabezados: la tipografía del logo. Si falta, otra geométrica parecida. */
+  /* Archivo: firme, minimalista y un poco cuadrada, y —a diferencia de
+     Devanagari Sangam MN— trae todas las tildes y la ñ. Se carga desde Google
+     Fonts en el <head> de cada página, así se ve igual en cualquier equipo.
+     Detrás quedan las del sistema por si la fuente no llega a cargar. */
+  --font-titulo: "Archivo", "Devanagari Sangam MN", "Grantha Sangam MN", Futura,
+                 "Avenir Next", "Helvetica Neue", sans-serif;
+  --font-texto:  "Helvetica Neue", Helvetica, "Inter", system-ui, -apple-system,
+                 "Segoe UI", Arial, sans-serif;
+
+  /* --- Medidas --- */
+  --ancho:      1180px;
+  --ancho-texto: 68ch;
+  --radio:      2px;
+  --tr:         .35s cubic-bezier(.22,.61,.36,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { color-scheme: light; scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--tinta);
+  font-family: var(--font-texto);
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img, svg { max-width: 100%; display: block; }
+
+a { color: var(--acento); text-decoration: none; }
+a:hover { color: var(--azul-acero); }
+
+::selection { background: var(--lila); color: var(--morado); }
+
+/* --------------------------------------------------------- Tipografía ---- */
+
+h1, h2, h3, h4, .titulo, .logo, .nav a, .boton, .kicker {
+  font-family: var(--font-titulo);
+  font-weight: 400;
+}
+
+h1, h2, h3, h4 { color: var(--morado); margin: 0 0 .6em; line-height: 1.15; }
+
+/* Las frases de encabezado van en mayúsculas */
+h1, h2 { text-transform: uppercase; text-wrap: balance; }
+
+h1 { font-size: clamp(1.9rem, 5vw, 3.6rem); letter-spacing: .06em; }
+h2 { font-size: clamp(1.4rem, 3vw, 2.15rem); letter-spacing: .08em; }
+h3 { font-size: 1.25rem; letter-spacing: .04em; }
+
+/* Etiquetas cortas en mayúsculas: van con la tipografía de los encabezados */
+.pista__meta, .entrada__fecha, .footer h4, .campo span,
+.persona__retrato, .galeria .marco { font-family: var(--font-titulo); }
+
+p { margin: 0 0 1.15em; max-width: var(--ancho-texto); }
+
+.kicker {
+  display: block;
+  font-size: .78rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--gris-lavanda);
+  margin-bottom: 1.4em;
+}
+
+.plomo { color: var(--tinta-suave); }
+
+.lead {
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  line-height: 1.7;
+  color: var(--tinta-suave);
+}
+
+/* ------------------------------------------- Regla de justificación ------ */
+/* Bordes parejos a los dos lados y, en pantalla ancha, ninguna palabra
+   partida: es lo que hace Word por defecto y por eso sus bloques se ven
+   coherentes. De 900 px hacia abajo —celular y tablet vertical— la columna se
+   angosta tanto que sin guiones se abren huecos entre las palabras, así que ahí
+   sí se permiten.
+   Los bloques centrados a propósito quedan fuera de la regla. */
+.lead,
+.entrada--completa p,
+.perfil__texto p,
+.franja__texto {
+  text-align: justify;
+  hyphens: manual;
+  -webkit-hyphens: manual;
+  text-wrap: pretty;
+}
+.centrado .lead,
+.centrado p { text-align: center; }
+
+@media (max-width: 900px) {
+  .lead,
+  .entrada--completa p,
+  .perfil__texto p,
+  .franja__texto {
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+}
+
+/* ------------------------------------------------------------ Layout ---- */
+
+.contenedor {
+  width: 100%;
+  max-width: var(--ancho);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 3.5rem);
+}
+
+section { padding-block: clamp(3.5rem, 9vw, 7rem); }
+/* Los bloques de color alterno no cortan en recto: entran y salen con un
+   degradado. Entre los dos beige hay apenas 10 niveles de diferencia, así que
+   un degradado largo los reparte en franjas de 30 px bien visibles: por eso el
+   desvanecido dura 110 px fijos y encima va un grano muy leve que disimula los
+   escalones (el mismo truco que usa la imprenta para los fondos planos). */
+.seccion--alt {
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23g)' opacity='.05'/%3E%3C/svg%3E") repeat,
+    linear-gradient(to bottom, var(--fondo) 0, rgba(251, 249, 246, 0) 110px),
+    linear-gradient(to top,    var(--fondo) 0, rgba(251, 249, 246, 0) 110px),
+    var(--fondo-alt);
+}
+
+.centrado { text-align: center; }
+.centrado p, .centrado .lead { margin-inline: auto; }
+
+.grid { display: grid; gap: clamp(1.5rem, 3.5vw, 2.75rem); }
+.grid--2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.grid--3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+
+hr.regla {
+  border: 0;
+  height: 1px;
+  background: var(--linea);
+  margin-block: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+/* ------------------------------------------------------------- Estrella -- */
+/* Motivo de cuatro puntas del moodboard */
+
+.estrella { width: 1em; height: 1em; fill: currentColor; flex: none; }
+/* Estrella de marca (PNG) usada como remate al abrir una sección */
+.estrella--sola {
+  width: clamp(30px, 4.4vw, 48px);
+  height: auto;
+  margin: 0 auto 1.5rem;
+}
+
+/* ------------------------------------------------------------- Header ---- */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(251, 249, 246, .88);
+  backdrop-filter: saturate(140%) blur(10px);
+  /* sin línea abajo: al desplazarse, la franja se separa del contenido por el
+     fondo translúcido, no por un borde */
+  transition: background var(--tr);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: 58px;   /* la franja del menú, angosta; el texto no cambia */
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: .5em;
+  font-size: clamp(.95rem, 1.9vw, 1.15rem);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--morado);
+  white-space: nowrap;
+}
+.logo .estrella { color: var(--gris-lavanda); }
+
+/* Logotipo como imagen (PNG oficial de marca, con su tipografía incrustada).
+   Para cambiar el color, apunta el src a otro archivo de assets/img/logo/ */
+.logo__img {
+  /* el manuscrito se mide por ancho: así conserva la presencia que tenía el
+     logotipo tipográfico, sin importar cuánto suban y bajen sus trazos */
+  width: clamp(196px, 20vw, 280px);
+  height: auto;
+  transition: opacity var(--tr);
+}
+.logo:hover .logo__img { opacity: .72; }
+.logo__img--pie { height: 22px; }
+
+.nav { display: flex; align-items: center; gap: clamp(1rem, 2.4vw, 2.1rem); }
+
+.nav a {
+  font-size: .8rem;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+  /* la caja de la línea pega al texto y el reparto desigual compensa que las
+     mayúsculas se ven altas dentro de su renglón */
+  line-height: 1;
+  padding-block: .5em;
+  border-bottom: 1px solid transparent;
+  transition: color var(--tr), border-color var(--tr);
+}
+.nav a:hover { color: var(--morado); border-bottom-color: var(--gris-lavanda); }
+.nav a[aria-current="page"] { color: var(--morado); border-bottom-color: var(--morado); }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  padding: .5rem;
+  cursor: pointer;
+  color: var(--morado);
+}
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: currentColor;
+  margin: 6px 0;
+  transition: transform var(--tr), opacity var(--tr);
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* En pantalla ancha la cabecera va en tres columnas: el manuscrito a la
+   izquierda y el menú centrado en la del medio, pase lo que pase con el
+   logotipo. En la portada el manuscrito se esconde —ahí el título grande del
+   banner ya hace de marca—; en el resto de las páginas aparece y es el camino
+   de vuelta al inicio. De 860 px hacia abajo todo vuelve a la normalidad:
+   manuscrito a la izquierda y hamburguesa a la derecha. */
+@media (min-width: 861px) {
+  /* En la portada el manuscrito se esconde y el menú queda solo, centrado. */
+  body.portada .header .logo { display: none; }
+  body.portada .header__inner { justify-content: center; }
+  /* Las mayúsculas ocupan la parte de arriba de su renglón, así que centrar la
+     caja las deja 5 px altas dentro de la franja. Este empujón las centra de
+     verdad; la rayita del enlace baja con ellas. */
+  .nav a { transform: translateY(5px); }
+}
+
+/* De 1100 px para arriba sobra espacio: la cabecera va en tres columnas y el
+   menú queda centrado aunque el manuscrito esté a la izquierda. Entre 861 y
+   1099 no alcanza —el logotipo quedaría diminuto—, así que ahí se mantiene el
+   reparto clásico: manuscrito a la izquierda, menú a la derecha. */
+@media (min-width: 1100px) {
+  /* La cabecera se mide contra toda la página y no contra el contenedor: así el
+     manuscrito queda centrado en el hueco que va del borde de la pantalla al
+     comienzo del menú, en vez de pegado a la izquierda del texto. */
+  .header__inner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    max-width: none;
+    padding-inline: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  .header .logo { grid-column: 1; justify-self: center; }
+  .nav { grid-column: 2; justify-content: center; }
+  .header .logo__img { width: clamp(170px, 15vw, 230px); }
+  body.portada .nav { grid-column: 2; }
+}
+
+@media (max-width: 860px) {
+  .nav-toggle { display: block; }
+  .nav {
+    position: fixed;
+    inset: 58px 0 auto;   /* el desplegable cuelga justo del borde de la franja */
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    background: var(--fondo);
+    border-bottom: 1px solid var(--linea);
+    padding: 1rem clamp(1.25rem, 5vw, 3.5rem) 2rem;
+    transform: translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--tr), transform var(--tr);
+  }
+  .nav.is-open { opacity: 1; transform: none; pointer-events: auto; }
+  .nav a { width: 100%; padding-block: .9em; border-bottom: 1px solid var(--linea); }
+}
+
+/* --------------------------------------------------------------- Hero ---- */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(4.5rem, 13vw, 9.5rem);
+}
+.hero__wash {
+  position: absolute;
+  inset: auto -10% -30% 40%;
+  width: 70%;
+  max-width: 780px;
+  opacity: .5;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero__inner { position: relative; z-index: 1; }
+
+/* Los trazos curvos de Meditación guiada: grandes, a la derecha y a la altura
+   del título, saliéndose por el borde de la pantalla. Van detrás del texto, no
+   se pueden pinchar y llevan la misma opacidad que la palabra de fondo de
+   Recursos (0,41), para que el conjunto se vea parejo. */
+.hero--mancha { overflow: hidden; }
+.mancha-hero {
+  position: absolute;
+  top: 50%;
+  right: -7%;
+  transform: translateY(-50%);
+  width: min(62%, 820px);
+  max-width: none;
+  height: auto;
+  z-index: 0;
+  opacity: .41;
+  pointer-events: none;
+  /* El dibujo viene recortado en recto por abajo, y como es más alto que la
+     franja, ese corte quedaba a la vista. Este degradado lo disuelve antes de
+     llegar al borde, así parece que se va apagando solo. */
+  -webkit-mask-image: linear-gradient(to bottom, #000 58%, transparent 94%);
+          mask-image: linear-gradient(to bottom, #000 58%, transparent 94%);
+}
+
+@media (max-width: 900px) {
+  /* en pantalla angosta se corre hacia afuera y se atenúa: aquí el texto le
+     pasa por encima */
+  .mancha-hero {
+    right: -28%;
+    width: min(86%, 520px);
+    opacity: .3;
+  }
+}
+.hero h1 { max-width: 20ch; }
+/* Solo la frase de la portada lleva el acento en verde agua; el resto de las
+   palabras en cursiva (por ejemplo el "Fool" de Fool Talks) mantiene su color. */
+.portada-intro h1 em { font-style: italic; color: var(--verde-agua); }
+.hero .lead { max-width: 46ch; margin-top: 1.6rem; }
+
+/* Portada: el título de la marca, solo, sobre el fondo claro de la página. La
+   pintura de nenúfares que iba detrás pasó a la sección de la presentación. */
+.banner-marca {
+  position: relative;
+  padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(.5rem, 2vw, 1.5rem);
+  text-align: center;
+}
+/* el banner respira más ancho que el resto del sitio */
+/* La bajada queda al pie del banner, en blanco. La pintura del fondo es clara,
+   así que lleva una sombra muy suave para que no se pierda. */
+/* Sobre la pintura hay que pesar más: la tipografía de los titulares no tiene
+   negrita real, así que esta línea va con la del texto, en bold, y en el mismo
+   azul del título. */
+/* El lema de la marca. Antes iba dentro del banner, en cursiva y chico, y se
+   perdía contra la pintura. Ahora va debajo, sobre el fondo claro, en la
+   tipografía de los títulos y con las letras bien separadas: se lee de lejos y
+   remata el bloque del banner sin taparlo. */
+.lema {
+  margin: clamp(1.6rem, 3.6vw, 3rem) auto clamp(.5rem, 2vw, 1.5rem);
+  max-width: none;
+  text-align: center;
+  font-family: var(--font-titulo);
+  font-size: clamp(.92rem, 1.85vw, 1.45rem);
+  /* en negrita y en la tinta del título: así el lema se lee como parte del
+     mismo bloque y no como una línea suelta debajo */
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: .3em;
+  /* el interletrado agrega un hueco al final de la línea: esto lo compensa */
+  text-indent: .3em;
+  text-transform: uppercase;
+  color: var(--morado-marca);
+}
+.lema__punto { color: var(--gris-lavanda); margin-inline: .15em; }
+
+@media (max-width: 600px) {
+  /* en celular se achica un punto para no pegarse a los bordes */
+  .lema {
+    font-size: .78rem;
+    letter-spacing: .18em;
+    padding-inline: 1.25rem;
+  }
+}
+
+/* El título es una sola imagen: "PEACE / FOOL PROJECT" con el círculo pintado
+   detrás. PROJECT va montado sobre la misma línea de base que FOOL y con la
+   misma altura de letra; eso viene resuelto dentro del archivo, no en CSS. */
+.marca-banner {
+  display: block;
+  width: min(92%, 1120px);
+  height: auto;
+  margin-inline: auto;
+}
+
+/* Presentación de la portada, debajo del banner */
+/* La presentación lleva de fondo la pintura de nenúfares que antes estaba en el
+   banner, a todo el ancho. Encima va un halo claro —el mismo de antes— para que
+   la frase se lea sin pelear con el agua. */
+.portada-intro {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(3rem, 7vw, 5.5rem) clamp(3rem, 8vw, 6rem);
+  text-align: left;
+  /* el velo pesa más a la izquierda, que es donde va la frase, y se abre hacia
+     la derecha para que la pintura se vea entera detrás del dibujo */
+  background:
+    linear-gradient(to right,
+                    rgba(255, 255, 255, .90) 0%,
+                    rgba(255, 255, 255, .78) 38%,
+                    rgba(255, 255, 255, .52) 100%),
+    url("../img/banner-nenufares.jpg") center / cover no-repeat,
+    #eaeee0;
+  border-block: 1px solid var(--linea);
+}
+.portada-intro h1 {
+  max-width: 22ch;
+  margin-inline: 0;
+  font-size: clamp(1.55rem, 3.6vw, 2.6rem);
+  /* esta frase va en caja normal, no en mayúsculas */
+  text-transform: none;
+  letter-spacing: .02em;
+}
+/* La frase a la izquierda y, al lado, el hueco reservado para la imagen. */
+.portada-intro__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: clamp(1.75rem, 5vw, 4rem);
+  align-items: center;
+}
+.portada-intro__texto { position: relative; z-index: 1; }
+
+/* Hueco de imagen: un espacio reservado, con su medida, para que se vea desde
+   ya cuánto lugar ocupará la foto. Al reemplazarlo por un <img> con la misma
+   clase, la caja no cambia de tamaño. */
+.hueco {
+  position: relative;
+  display: grid;
+  place-items: center;
+  border: 1px dashed var(--linea);
+  border-radius: var(--radio);
+  background: var(--fondo-alt);
+}
+.hueco__nota {
+  font-family: var(--font-titulo);
+  font-size: .72rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gris-lavanda);
+  text-align: center;
+  padding: 1rem;
+}
+/* El dibujo de la cabeza, al costado de la frase: viene recortado y sin fondo,
+   así que va suelto —sin marco, sin recorte ni sombra—. */
+.portada-intro__foto {
+  display: block;
+  width: 100%;
+  max-width: 330px;
+  height: auto;
+  margin-inline: auto;
+}
+
+/* Franjas de la portada: texto (o botón) sobre una imagen a todo lo ancho.
+   Mientras no estén las fotos, el fondo es un tono de la paleta. */
+.franja {
+  position: relative;
+  display: grid;
+  align-items: center;
+  min-height: clamp(240px, 32vw, 420px);
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+  /* aquí va la foto: background-image: url("../img/portada/....jpg"); */
+  background: var(--salvia) center / cover no-repeat;
+}
+/* Un velo claro sobre la foto, para que el texto se lea sea cual sea la que
+   venga. Si la imagen resulta muy clara, se puede bajar a .3 */
+.franja::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(251, 249, 246, .55);
+  pointer-events: none;
+}
+.franja > * { position: relative; z-index: 1; }
+/* La franja de la bajada lleva la pintura de "sácalo": el dibujo ocupa el
+   costado izquierdo y el resto es su propio lila, por eso el texto se corre a
+   la derecha. El alto sigue la proporción de la pintura (2000 × 809) para que
+   no haya que recortarla. */
+.franja--bajada {
+  background-color: #f1e4ed;
+  background-image: url("../img/portada/franja-sacalo.jpg");
+  background-position: left center;
+  background-size: cover;
+  min-height: clamp(300px, 40vw, 580px);
+}
+/* el velo se baja: con el de siempre, la pintura quedaba lavada */
+.franja--bajada::before { background: rgba(251, 249, 246, .16); }
+.franja--bajada .franja__texto {
+  margin-left: auto;
+  max-width: 44ch;
+}
+
+@media (max-width: 900px) {
+  /* en pantalla angosta el dibujo queda debajo del texto y no detrás: así no
+     se pisan. La pintura se ancla a la derecha, que es su parte lisa. */
+  .franja--bajada {
+    background-position: right center;
+    min-height: clamp(260px, 55vw, 420px);
+  }
+  .franja--bajada .franja__texto { margin-left: 0; }
+}
+/* .franja--boton se retiró junto con la franja del botón "encuentra lo que
+   necesitas": llevaba justo a la sección que venía abajo. */
+.franja__texto {
+  max-width: 52ch;
+  margin: 0;
+  color: var(--tinta);
+  font-size: clamp(1.08rem, 2.1vw, 1.42rem);
+}
+/* la nota del hueco, arriba a la derecha, mientras no esté la foto */
+.hueco__nota--franja {
+  position: absolute;
+  top: .9rem;
+  right: 1.1rem;
+  z-index: 2;
+  padding: 0;
+}
+/* El botón manda en su franja: más grande que el resto. */
+.boton--grande {
+  font-size: clamp(1rem, 1.35vw, 1.18rem);
+  letter-spacing: .2em;
+  padding: 1.5em 2.8em 1em;
+}
+
+/* -------------------------------------------- Equipo en la portada ------- */
+/* La palabra "miradas" pegada al borde izquierdo (se sale por arriba, abajo y
+   por la izquierda, como en la maqueta), el título arrimado a ella y los tres
+   retratos en óvalo, todos del mismo tamaño. */
+
+.equipo-portada {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(3.5rem, 8vw, 6.5rem);
+}
+.equipo-portada__palabra {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 112%;          /* sobresale por arriba y por abajo */
+  width: auto;
+  max-width: none;
+  z-index: 0;
+  pointer-events: none;
+}
+.equipo-portada__inner { position: relative; z-index: 1; }
+
+/* el título arranca a la altura del cuarto del ancho, como en la maqueta */
+.equipo-portada__titulo {
+  margin-left: 22%;
+  /* menos aire aquí = los retratos suben */
+  margin-bottom: clamp(1rem, 2.2vw, 1.6rem);
+}
+.equipo-portada__titulo h2 { margin-bottom: 0; }
+
+/* Medidas de la maqueta, tomadas contra el ancho de la página: la fila ocupa
+   el 59,5 % y termina a un 5 % del borde derecho, así el primer óvalo cae
+   sobre la cola de la palabra del fondo. */
+.equipo-portada__fotos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(.75rem, 2.2vw, 1.75rem);
+  width: 59.5%;
+  max-width: 1020px;
+  /* el margen derecho corre la fila hacia la izquierda, para que quede
+     centrada en el blanco que deja la palabra del fondo */
+  margin: 0 9% 0 auto;
+}
+/* Óvalo: la caja es más alta que ancha y el redondeo al 50 % la convierte en
+   elipse. La foto se recorta dentro, centrada en la cara. */
+.retrato-ovalo {
+  width: 100%;
+  aspect-ratio: 5 / 6;
+  height: auto;
+  object-fit: cover;
+  object-position: center 20%;
+  border-radius: 50%;
+}
+
+/* El destello asoma por la esquina de arriba a la derecha del último retrato:
+   una parte se esconde detrás de la foto y el resto queda a la vista. */
+/* ancho propio: sin él, al centrar los óvalos en el celular la caja se encoge
+   a cero y la foto de Loreto desaparece */
+.retrato-con-destello { position: relative; display: block; width: 100%; }
+.retrato-con-destello .destello {
+  position: absolute;
+  z-index: -1;            /* detrás de la foto, delante del fondo */
+  /* la punta de abajo entra en la foto por el borde de arriba; el resto del
+     destello queda afuera, a la vista */
+  top: -29%;
+  right: -6%;
+  width: 55%;             /* bastante menor que la foto */
+  height: auto;
+  opacity: .6;            /* más transparente */
+  pointer-events: none;
+}
+.equipo-portada__pie {
+  width: 59.5%;
+  max-width: 1020px;
+  margin: clamp(2.75rem, 5.5vw, 4.5rem) 9% 0 auto;
+  /* alineado al borde derecho de la fila: así no cae sobre la palabra */
+  text-align: right;
+}
+
+@media (max-width: 900px) {
+  .equipo-portada__titulo { margin-left: 0; }
+  /* con menos ancho, el destello se mete hacia adentro para no quedar cortado
+     por el borde de la franja */
+  .retrato-con-destello .destello { top: -15%; right: 12%; width: 48%; }
+  /* sin la maqueta de por medio, los retratos vuelven al ancho del contenido */
+  .equipo-portada__fotos,
+  .equipo-portada__pie {
+    width: auto;
+    margin-inline: clamp(1.25rem, 5vw, 3.5rem);
+  }
+  /* la palabra se queda de fondo, más discreta y sin empujar nada */
+  .equipo-portada__palabra { height: 78%; opacity: .75; }
+}
+
+/* En el celular los tres óvalos en fila quedarían de 99 px: caras diminutas.
+   Ahí se apilan, del tamaño en que se reconocen. */
+@media (max-width: 600px) {
+  .equipo-portada__fotos {
+    grid-template-columns: 1fr;
+    gap: clamp(1.25rem, 5vw, 2rem);
+    justify-items: center;
+  }
+  .retrato-ovalo,
+  .retrato-con-destello { max-width: 220px; }
+  .equipo-portada__pie { text-align: center; }
+}
+
+/* Palabras manuscritas de fondo, pegadas a un borde de la página: "miradas" a
+   la izquierda en el equipo, "recursos" a la derecha en su página. */
+.hero--palabra { position: relative; overflow: hidden; }
+.hero--palabra .hero__inner { position: relative; z-index: 1; }
+
+/* Los trazos curvos de Meditación guiada: grandes, a la derecha y a la altura
+   del título, saliéndose por el borde de la pantalla. Van detrás del texto, no
+   se pueden pinchar y llevan la misma opacidad que la palabra de fondo de
+   Recursos (0,41), para que el conjunto se vea parejo. */
+.hero--mancha { overflow: hidden; }
+.mancha-hero {
+  position: absolute;
+  top: 50%;
+  right: -7%;
+  transform: translateY(-50%);
+  width: min(62%, 820px);
+  max-width: none;
+  height: auto;
+  z-index: 0;
+  opacity: .41;
+  pointer-events: none;
+  /* El dibujo viene recortado en recto por abajo, y como es más alto que la
+     franja, ese corte quedaba a la vista. Este degradado lo disuelve antes de
+     llegar al borde, así parece que se va apagando solo. */
+  -webkit-mask-image: linear-gradient(to bottom, #000 58%, transparent 94%);
+          mask-image: linear-gradient(to bottom, #000 58%, transparent 94%);
+}
+
+@media (max-width: 900px) {
+  /* en pantalla angosta se corre hacia afuera y se atenúa: aquí el texto le
+     pasa por encima */
+  .mancha-hero {
+    right: -28%;
+    width: min(86%, 520px);
+    opacity: .3;
+  }
+}
+.palabra-lateral {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 106%;          /* sobresale un poco por arriba y por abajo */
+  width: auto;
+  max-width: none;
+  z-index: 0;
+  pointer-events: none;
+}
+/* La de "recursos" va un 45 % más tenue: su trazo es más grueso que el de
+   "miradas" y sobre el texto pesaba demasiado. */
+.palabra-lateral--derecha { right: 0; opacity: .41; }
+@media (max-width: 900px) {
+  /* de fondo y más discreta, para no pelear con el texto */
+  .palabra-lateral { height: 80%; opacity: .7; }
+  .palabra-lateral--derecha { opacity: .3; }
+}
+
+/* La palabra también abre la página de las biografías: mismo recurso, mismo
+   lado. El texto del encabezado se corre para no montarse encima. */
+.hero--miradas { position: relative; overflow: hidden; }
+.hero--miradas .hero__inner { position: relative; z-index: 1; }
+
+/* Los trazos curvos de Meditación guiada: grandes, a la derecha y a la altura
+   del título, saliéndose por el borde de la pantalla. Van detrás del texto, no
+   se pueden pinchar y llevan la misma opacidad que la palabra de fondo de
+   Recursos (0,41), para que el conjunto se vea parejo. */
+.hero--mancha { overflow: hidden; }
+.mancha-hero {
+  position: absolute;
+  top: 50%;
+  right: -7%;
+  transform: translateY(-50%);
+  width: min(62%, 820px);
+  max-width: none;
+  height: auto;
+  z-index: 0;
+  opacity: .41;
+  pointer-events: none;
+  /* El dibujo viene recortado en recto por abajo, y como es más alto que la
+     franja, ese corte quedaba a la vista. Este degradado lo disuelve antes de
+     llegar al borde, así parece que se va apagando solo. */
+  -webkit-mask-image: linear-gradient(to bottom, #000 58%, transparent 94%);
+          mask-image: linear-gradient(to bottom, #000 58%, transparent 94%);
+}
+
+@media (max-width: 900px) {
+  /* en pantalla angosta se corre hacia afuera y se atenúa: aquí el texto le
+     pasa por encima */
+  .mancha-hero {
+    right: -28%;
+    width: min(86%, 520px);
+    opacity: .3;
+  }
+}
+@media (min-width: 901px) {
+  .hero--miradas .hero__inner { padding-left: 22%; }
+}
+@media (max-width: 900px) {
+  .hero--miradas .equipo-portada__palabra { height: 78%; opacity: .75; }
+}
+
+/* ------------------------------------------------------------ Botones ---- */
+
+.acciones { display: flex; flex-wrap: wrap; gap: .9rem; margin-top: 2.2rem; }
+
+.boton {
+  display: inline-flex;
+  align-items: center;
+  gap: .6em;
+  /* El texto va en mayúsculas: sin descendentes, el centrado por línea lo deja
+     visualmente alto. Se compensa dando algo más de aire arriba que abajo. */
+  padding: 1.2em 1.9em .7em;
+  font-size: .82rem;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+  border: 1px solid var(--morado);
+  border-radius: var(--radio);
+  background: var(--morado);
+  color: var(--fondo);
+  cursor: pointer;
+  transition: background var(--tr), color var(--tr), border-color var(--tr);
+}
+.boton:hover { background: transparent; color: var(--morado); }
+
+.boton--linea { background: transparent; color: var(--morado); border-color: var(--gris-lavanda); }
+.boton--linea:hover { background: var(--morado); color: var(--fondo); border-color: var(--morado); }
+
+.enlace-flecha {
+  display: inline-flex;
+  align-items: center;
+  gap: .5em;
+  font-family: var(--font-titulo);
+  font-size: .8rem;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+  color: var(--morado);
+}
+.enlace-flecha::after { content: "→"; transition: transform var(--tr); }
+.enlace-flecha:hover::after { transform: translateX(4px); }
+
+/* ------------------------------------------------------------ Tarjetas --- */
+
+.tarjeta {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  padding: clamp(1.6rem, 3vw, 2.3rem);
+  background: #fff;
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  transition: transform var(--tr), box-shadow var(--tr), border-color var(--tr);
+}
+.tarjeta:hover {
+  transform: translateY(-3px);
+  border-color: var(--salvia);
+  box-shadow: 0 18px 40px -28px rgba(74, 67, 104, .35);
+}
+.tarjeta p { margin-bottom: .8em; }
+.tarjeta .enlace-flecha { margin-top: auto; padding-top: .8rem; }
+
+/* --------------------------------------------- Tarjetas de principios ---- */
+/* Las tres de "cómo elegimos lo que ofrecemos": sin borde y con el contenido
+   repartido en el alto del cuadrado —el punto de color arriba, el título en el
+   medio y la descripción abajo—, para que no se lean como tres párrafos
+   planos puestos en fila. */
+
+.tarjeta--principio {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  justify-items: center;
+  gap: 1rem;
+  min-height: clamp(210px, 23vw, 280px);
+  padding: clamp(1.6rem, 3vw, 2.4rem);
+  border: 0;
+  text-align: center;
+}
+.tarjeta--principio:hover { border-color: transparent; }
+
+.tarjeta--principio .punto {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: block;
+}
+.punto--verde   { background: var(--verde); }
+.punto--lavanda { background: var(--gris-lavanda); }
+.punto--oliva   { background: var(--oliva); }
+
+.tarjeta--principio h3 {
+  align-self: center;
+  margin: 0;
+  font-size: clamp(1rem, 1.5vw, 1.22rem);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.tarjeta--principio p {
+  margin: 0;
+  max-width: 28ch;
+  font-size: .95rem;
+}
+
+/* ------------------------------------------- Óvalos flotantes (portada) --- */
+/* Cada óvalo es un bloque de texto derecho; la forma la pinta ::before, que va
+   rotada y con las esquinas desiguales, así cada uno se deforma en otra
+   dirección sin torcer las palabras. Solo se ve el título: el detalle aparece
+   al pasar el cursor o al enfocar (en pantallas sin cursor se ve siempre). */
+
+.constelacion {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: clamp(2.5rem, 4.5vw, 4rem);
+  max-width: 1240px;
+  margin: clamp(2rem, 5vw, 3.25rem) auto 0;
+  padding-bottom: 1.5rem;          /* aire para el rebote */
+}
+
+.tarjeta--ovalo {
+  position: relative;
+  isolation: isolate;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  aspect-ratio: 1 / 1;
+  display: block;
+  cursor: default;
+  animation: flotar 8s ease-in-out infinite;
+}
+.tarjeta--ovalo:hover,
+.tarjeta--ovalo:focus { transform: none; box-shadow: none; }
+
+/* la foto, tal cual, recortada en círculo */
+.ovalo__foto {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  display: block;
+}
+
+/* El detalle aparece encima de la foto, sobre un velo claro */
+.ovalo__detalle {
+  position: absolute;
+  inset: 6%;
+  display: grid;
+  align-content: center;
+  gap: .35rem;
+  padding: 9%;
+  border-radius: 50%;
+  text-align: center;
+  background: rgba(251, 249, 246, .94);
+  color: var(--tinta);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s ease;
+}
+.tarjeta--ovalo:hover .ovalo__detalle,
+.tarjeta--ovalo:focus .ovalo__detalle,
+.tarjeta--ovalo:focus-within .ovalo__detalle { opacity: 1; pointer-events: auto; }
+
+.ovalo__detalle p {
+  font-size: .8rem;
+  line-height: 1.45;
+  margin: 0;
+  max-width: none;
+}
+.ovalo__detalle .pista__meta,
+.ovalo__detalle .enlace-flecha { font-size: .74rem; justify-content: center; }
+
+/* En pantallas sin cursor el detalle va debajo de la foto, siempre visible */
+@media (hover: none) {
+  .tarjeta--ovalo { aspect-ratio: auto; }
+  .ovalo__detalle {
+    position: static;
+    inset: auto;
+    opacity: 1;
+    pointer-events: auto;
+    background: none;
+    padding: .85rem .5rem 0;
+    border-radius: 0;
+  }
+}
+
+/* --- Cada uno con su tamaño y su ritmo de rebote --- */
+/* Van por clase y no por posición, así se pueden reordenar en el HTML. */
+
+.ovalo--cursos     { width: clamp(168px, 16.8vw, 214px); animation-duration: 7.6s; animation-delay: -1.1s; }
+.ovalo--fool       { width: clamp(168px, 16.8vw, 214px); animation-duration: 9.8s; animation-delay: -7.2s; }
+.ovalo--meditacion { width: clamp(172px, 17.2vw, 218px); animation-duration: 9.1s; animation-delay: -3.4s; }
+.ovalo--archivos   { width: clamp(166px, 16.6vw, 210px); animation-duration: 8.4s; animation-delay: -5.7s; }
+
+@keyframes flotar {
+  0%, 100% { transform: translateY(-6px); }
+  50%      { transform: translateY(7px); }
+}
+
+/* ---------------------------------------------------------- Integrantes -- */
+
+.persona { display: grid; gap: 1.4rem; }
+
+.persona__retrato {
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radio);
+  overflow: hidden;
+  background: var(--fondo-alt) center/cover no-repeat;
+  border: 1px solid var(--linea);
+  display: grid;
+  place-items: center;
+  color: var(--gris-lavanda);
+  font-size: .72rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 1rem;
+}
+/* Cuando el retrato ya es una foto, el recuadro deja de ser un marcador de
+   posición: la imagen ocupa toda la caja y se recorta al centro. */
+img.persona__retrato {
+  width: 100%;
+  height: auto;          /* la proporción 4:5 manda, no la altura del texto */
+  padding: 0;
+  object-fit: cover;
+  object-position: center 22%;   /* la cara queda arriba, no al medio */
+  display: block;
+}
+.persona__rol {
+  font-family: var(--font-titulo);
+  font-size: .75rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--verde);
+  display: block;
+  margin-bottom: .5em;
+}
+/* Los nombres, en negrita */
+.persona h3 { margin-bottom: .5em; font-weight: 700; letter-spacing: .02em; }
+
+/* ------------------------------------------------ Perfiles del equipo ---- */
+/* Una persona por fila: foto grande a un lado, con su profesión y nombre
+   debajo, y la biografía al otro. Se alternan los lados; en celular la foto
+   siempre va arriba. */
+
+.perfil {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(1.75rem, 4vw, 3.75rem);
+  align-items: start;
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+  border-top: 1px solid var(--linea);
+}
+.perfil:first-of-type { border-top: 0; padding-top: clamp(1rem, 3vw, 2rem); }
+/* el último no necesita tanto aire abajo: ya lo pone la franja */
+.perfil:last-of-type { padding-bottom: clamp(1.25rem, 3vw, 2.25rem); }
+
+.perfil__foto .persona__retrato { aspect-ratio: 4 / 5; margin-bottom: 0; }
+
+/* El nombre y la profesión encabezan el texto, al costado de la foto: así
+   pesan como título y no como pie de foto. */
+.perfil__texto .persona__rol { margin-bottom: .4em; }
+.perfil__texto h3 {
+  font-size: clamp(1.3rem, 2.2vw, 1.72rem);
+  font-weight: 700;
+  letter-spacing: .02em;
+  margin-bottom: .75em;
+}
+
+/* Sólo las biografías van justificadas a ambos lados.
+   El ancho se fija en la columna, no en cada párrafo: medirlo en "ch" hacía que
+   la entrada —que va un punto más grande— tuviera una línea más larga que el
+   resto y sobresaliera por la derecha. */
+.perfil__texto { max-width: 34rem; }
+.perfil__texto p {
+  max-width: none;
+  color: var(--tinta-suave);
+}
+.perfil__texto p:last-child { margin-bottom: 0; }
+.perfil__entrada {
+  font-size: clamp(1.02rem, 1.6vw, 1.18rem);
+  line-height: 1.65;
+  color: var(--tinta);
+}
+
+/* La foto de Constanza va al otro lado, del mismo tamaño que las demás:
+   se invierten las columnas, no solo el orden. */
+.perfil--invertido { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+.perfil--invertido .perfil__foto { order: 2; }
+.perfil--invertido .perfil__texto { order: 1; }
+
+@media (max-width: 820px) {
+  /* en una columna el dibujo se achica: a 330 px se comía la pantalla */
+  .portada-intro__grid { grid-template-columns: 1fr; }
+  .portada-intro__foto { max-width: 230px; margin-inline: auto; }
+}
+
+@media (max-width: 720px) {
+  .perfil,
+  .perfil--invertido {
+    grid-template-columns: 1fr;
+    gap: clamp(1.25rem, 4vw, 1.75rem);
+  }
+  /* en una columna, la foto siempre primero */
+  .perfil--invertido .perfil__foto { order: 0; }
+  .perfil--invertido .perfil__texto { order: 0; }
+  .perfil__foto .persona__retrato { aspect-ratio: 4 / 3.4; }
+  /* Las fotos reales mantienen su proporción vertical y no ocupan toda la
+     pantalla del celular. */
+  .perfil__foto img.persona__retrato {
+    aspect-ratio: 4 / 5;
+    max-width: 330px;
+  }
+}
+
+/* ------------------------------------------------------------- Listas ---- */
+
+.lista-limpia { list-style: none; margin: 0; padding: 0; }
+
+.lista-pistas {
+  display: grid;
+  gap: 0;
+  /* sin viñetas ni sangría: la lista se alinea con el resto del texto */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--linea);
+}
+.lista-pistas li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .5rem 1.2rem;
+  padding: 1.35rem 0;
+  border-bottom: 1px solid var(--linea);
+}
+.lista-pistas .pista__nombre {
+  font-family: var(--font-titulo);
+  font-size: 1.1rem;
+  color: var(--morado);
+  letter-spacing: .03em;
+  flex: 1 1 16ch;
+}
+.lista-pistas .pista__meta {
+  font-size: .8rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gris-lavanda);
+}
+
+/* --------------------------------------------- Cápsulas de audio --------- */
+/* Cada cápsula es un cuadrado con su nombre y su botón, en vez de la barra
+   larga del navegador cruzando toda la pantalla. Los controles nativos siguen
+   en el HTML: si el JS no corre, aparecen ellos y el audio se escucha igual
+   (assets/js/capsulas.js los esconde y enciende este reproductor). */
+
+.rejilla-capsulas {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1rem, 2.2vw, 1.6rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.capsula {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: .75rem;
+  padding: clamp(1.1rem, 2.2vw, 1.6rem);
+  /* sin borde: el cuadrado se distingue por ser más claro que la franja */
+  background: var(--fondo);
+  border: 0;
+  border-radius: var(--radio);
+  overflow: hidden;
+  transition: box-shadow var(--tr);
+}
+.capsula:hover { box-shadow: 0 14px 32px -26px rgba(74, 67, 104, .45); }
+
+/* El botón manda en el cuadrado: azul lleno de entrada y, al pasar el cursor,
+   se da vuelta —blanco con el aro y la flecha en azul—. */
+.capsula__play {
+  width: clamp(42px, 5vw, 52px);
+  aspect-ratio: 1 / 1;
+  flex: none;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--azul-fool);
+  color: #fff;
+  cursor: pointer;
+  transition: background var(--tr), color var(--tr), box-shadow var(--tr);
+}
+.capsula__play[hidden] { display: none; }
+.capsula__play:hover,
+.capsula__play:focus-visible {
+  background: #fff;
+  color: var(--azul-fool);
+  /* un aro finito para que el círculo blanco no se pierda sobre el fondo claro */
+  box-shadow: inset 0 0 0 1px var(--azul-fool);
+}
+.capsula__play svg { width: 42%; height: auto; fill: currentColor; display: block; }
+.capsula__play .icono-pausa { display: none; }
+.capsula.suena .capsula__play .icono-play { display: none; }
+.capsula.suena .capsula__play .icono-pausa { display: block; }
+
+.capsula__nombre {
+  margin: 0 0 .4em;
+  font-size: clamp(.98rem, 1.4vw, 1.1rem);
+  line-height: 1.25;
+  letter-spacing: .02em;
+  text-transform: none;
+}
+.capsula__tiempo {
+  font-family: var(--font-titulo);
+  font-size: .74rem;
+  letter-spacing: .12em;
+  color: var(--gris-lavanda);
+}
+
+/* La línea de avance vive pegada al borde de abajo del cuadrado. Se le da
+   altura de sobra —invisible— para que se pueda pinchar y saltar de punto. */
+.capsula__barra {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 14px;
+  display: flex;
+  align-items: flex-end;
+  cursor: pointer;
+}
+.capsula__barra[hidden] { display: none; }
+.capsula__barra::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--linea);
+}
+.capsula__avance {
+  position: relative;
+  height: 2px;
+  width: 0;
+  background: var(--azul-fool);
+}
+
+/* Los controles del navegador, sólo mientras el JS no los reemplaza. */
+.capsula audio { width: 100%; height: 32px; filter: saturate(.35); }
+
+@media (max-width: 600px) {
+  /* en celular siguen siendo cuadrados, pero de a dos: uno por fila dejaba
+     cuadrados enormes y medio vacíos */
+  .rejilla-capsulas { grid-template-columns: repeat(2, 1fr); gap: .8rem; }
+  .capsula { padding: .9rem .95rem 1.1rem; }
+  .capsula__play { width: 38px; }
+  .capsula__nombre { font-size: .9rem; }
+  .capsula__tiempo { font-size: .7rem; letter-spacing: .08em; }
+}
+
+/* ------------------------------------------ El blog en dos columnas ------ */
+/* Las dos mitades del blog conviven a la misma altura: a la izquierda lo
+   escrito, a la derecha los audios. Así se ve de una sola mirada todo lo que
+   hay publicado, en vez de tener que bajar para descubrir la segunda parte. */
+
+.blog-columnas {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* el hueco del medio es ancho a propósito: con poco aire, las dos mitades
+     se leían como un solo bloque apelotonado en el centro */
+  gap: clamp(2.5rem, 7vw, 6rem);
+}
+/* La línea va exactamente en la mitad de la pantalla. Antes era el borde
+   izquierdo de la columna de audios, y por eso quedaba corrida media medida
+   del hueco hacia la derecha. */
+.blog-columnas::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--linea);
+}
+/* Los títulos de cada mitad son más chicos que los de una sección entera: en
+   media página, al tamaño normal, se comían tres o cuatro renglones. */
+.blog-columna__titulo {
+  font-size: clamp(1.15rem, 1.9vw, 1.55rem);
+  letter-spacing: .06em;
+}
+.blog-columna__bajada {
+  font-size: clamp(.95rem, 1.2vw, 1.05rem);
+  margin-bottom: 2rem;
+  max-width: 42ch;
+}
+
+@media (max-width: 900px) {
+  /* una debajo de la otra: primero lo escrito */
+  .blog-columnas { grid-template-columns: 1fr; gap: clamp(2.5rem, 8vw, 3.5rem); }
+  /* sin línea: en una sola columna no separa nada, y la lista de textos ya
+     termina en una raya */
+  .blog-columnas::before { display: none; }
+}
+
+/* ------------------------------------------- Lista de escrituras --------- */
+/* En el índice del blog sólo va el título: se pincha y lleva a la página de
+   la entrada. Toda la fila es el enlace, para que sea fácil de acertar. */
+
+.lista-escritos {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  border-top: 1px solid var(--linea);
+}
+.escrito { border-bottom: 1px solid var(--linea); }
+.escrito__enlace {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: .3rem 1.5rem;
+  padding: clamp(1.4rem, 3vw, 2rem) 0;
+  color: inherit;
+}
+.escrito__autora {
+  grid-column: 1 / -1;
+  font-family: var(--font-titulo);
+  font-size: .76rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gris-lavanda);
+}
+.escrito__titulo {
+  font-family: var(--font-titulo);
+  font-size: clamp(1.15rem, 2.4vw, 1.7rem);
+  line-height: 1.2;
+  letter-spacing: .03em;
+  color: var(--morado);
+  transition: color var(--tr);
+}
+.escrito__leer {
+  font-family: var(--font-titulo);
+  font-size: .76rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--azul-acero);
+  white-space: nowrap;
+  transition: transform var(--tr);
+}
+.escrito__leer::after { content: " \2192"; }
+.escrito__enlace:hover .escrito__titulo,
+.escrito__enlace:focus-visible .escrito__titulo { color: var(--azul-acero); }
+.escrito__enlace:hover .escrito__leer { transform: translateX(3px); }
+
+@media (max-width: 600px) {
+  .escrito__enlace { grid-template-columns: 1fr; }
+  .escrito__leer { justify-self: start; }
+}
+
+/* La flecha de "volver" apunta al revés */
+.enlace-flecha--volver::after { content: none; }
+.enlace-flecha--volver::before { content: "\2190  "; }
+
+/* ------------------------------------------------------------- Galería --- */
+
+.galeria { columns: 3 220px; column-gap: clamp(1rem, 2.5vw, 1.75rem); }
+.galeria figure { margin: 0 0 clamp(1rem, 2.5vw, 1.75rem); break-inside: avoid; }
+.galeria img,
+.galeria .marco {
+  width: 100%;
+  border-radius: var(--radio);
+  border: 1px solid var(--linea);
+}
+.galeria .marco {
+  aspect-ratio: 4 / 3;
+  background: var(--fondo-alt);
+  display: grid;
+  place-items: center;
+  color: var(--gris-lavanda);
+  font-size: .7rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+.galeria figcaption {
+  font-size: .82rem;
+  color: var(--tinta-suave);
+  padding-top: .6rem;
+}
+
+/* ------------------------------------------- Cabecera del blog ----------- */
+/* Composición calcada de la maqueta, que mide 2000 × 720:
+     · "Fool Talks" inclinado 12,7 grados, arriba a la izquierda;
+     · la mano a su derecha y más abajo, con la línea del lápiz pasando por
+       debajo de "Talks" —sin tocar la palabra, que era el error anterior—;
+     · la frase debajo del título y todo el costado derecho libre.
+   El bloque conserva la proporción del lienzo, así que cada medida de la
+   maqueta se traduce dividiendo: la horizontal por 2000 y la vertical por 720.
+   Si algún día se mueve una pieza, basta con volver a hacer esa cuenta. */
+
+.blog-cabecera {
+  position: relative;
+  aspect-ratio: 2000 / 720;
+  overflow: hidden;
+}
+.blog-cabecera__kicker {
+  position: absolute;
+  z-index: 2;
+  left: 4.3%;
+  top: 13.7%;
+  margin: 0;
+}
+/* El título es una imagen: se coloca derecha y el giro lo hace el navegador
+   desde su centro, igual que estaba puesta en la maqueta. */
+.blog-cabecera__titulo {
+  position: absolute;
+  z-index: 2;
+  left: 3.272%;
+  top: 20.163%;
+  width: 34.938%;
+  margin: 0;
+  transform: rotate(-12.7deg);
+}
+.blog-cabecera__titulo img { width: 100%; height: auto; }
+/* La mano va girada 5,7 grados, como en la maqueta: así la línea del lápiz
+   queda tendida y pasa por debajo de "Talks" en vez de cruzarla. */
+.blog-cabecera__mano {
+  position: absolute;
+  left: 24.431%;
+  top: 22.178%;
+  width: 40.534%;
+  height: auto;
+  max-width: none;
+  transform: rotate(5.68deg);
+}
+/* Sólo en la portada: el enlace para entrar al blog, bajo la frase. */
+.blog-cabecera__enlace {
+  position: absolute;
+  left: 5.55%;
+  top: 76%;
+  margin: 0;
+}
+.blog-cabecera__bajada {
+  position: absolute;
+  left: 5.55%;
+  top: 65.5%;
+  width: 46%;
+  max-width: none;
+  margin: 0;
+  text-align: left;
+  /* la frase acompaña al dibujo: crece y se achica con la composición para
+     que siempre quepa en una línea, como en la maqueta */
+  font-size: clamp(.95rem, 1.45vw, 1.45rem);
+}
+
+.titulo-manuscrito {
+  margin: 0;
+  text-transform: none;      /* es una imagen, no texto en mayúsculas */
+  letter-spacing: 0;
+}
+.titulo-manuscrito img {
+  width: 100%;
+  max-width: 620px;
+  height: auto;
+}
+
+@media (max-width: 900px) {
+  /* En celular la composición se desarma en columna: título inclinado, frase y
+     debajo el dibujo, que ahí sí ocupa todo el ancho. */
+  .blog-cabecera {
+    aspect-ratio: auto;
+    display: flex;
+    flex-direction: column;
+    padding: clamp(1.5rem, 6vw, 2.5rem) clamp(1.25rem, 5vw, 3.5rem) clamp(2rem, 7vw, 3rem);
+  }
+  .blog-cabecera__kicker,
+  .blog-cabecera__titulo,
+  .blog-cabecera__mano,
+  .blog-cabecera__enlace,
+  .blog-cabecera__bajada {
+    position: static;
+    left: auto;
+    top: auto;
+    width: auto;
+  }
+  .blog-cabecera__kicker { order: 1; margin-bottom: .6rem; }
+  .blog-cabecera__titulo {
+    order: 2;
+    width: min(78%, 320px);
+    margin: 0 0 .8rem 2%;
+    transform: rotate(-8deg);
+  }
+  .blog-cabecera__bajada { order: 3; margin: clamp(1rem, 5vw, 2rem) 0 0; }
+  /* en tablet el dibujo no crece más allá de esto: a todo el ancho se comía
+     la pantalla */
+  .blog-cabecera__mano   { order: 4; width: min(100%, 480px); margin: .8rem 0 0; }
+  .blog-cabecera__enlace { order: 5; margin: 1.2rem 0 0; }
+}
+
+/* ---------------------------------- Adelanto del blog en la portada ------ */
+/* Usa la misma composición que abre la página del blog (.blog-cabecera): lo
+   único propio es el enlace de más abajo. El collage de papeles que iba antes
+   aquí se retiró; sus recortes siguen en assets/img/blog/ por si vuelven. */
+
+.blog-portada .blog-cabecera { margin-inline: auto; }
+/* La composición ya trae su propio aire arriba (el lienzo empieza vacío), así
+   que la franja no necesita el margen completo de una sección. */
+.blog-portada { padding-top: 0; }
+
+/* --------------------------------------------------------------- Blog ---- */
+
+.entrada { padding-block: 2rem; border-bottom: 1px solid var(--linea); }
+.entrada:first-of-type { border-top: 1px solid var(--linea); }
+.entrada__fecha {
+  font-size: .76rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gris-lavanda);
+}
+.entrada h3 { margin: .5em 0 .4em; }
+
+/* Entrada publicada completa dentro de la misma página: una sola columna
+   angosta para que el texto largo se lea cómodo. */
+.entrada.entrada--completa {
+  border: 0;
+  padding-block: 0 1rem;
+  max-width: 64ch;
+  margin-inline: auto;
+}
+.entrada--completa h2 { margin-bottom: .9em; }
+.entrada--completa p {
+  color: var(--tinta-suave);
+  line-height: 1.75;
+  margin-bottom: 1.15em;
+}
+.entrada--completa .entrada__cierre {
+  color: var(--tinta);
+  font-family: var(--font-titulo);
+  font-size: 1.15rem;
+  letter-spacing: .04em;
+}
+/* La firma va arriba, antes del título, como una credencial breve. */
+.entrada--completa .entrada__autora {
+  margin-bottom: 1.1em;
+  /* va con la tipografía de los títulos, como el resto de las etiquetas */
+  font-family: var(--font-titulo);
+  font-size: .82rem;
+  letter-spacing: .04em;
+  color: var(--gris-lavanda);
+}
+
+/* --------------------------------------------------------------- Nota ---- */
+
+.nota {
+  border-left: 2px solid var(--salvia);
+  padding: .2rem 0 .2rem 1.2rem;
+  color: var(--tinta-suave);
+  font-size: .92rem;
+}
+
+/* ------------------------------------------------------------- Footer ---- */
+
+.footer {
+  background: var(--fondo-alt);
+  border-top: 1px solid var(--linea);
+  padding-block: clamp(3rem, 7vw, 5rem) 2rem;
+  font-size: .92rem;
+}
+.footer__grid {
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--linea);
+}
+.footer h4 {
+  font-size: .78rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--gris-lavanda);
+  margin-bottom: 1.1em;
+}
+.footer .lista-limpia li { margin-bottom: .55em; }
+.footer a { color: var(--tinta-suave); }
+.footer a:hover { color: var(--morado); }
+
+.footer__base {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 2rem;
+  font-size: .8rem;
+  color: var(--gris-lavanda);
+}
+
+/* -------------------------------------------------------------- Admin ---- */
+
+.admin { border-top: 1px solid var(--linea); background: var(--fondo-alt); }
+.admin__inner { padding-block: 1.75rem 2.75rem; }
+
+.admin__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: .6em;
+  background: none;
+  border: 0;
+  padding: .3em 0;
+  cursor: pointer;
+  font-family: var(--font-titulo);
+  font-size: .6rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--gris-lavanda);
+  opacity: .8;
+  transition: color var(--tr), opacity var(--tr);
+}
+.admin__toggle:hover { color: var(--morado); opacity: 1; }
+
+.admin__panel {
+  display: none;
+  max-width: 420px;
+  margin-top: 1.75rem;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  background: #fff;
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+}
+.admin__panel.is-open { display: block; }
+.admin__panel h3 { font-size: 1.05rem; }
+
+.campo { display: block; margin-bottom: 1.15rem; }
+.campo span {
+  display: block;
+  font-size: .72rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+  margin-bottom: .5em;
+}
+.campo input {
+  width: 100%;
+  padding: .8em .95em;
+  font: inherit;
+  font-size: .95rem;
+  color: var(--tinta);
+  background: var(--fondo);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  transition: border-color var(--tr), box-shadow var(--tr);
+}
+.campo input:focus {
+  outline: none;
+  border-color: var(--gris-lavanda);
+  box-shadow: 0 0 0 3px rgba(224, 208, 217, .6);
+}
+
+.mensaje {
+  margin: 1rem 0 0;
+  padding: .85rem 1rem;
+  font-size: .86rem;
+  line-height: 1.55;
+  border-radius: var(--radio);
+  background: #f2ebee;
+  color: var(--morado);
+}
+.mensaje[hidden] { display: none; }
+
+/* --------------------------------------------- Tonos de la paleta -------- */
+/* Se aplican a una palabra, un titular o una etiqueta para repartir la paleta
+   por toda la web. Van al final para ganarle al color propio de cada bloque. */
+
+.tono-verde-agua { color: var(--verde-agua); }
+.tono-azul       { color: var(--azul); }
+.tono-azul-acero { color: var(--azul-acero); }
+.tono-verde      { color: var(--verde); }
+.tono-oliva      { color: var(--oliva); }
+.tono-lavanda    { color: var(--gris-lavanda); }
+.tono-morado     { color: var(--morado); }
+.tono-amarillo   { color: var(--amarillo); }
+
+/* ----------------------------------------------------------- Botón SOS --- */
+/* Ayuda inmediata: acompaña el scroll, siempre en la esquina inferior derecha. */
+
+.sos {
+  position: fixed;
+  right: clamp(1rem, 3vw, 2.25rem);
+  bottom: clamp(1rem, 3vw, 2.25rem);
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  width: clamp(56px, 7vw, 68px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--burdeo);
+  color: #fff;
+  /* Tipografía redondeada: más fresca y cercana que la de los titulares.
+     ui-rounded es la redonda del sistema en Mac y iPhone. */
+  font-family: ui-rounded, "SF Pro Rounded", "Avenir Next Rounded",
+               "Varela Round", "Trebuchet MS", var(--font-texto);
+  font-size: clamp(.88rem, 1.3vw, 1.02rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: .14em;
+  /* El espaciado entre letras también se suma después de la última: se
+     compensa para que las tres letras queden centradas de verdad. */
+  text-indent: .07em;
+  box-shadow: 0 12px 28px -12px rgba(74, 67, 104, .5);
+  transition: transform var(--tr), background var(--tr), box-shadow var(--tr);
+}
+.sos:hover,
+.sos:focus-visible {
+  color: #fff;
+  background: #7d4353;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 32px -12px rgba(74, 67, 104, .55);
+}
+
+/* ------------------------------------------------------- Accesibilidad --- */
+
+:focus-visible { outline: 2px solid var(--azul-acero); outline-offset: 3px; }
+
+.salta-al-contenido {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: .8em 1.2em;
+  background: var(--morado);
+  color: var(--fondo);
+}
+.salta-al-contenido:focus { left: 1rem; top: 1rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
+/* -------------------------------------------------- Aparición al scroll -- */
+
+.revelar { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
+.revelar.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .revelar { opacity: 1; transform: none; } }

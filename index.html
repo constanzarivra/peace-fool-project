@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peace—Fool Project · Herramientas para la salud mental y el bienestar</title>
+<meta name="description" content="Peace—Fool Project reúne cursos grabados, meditaciones guiadas y material descargable creados por una terapeuta energética, una artista visual y un psicólogo.">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="portada">
+
+<a class="salta-al-contenido" href="#contenido">Saltar al contenido</a>
+
+<!-- ============================= HEADER ============================== -->
+<header class="header">
+  <div class="contenedor header__inner">
+    <a class="logo" href="index.html">
+      <img class="logo__img" src="assets/img/logo/logo-manuscrito.png"
+           alt="Peace—Fool Project" width="800" height="166">
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-principal" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav" id="nav-principal" aria-label="Menú principal">
+      <a href="equipo.html">Sobre el equipo</a>
+      <!-- Visión ya no es una sección aparte: vive al final de "Sobre el
+           equipo". Para devolverla al menú, quita este comentario.
+      <a href="vision.html">Visión</a> -->
+      <!-- Fool Art, archivado: sin decidir si va como sección propia o
+           repartido en las otras. Para devolverlo, quita este comentario.
+      <a href="fool-art.html">Fool Art</a> -->
+      <!-- Recursos, Meditación y Blog: fuera del menú mientras el material no
+           esté listo. Esas páginas existen completas en la carpeta pero NO se
+           publican (ver el README, "Qué se publica y qué no"). Para devolverlas,
+           quita este comentario y vuelve a incluirlas en la copia que se sube.
+      <a href="recursos.html">Recursos</a>
+      <a href="meditacion.html">Meditación guiada</a>
+      <a href="blog.html">Blog</a> -->
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+
+  <!-- ============================== HERO ============================= -->
+  <!-- Banner: el título de la marca, solo, sobre el fondo claro. La pintura de
+       nenúfares que iba aquí pasó a la sección de abajo. -->
+  <section class="banner-marca">
+    <img class="marca-banner" src="assets/img/logo/titulo-peace-fool-project.png"
+         alt="Peace—Fool Project" width="1400" height="379">
+  </section>
+
+  <!-- El lema va bajo la pintura, sobre el fondo claro: ahí se lee de corrido y
+       hace de pie del título, en vez de competir con el agua del banner. -->
+  <p class="lema">
+    Salud mental <span class="lema__punto">&middot;</span>
+    Arte <span class="lema__punto">&middot;</span>
+    Bienestar
+  </p>
+
+  <!-- Presentación, debajo del banner: la frase a la izquierda y el dibujo de
+       la cabeza a la derecha, los dos sobre la pintura de nenúfares, que antes
+       era el fondo del banner (va puesta en styles.css, en .portada-intro). -->
+  <section class="portada-intro">
+    <div class="contenedor portada-intro__grid">
+      <div class="portada-intro__texto">
+        <h1>El lugar donde se reúne lo que nos <em>sostiene</em>.</h1>
+      </div>
+      <img class="portada-intro__foto" src="assets/img/portada/cabeza.png"
+           alt="" aria-hidden="true" width="916" height="957"
+           loading="lazy" decoding="async">
+    </div>
+  </section>
+
+  <!-- La bajada, sobre la pintura que va de lado a lado
+       (assets/img/portada/franja-sacalo.jpg, puesta como fondo en styles.css).
+       El dibujo ocupa el costado izquierdo, así que el texto va a la derecha. -->
+  <section class="franja franja--bajada revelar">
+    <div class="contenedor">
+      <p class="lead franja__texto">
+        Peace—Fool Project es un espacio de herramientas para la salud mental y el
+        bienestar, creado por tres profesionales desde la terapia energética, el
+        arte visual y la psicología.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================ QUÉ HAY =========================== -->
+  <section class="seccion--alt revelar" id="herramientas">
+    <div class="contenedor">
+      <span class="kicker tono-verde">Lo que encontrarás</span>
+      <h2>Herramientas, en un mismo <span class="tono-verde-agua">lugar</span></h2>
+      <p class="lead">
+        Cuatro formatos para entrar por donde te acomode: ver, escuchar,
+        escribir o mirar.
+      </p>
+
+      <!-- Los cuatro formatos, cada uno en su foto redonda. Al pasar el
+           cursor aparece la descripción encima; en celular va debajo. -->
+      <div class="constelacion">
+        <article class="tarjeta tarjeta--ovalo ovalo--cursos" tabindex="0">
+          <img class="ovalo__foto" src="assets/img/ovalos/foto-cursos.jpg"
+               alt="Cursos grabados" width="480" height="480" loading="lazy" decoding="async">
+          <div class="ovalo__detalle">
+            <p>Clases en video de las tres disciplinas, para ver a tu ritmo.</p>
+            <span class="pista__meta">Próximamente</span>
+          </div>
+        </article>
+
+        <article class="tarjeta tarjeta--ovalo ovalo--fool" tabindex="0">
+          <img class="ovalo__foto" src="assets/img/ovalos/foto-fool.jpg"
+               alt="Fool art" width="480" height="480" loading="lazy" decoding="async">
+          <div class="ovalo__detalle">
+            <p>Obra, texturas y láminas como parte del proceso.</p>
+            <span class="pista__meta">Próximamente</span>
+          </div>
+        </article>
+
+        <article class="tarjeta tarjeta--ovalo ovalo--meditacion" tabindex="0">
+          <img class="ovalo__foto" src="assets/img/ovalos/foto-meditacion.jpg"
+               alt="Meditación guiada" width="480" height="480" loading="lazy" decoding="async">
+          <div class="ovalo__detalle">
+            <p>Audios para el descanso, la ansiedad o el cierre del día.</p>
+            <span class="pista__meta">Próximamente</span>
+          </div>
+        </article>
+
+        <article class="tarjeta tarjeta--ovalo ovalo--archivos" tabindex="0">
+          <img class="ovalo__foto" src="assets/img/ovalos/foto-archivos.jpg"
+               alt="Archivos descargables" width="480" height="480" loading="lazy" decoding="async">
+          <div class="ovalo__detalle">
+            <p>Bitácoras, guías de escritura y ejercicios imprimibles.</p>
+            <span class="pista__meta">Próximamente</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== EQUIPO ========================== -->
+  <!-- Como la maqueta: la palabra "miradas" pegada al borde izquierdo, el
+       título arrimado a ella y los tres retratos en óvalo, del mismo tamaño. -->
+  <section class="equipo-portada revelar">
+    <img class="equipo-portada__palabra" src="assets/img/portada/miradas.png"
+         alt="" aria-hidden="true" width="750" height="1000" loading="lazy" decoding="async">
+
+    <div class="contenedor equipo-portada__inner">
+      <div class="equipo-portada__titulo">
+        <span class="kicker tono-azul-acero">Sobre el equipo</span>
+        <h2>Tres miradas que <span class="tono-azul-acero">se cruzan</span></h2>
+      </div>
+    </div>
+
+    <!-- Los retratos no van dentro del contenedor: se miden contra el ancho de
+         la página, como en la maqueta, para que el primero caiga sobre la
+         palabra del fondo. -->
+    <div class="equipo-portada__inner">
+      <div class="equipo-portada__fotos">
+        <img class="retrato-ovalo" src="assets/img/equipo/antuan.jpg"
+             alt="Antuán Guci" width="640" height="800" loading="lazy" decoding="async">
+        <img class="retrato-ovalo" src="assets/img/equipo/constanza.jpg"
+             alt="Constanza Rivera" width="640" height="800" loading="lazy" decoding="async">
+        <span class="retrato-con-destello">
+          <img class="destello" src="assets/img/portada/destello.png"
+               alt="" aria-hidden="true" width="515" height="520" loading="lazy" decoding="async">
+          <img class="retrato-ovalo" src="assets/img/equipo/loreto.jpg"
+               alt="Loreto Aravena" width="640" height="800" loading="lazy" decoding="async">
+        </span>
+      </div>
+
+      <p class="equipo-portada__pie">
+        <a class="enlace-flecha" href="equipo.html">Leer más sobre nosotros</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================== VISIÓN ========================== -->
+  <!-- Cierra con menos aire abajo: el adelanto del blog que viene después ya
+       trae el suyo, y juntos dejaban un hueco enorme. -->
+  <section class="seccion--alt revelar" style="padding-bottom:clamp(2.5rem,5vw,4rem)">
+    <div class="contenedor centrado">
+      <img class="estrella--sola" src="assets/img/estrella.png" alt="" aria-hidden="true" width="440" height="445">
+      <span class="kicker tono-oliva">Lo que nos mueve</span>
+      <h2>Que cuidarse sea <span class="tono-oliva">accesible</span></h2>
+      <p class="lead">
+        Creemos en herramientas simples, honestas y disponibles: que alguien pueda
+        entrar, encontrar lo que necesita hoy y volver mañana.
+        <!-- TODO: reemplazar con el texto definitivo de visión -->
+      </p>
+      <p><a class="enlace-flecha" href="equipo.html#lo-que-nos-mueve">Nuestra visión</a></p>
+    </div>
+  </section>
+
+  <!-- =============================== BLOG =========================== -->
+  <!-- El adelanto del blog se retiró de la portada mientras el blog no esté
+       publicado. Está guardado entero en respaldo/portada-adelanto-blog.html;
+       para devolverlo, se pega aquí y se descomenta el enlace del menú. -->
+
+</main>
+
+<!-- ============================= FOOTER ============================== -->
+<footer class="footer">
+  <div class="contenedor">
+    <div class="footer__grid">
+      <div>
+        <a class="logo" href="index.html">
+          <img class="logo__img logo__img--pie" src="assets/img/logo/logo-gris-lavanda.png"
+               alt="Peace—Fool Project" width="1372" height="130">
+        </a>
+        <p class="plomo" style="margin-top:1rem;font-size:.9rem">
+          Herramientas para la salud mental y el bienestar.
+        </p>
+      </div>
+
+      <div>
+        <h4>Explorar</h4>
+        <ul class="lista-limpia">
+          <li><a href="equipo.html">Sobre el equipo</a></li>
+          <li><a href="equipo.html#lo-que-nos-mueve">Lo que nos mueve</a></li>
+          <!-- <li><a href="fool-art.html">Fool Art</a></li> Fool Art, archivado -->
+          <!-- Recursos, Meditación y Blog, sin publicar todavía:
+          <li><a href="recursos.html">Recursos</a></li>
+          <li><a href="meditacion.html">Meditación guiada</a></li>
+          <li><a href="blog.html">Blog</a></li> -->
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contacto</h4>
+        <ul class="lista-limpia">
+          <li><a href="mailto:peacefoolproject@gmail.com">peacefoolproject@gmail.com</a></li>
+          <li><!-- TODO: Instagram u otras redes --></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__base">
+      <span>&copy; <span id="anio">2026</span> Peace—Fool Project</span>
+      <span>Loreto Aravena &middot; Constanza Rivera &middot; Antuán Guci</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================== ADMIN ============================== -->
+<!-- El acceso ADMIN es una maqueta: el formulario todavía no valida nada.
+     Se retiró de las páginas públicas hasta que la autenticación esté conectada.
+     El bloque completo sigue en admin.html y en las páginas sin publicar. -->
+
+<!-- Botón SOS: acompaña el scroll en la esquina inferior derecha y lleva
+     a la página de Recursos. -->
+<!-- El botón SOS llevaba a Recursos. Como esa página no se publica todavía y
+     aún no hay una línea de crisis definida, se retira: un SOS que no lleva a
+     ninguna parte es peor que no tenerlo. Cuando exista el teléfono o el enlace
+     de ayuda, se devuelve con ese destino.
+<a class="sos" href="recursos.html" aria-label="SOS: ir a Recursos">SOS</a> -->
+
+<script src="assets/js/main.js"></script>
+<script>document.getElementById('anio').textContent = new Date().getFullYear();</script>
+</body>
+</html>
