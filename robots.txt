@@ -1,7 +1,0 @@
-# Peace—Fool Project
-# Las páginas publicadas sí se pueden rastrear e indexar. El resto del sitio
-# —recursos, meditación, blog— todavía no está subido.
-User-agent: *
-Allow: /
-
-Sitemap: https://www.peacefoolproject.com/sitemap.xml

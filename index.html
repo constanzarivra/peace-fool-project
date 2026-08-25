@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Peace—Fool Project · Herramientas para la salud mental y el bienestar</title>
 <meta name="description" content="Peace—Fool Project reúne cursos grabados, meditaciones guiadas y material descargable creados por una terapeuta energética, una artista visual y un psicólogo.">
+<!-- Mientras la web esta en construccion: fuera de los buscadores.
+     Cuando este lista, borra esta linea de las 6 paginas publicas. -->
+<meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
@@ -30,16 +33,12 @@
       <!-- Visión ya no es una sección aparte: vive al final de "Sobre el
            equipo". Para devolverla al menú, quita este comentario.
       <a href="vision.html">Visión</a> -->
+      <a href="recursos.html">Recursos</a>
+      <a href="meditacion.html">Meditación guiada</a>
       <!-- Fool Art, archivado: sin decidir si va como sección propia o
            repartido en las otras. Para devolverlo, quita este comentario.
       <a href="fool-art.html">Fool Art</a> -->
-      <!-- Recursos, Meditación y Blog: fuera del menú mientras el material no
-           esté listo. Esas páginas existen completas en la carpeta pero NO se
-           publican (ver el README, "Qué se publica y qué no"). Para devolverlas,
-           quita este comentario y vuelve a incluirlas en la copia que se sube.
-      <a href="recursos.html">Recursos</a>
-      <a href="meditacion.html">Meditación guiada</a>
-      <a href="blog.html">Blog</a> -->
+      <a href="blog.html">Blog</a>
     </nav>
   </div>
 </header>
@@ -116,7 +115,7 @@
                alt="Fool art" width="480" height="480" loading="lazy" decoding="async">
           <div class="ovalo__detalle">
             <p>Obra, texturas y láminas como parte del proceso.</p>
-            <span class="pista__meta">Próximamente</span>
+            <a class="enlace-flecha" href="fool-art.html">Ver</a>
           </div>
         </article>
 
@@ -125,7 +124,7 @@
                alt="Meditación guiada" width="480" height="480" loading="lazy" decoding="async">
           <div class="ovalo__detalle">
             <p>Audios para el descanso, la ansiedad o el cierre del día.</p>
-            <span class="pista__meta">Próximamente</span>
+            <a class="enlace-flecha" href="meditacion.html">Escuchar</a>
           </div>
         </article>
 
@@ -196,9 +195,27 @@
   </section>
 
   <!-- =============================== BLOG =========================== -->
-  <!-- El adelanto del blog se retiró de la portada mientras el blog no esté
-       publicado. Está guardado entero en respaldo/portada-adelanto-blog.html;
-       para devolverlo, se pega aquí y se descomenta el enlace del menú. -->
+  <!-- El mismo adelanto que abre la página del blog: "Fool Talks" inclinado y
+       la mano escribiendo debajo. Las posiciones están en .blog-cabecera; aquí
+       sólo se agrega el enlace para entrar al blog. -->
+  <section class="revelar blog-portada">
+    <div class="blog-cabecera blog-cabecera--adelanto">
+      <span class="kicker tono-azul blog-cabecera__kicker">Blog</span>
+      <h2 class="titulo-manuscrito blog-cabecera__titulo">
+        <img src="assets/img/blog/fool-talks.png" alt="Fool Talks"
+             width="1200" height="364">
+      </h2>
+      <img class="blog-cabecera__mano" src="assets/img/blog/mano-lapiz.png"
+           alt="" aria-hidden="true" width="1300" height="762"
+           loading="lazy" decoding="async">
+      <p class="lead blog-cabecera__bajada">
+        Todo lo que necesitas saber para sobrevivir esta semana.
+      </p>
+      <p class="blog-cabecera__enlace">
+        <a class="enlace-flecha" href="blog.html">Ir al blog</a>
+      </p>
+    </div>
+  </section>
 
 </main>
 
@@ -221,11 +238,10 @@
         <ul class="lista-limpia">
           <li><a href="equipo.html">Sobre el equipo</a></li>
           <li><a href="equipo.html#lo-que-nos-mueve">Lo que nos mueve</a></li>
-          <!-- <li><a href="fool-art.html">Fool Art</a></li> Fool Art, archivado -->
-          <!-- Recursos, Meditación y Blog, sin publicar todavía:
           <li><a href="recursos.html">Recursos</a></li>
           <li><a href="meditacion.html">Meditación guiada</a></li>
-          <li><a href="blog.html">Blog</a></li> -->
+          <!-- <li><a href="fool-art.html">Fool Art</a></li> Fool Art, archivado -->
+          <li><a href="blog.html">Blog</a></li>
         </ul>
       </div>
 
@@ -246,17 +262,45 @@
 </footer>
 
 <!-- ============================== ADMIN ============================== -->
-<!-- El acceso ADMIN es una maqueta: el formulario todavía no valida nada.
-     Se retiró de las páginas públicas hasta que la autenticación esté conectada.
-     El bloque completo sigue en admin.html y en las páginas sin publicar. -->
+<section class="admin" aria-labelledby="admin-titulo">
+  <div class="contenedor admin__inner">
+    <button class="admin__toggle" type="button" aria-expanded="false" aria-controls="admin-panel">
+      ADMIN
+    </button>
+
+    <div class="admin__panel" id="admin-panel">
+      <h3 id="admin-titulo">Acceso del equipo</h3>
+      <p class="plomo" style="font-size:.9rem">
+        Para administrar cursos, meditaciones, descargables y entradas del blog.
+      </p>
+
+      <form id="admin-form" novalidate>
+        <label class="campo">
+          <span>Correo</span>
+          <input type="email" name="correo" autocomplete="username"
+                 placeholder="peacefoolproject@gmail.com" required>
+        </label>
+        <label class="campo">
+          <span>Clave de acceso</span>
+          <input type="password" name="clave" autocomplete="current-password" required>
+        </label>
+        <button class="boton" type="submit">Entrar</button>
+      </form>
+
+      <p class="mensaje" id="admin-mensaje" role="status" hidden></p>
+
+      <p class="nota" style="margin-top:1.25rem">
+        Pendiente: conectar la autenticación real de la cuenta
+        peacefoolproject@gmail.com. La clave nunca debe quedar escrita en estos
+        archivos. Vista previa del panel: <a href="admin.html">admin.html</a>.
+      </p>
+    </div>
+  </div>
+</section>
 
 <!-- Botón SOS: acompaña el scroll en la esquina inferior derecha y lleva
      a la página de Recursos. -->
-<!-- El botón SOS llevaba a Recursos. Como esa página no se publica todavía y
-     aún no hay una línea de crisis definida, se retira: un SOS que no lleva a
-     ninguna parte es peor que no tenerlo. Cuando exista el teléfono o el enlace
-     de ayuda, se devuelve con ese destino.
-<a class="sos" href="recursos.html" aria-label="SOS: ir a Recursos">SOS</a> -->
+<a class="sos" href="recursos.html" aria-label="SOS: ir a Recursos">SOS</a>
 
 <script src="assets/js/main.js"></script>
 <script>document.getElementById('anio').textContent = new Date().getFullYear();</script>

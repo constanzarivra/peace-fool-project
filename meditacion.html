@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meditación guiada · Peace—Fool Project</title>
+<meta name="description" content="Meditaciones guiadas en audio para el descanso, la ansiedad y el cierre del día. Peace—Fool Project.">
+<!-- Mientras la web esta en construccion: fuera de los buscadores.
+     Cuando este lista, borra esta linea de las 6 paginas publicas. -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<a class="salta-al-contenido" href="#contenido">Saltar al contenido</a>
+
+<header class="header">
+  <div class="contenedor header__inner">
+    <a class="logo" href="index.html">
+      <img class="logo__img" src="assets/img/logo/logo-manuscrito.png"
+           alt="Peace—Fool Project" width="800" height="166">
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-principal" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="nav-principal" aria-label="Menú principal">
+      <a href="equipo.html">Sobre el equipo</a>
+      <!-- Visión ya no es una sección aparte: vive al final de "Sobre el
+           equipo". Para devolverla al menú, quita este comentario.
+      <a href="vision.html">Visión</a> -->
+      <a href="recursos.html">Recursos</a>
+      <a href="meditacion.html">Meditación guiada</a>
+      <!-- Fool Art, archivado: sin decidir si va como sección propia o
+           repartido en las otras. Para devolverlo, quita este comentario.
+      <a href="fool-art.html">Fool Art</a> -->
+      <a href="blog.html">Blog</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+
+  <!-- Los trazos curvos van a la derecha, a la altura del título, y se salen
+       por el borde de la pantalla. Son decorativos: no llevan texto alternativo. -->
+  <section class="hero hero--mancha" style="padding-block:clamp(3rem,8vw,6rem)">
+    <img class="mancha-hero" src="assets/img/curva-celeste.png" alt="" aria-hidden="true"
+         width="820" height="621" loading="lazy" decoding="async">
+    <div class="contenedor hero__inner">
+      <span class="kicker tono-azul">Meditación guiada</span>
+      <h1>Detenerse <span class="tono-azul">un momento</span></h1>
+      <p class="lead">
+        Audios breves para escuchar con audífonos, sentada o acostada, sin
+        exigencia de hacerlo bien.
+        <!-- TODO: texto introductorio -->
+      </p>
+    </div>
+  </section>
+
+  <section class="seccion--alt revelar" style="padding-top:clamp(2.5rem,6vw,4rem)">
+    <div class="contenedor">
+      <span class="kicker tono-verde-agua">Audios</span>
+      <h2>Voces que <span class="tono-verde-agua">acompañan</span></h2>
+
+      <!-- ================================================================
+           CÓMO AGREGAR UNA MEDITACIÓN
+           1. Copia el archivo de audio (.mp3 o .m4a) en assets/audio/
+           2. Duplica un bloque <article class="tarjeta"> de abajo
+           3. Cambia el título, la descripción, la duración y el src del <audio>
+           ================================================================ -->
+
+      <div class="grid grid--2" style="margin-top:2.5rem">
+
+        <article class="tarjeta">
+          <span class="punto punto--azul"></span>
+          <h3 class="tono-azul">Respiración para volver al cuerpo</h3>
+          <p class="plomo">
+            <!-- TODO: descripción -->
+            Una práctica corta para bajar la activación en cualquier momento del día.
+          </p>
+          <span class="pista__meta">8 min &middot; Loreto Aravena</span>
+          <!-- Cuando tengas el audio, descomenta:
+          <audio controls preload="none" src="assets/audio/respiracion.mp3" style="width:100%;margin-top:1rem"></audio>
+          -->
+          <p class="pista__meta" style="margin-top:1rem">Audio pendiente de subir</p>
+        </article>
+
+        <article class="tarjeta">
+          <span class="punto punto--verde-agua"></span>
+          <h3 class="tono-verde-agua">Cierre del día</h3>
+          <p class="plomo">
+            <!-- TODO -->
+            Para dejar afuera lo que ya no toca resolver hoy.
+          </p>
+          <span class="pista__meta">12 min &middot; Antuán Guci</span>
+          <p class="pista__meta" style="margin-top:1rem">Audio pendiente de subir</p>
+        </article>
+
+        <article class="tarjeta">
+          <span class="punto punto--lila"></span>
+          <h3>Visualización con color</h3>
+          <p class="plomo">
+            <!-- TODO -->
+            Meditación guiada a partir de imágenes y paleta del proyecto.
+          </p>
+          <span class="pista__meta">10 min &middot; Constanza Rivera</span>
+          <p class="pista__meta" style="margin-top:1rem">Audio pendiente de subir</p>
+        </article>
+
+        <article class="tarjeta">
+          <span class="punto punto--salvia"></span>
+          <h3 class="tono-oliva">Ansiedad: primeros auxilios</h3>
+          <p class="plomo">
+            <!-- TODO -->
+            Qué hacer con el cuerpo cuando la ansiedad ya está instalada.
+          </p>
+          <span class="pista__meta">6 min &middot; Antuán Guci</span>
+          <p class="pista__meta" style="margin-top:1rem">Audio pendiente de subir</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="revelar">
+    <div class="contenedor">
+      <span class="kicker tono-oliva">Descargables</span>
+      <h2>Material de <span class="tono-oliva">apoyo</span></h2>
+      <p class="lead">Archivos para acompañar las prácticas: bitácoras, guías y ejercicios imprimibles.</p>
+
+      <!-- Los archivos van en assets/descargables/ -->
+      <ul class="lista-limpia lista-pistas" style="margin-top:2rem">
+        <li>
+          <span class="pista__nombre">Bitácora de práctica</span>
+          <span class="pista__meta">PDF &middot; pendiente</span>
+          <!-- <a class="enlace-flecha" href="assets/descargables/bitacora.pdf" download>Descargar</a> -->
+        </li>
+        <li>
+          <span class="pista__nombre">Guía de respiración</span>
+          <span class="pista__meta">PDF &middot; pendiente</span>
+        </li>
+      </ul>
+
+      <p class="nota" style="margin-top:2.5rem">
+        Estas meditaciones son un apoyo al bienestar y no reemplazan un
+        tratamiento de salud mental.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="contenedor">
+    <div class="footer__grid">
+      <div>
+        <a class="logo" href="index.html">
+          <img class="logo__img logo__img--pie" src="assets/img/logo/logo-gris-lavanda.png"
+               alt="Peace—Fool Project" width="1372" height="130">
+        </a>
+        <p class="plomo" style="margin-top:1rem;font-size:.9rem">
+          Herramientas para la salud mental y el bienestar.
+        </p>
+      </div>
+      <div>
+        <h4>Explorar</h4>
+        <ul class="lista-limpia">
+          <li><a href="equipo.html">Sobre el equipo</a></li>
+          <li><a href="equipo.html#lo-que-nos-mueve">Lo que nos mueve</a></li>
+          <li><a href="recursos.html">Recursos</a></li>
+          <li><a href="meditacion.html">Meditación guiada</a></li>
+          <!-- <li><a href="fool-art.html">Fool Art</a></li> Fool Art, archivado -->
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul class="lista-limpia">
+          <li><a href="mailto:peacefoolproject@gmail.com">peacefoolproject@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__base">
+      <span>&copy; <span id="anio">2026</span> Peace—Fool Project</span>
+      <span>Loreto Aravena &middot; Constanza Rivera &middot; Antuán Guci</span>
+    </div>
+  </div>
+</footer>
+
+<section class="admin" aria-labelledby="admin-titulo">
+  <div class="contenedor admin__inner">
+    <button class="admin__toggle" type="button" aria-expanded="false" aria-controls="admin-panel">
+      ADMIN
+    </button>
+    <div class="admin__panel" id="admin-panel">
+      <h3 id="admin-titulo">Acceso del equipo</h3>
+      <form id="admin-form" novalidate>
+        <label class="campo">
+          <span>Correo</span>
+          <input type="email" name="correo" autocomplete="username" placeholder="peacefoolproject@gmail.com" required>
+        </label>
+        <label class="campo">
+          <span>Clave de acceso</span>
+          <input type="password" name="clave" autocomplete="current-password" required>
+        </label>
+        <button class="boton" type="submit">Entrar</button>
+      </form>
+      <p class="mensaje" id="admin-mensaje" role="status" hidden></p>
+    </div>
+  </div>
+</section>
+
+<script src="assets/js/main.js"></script>
+<script>document.getElementById('anio').textContent = new Date().getFullYear();</script>
+</body>
+</html>

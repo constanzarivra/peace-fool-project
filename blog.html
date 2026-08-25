@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fool Talks · Peace—Fool Project</title>
+<meta name="description" content="Fool Talks, las escrituras del equipo de Peace—Fool Project: apuntes de consulta, lecturas de cartas y procesos de taller.">
+<!-- Mientras la web esta en construccion: fuera de los buscadores.
+     Cuando este lista, borra esta linea de las 6 paginas publicas. -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<a class="salta-al-contenido" href="#contenido">Saltar al contenido</a>
+
+<header class="header">
+  <div class="contenedor header__inner">
+    <a class="logo" href="index.html">
+      <img class="logo__img" src="assets/img/logo/logo-manuscrito.png"
+           alt="Peace—Fool Project" width="800" height="166">
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-principal" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="nav-principal" aria-label="Menú principal">
+      <a href="equipo.html">Sobre el equipo</a>
+      <!-- Visión ya no es una sección aparte: vive al final de "Sobre el
+           equipo". Para devolverla al menú, quita este comentario.
+      <a href="vision.html">Visión</a> -->
+      <a href="recursos.html">Recursos</a>
+      <a href="meditacion.html">Meditación guiada</a>
+      <!-- Fool Art, archivado: sin decidir si va como sección propia o
+           repartido en las otras. Para devolverlo, quita este comentario.
+      <a href="fool-art.html">Fool Art</a> -->
+      <a href="blog.html">Blog</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+
+  <!-- Portada del blog, calcada de la maqueta: "Fool Talks" inclinado arriba a
+       la izquierda y la mano escribiendo más abajo, con la línea del lápiz
+       corriendo por debajo de la palabra "Talks". Los dos dibujos son los
+       archivos originales, con el fondo transparente:
+         assets/img/blog/fool-talks.png   (el título)
+         assets/img/blog/mano-lapiz.png   (la mano)
+       Las posiciones están en la hoja de estilos, en .blog-cabecera. -->
+  <section class="blog-cabecera">
+    <span class="kicker tono-azul blog-cabecera__kicker">Blog</span>
+    <h1 class="titulo-manuscrito blog-cabecera__titulo">
+      <img src="assets/img/blog/fool-talks.png" alt="Fool Talks"
+           width="1200" height="364">
+    </h1>
+    <img class="blog-cabecera__mano" src="assets/img/blog/mano-lapiz.png"
+         alt="" aria-hidden="true" width="1300" height="762"
+         loading="lazy" decoding="async">
+    <p class="lead blog-cabecera__bajada">
+      Todo lo que necesitas saber para sobrevivir esta semana.
+    </p>
+  </section>
+
+  <!-- ================================================================
+       EL BLOG, EN DOS COLUMNAS
+       A la izquierda las publicaciones escritas —sólo el título, que lleva a
+       su página— y a la derecha las cápsulas de audio. En pantalla angosta se
+       ponen una debajo de la otra, primero los textos.
+       ================================================================ -->
+  <section class="seccion--alt revelar" style="padding-block:clamp(2.5rem,6vw,4.5rem)">
+    <div class="contenedor blog-columnas">
+
+      <!-- ---------- Columna izquierda: las publicaciones escritas ----------
+           Para publicar una nueva:
+             1. Copia entrada-la-fe.html con otro nombre (entrada-loquesea.html)
+             2. Cambia el título de la pestaña, el titular y el texto
+             3. Agrega un <li class="escrito"> aquí arriba de los demás, para
+                que la más nueva quede primero
+           -->
+      <div class="blog-columna">
+        <span class="kicker tono-azul-acero">Para leer</span>
+        <h2 class="blog-columna__titulo">Para pensarlo <span class="tono-azul-acero">con calma</span></h2>
+        <p class="lead blog-columna__bajada">
+          Los textos del equipo, para cuando hay ganas de detenerse en algo.
+        </p>
+
+        <ul class="lista-escritos">
+          <li class="escrito">
+            <a class="escrito__enlace" href="entrada-la-fe.html">
+              <span class="escrito__autora">Loreto Aravena</span>
+              <span class="escrito__titulo">La fe como parte del proceso terapéutico</span>
+              <span class="escrito__leer">Leer</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- ---------- Columna derecha: las cápsulas de audio ----------
+           Los archivos van en assets/audio/preguntas/ (.m4a, voz en mono a 64
+           kbps). Para sumar una: copia el archivo ahí, duplica un <li> y
+           cambia el nombre, la duración y el src. El reproductor propio lo
+           enciende assets/js/capsulas.js; si el JS no corre, quedan los
+           controles del navegador y el audio se escucha igual.
+           -->
+      <div class="blog-columna blog-columna--audios">
+        <span class="kicker tono-azul">Cápsulas</span>
+        <h2 class="blog-columna__titulo">Preguntas que la mente <span class="tono-azul">no se atreve a hacer</span></h2>
+        <p class="lead blog-columna__bajada">
+          Audios cortos, de menos de cinco minutos, para escuchar en cualquier
+          momento del día.
+        </p>
+
+        <ul class="rejilla-capsulas">
+        <li class="capsula">
+          <button class="capsula__play" type="button" hidden
+                  aria-label="Reproducir Introducción">
+            <svg class="icono-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            <svg class="icono-pausa" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.4v14H7zm6.6 0H17v14h-3.4z"/></svg>
+          </button>
+          <div>
+            <h3 class="capsula__nombre">Introducción</h3>
+            <span class="capsula__tiempo"><span class="capsula__actual">0:00</span> / 0:08</span>
+          </div>
+          <audio controls preload="none" src="assets/audio/preguntas/intro.m4a">
+            Tu navegador no puede reproducir este audio.
+          </audio>
+          <div class="capsula__barra" hidden role="progressbar"
+               aria-label="Avance de Introducción" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <span class="capsula__avance"></span>
+          </div>
+        </li>
+        <li class="capsula">
+          <button class="capsula__play" type="button" hidden
+                  aria-label="Reproducir Parálisis antes del cambio">
+            <svg class="icono-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            <svg class="icono-pausa" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.4v14H7zm6.6 0H17v14h-3.4z"/></svg>
+          </button>
+          <div>
+            <h3 class="capsula__nombre">Parálisis antes del cambio</h3>
+            <span class="capsula__tiempo"><span class="capsula__actual">0:00</span> / 3:42</span>
+          </div>
+          <audio controls preload="none" src="assets/audio/preguntas/paralisis-antes-del-cambio.m4a">
+            Tu navegador no puede reproducir este audio.
+          </audio>
+          <div class="capsula__barra" hidden role="progressbar"
+               aria-label="Avance de Parálisis antes del cambio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <span class="capsula__avance"></span>
+          </div>
+        </li>
+        <li class="capsula">
+          <button class="capsula__play" type="button" hidden
+                  aria-label="Reproducir ¿Intuición o Ansiedad?">
+            <svg class="icono-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            <svg class="icono-pausa" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.4v14H7zm6.6 0H17v14h-3.4z"/></svg>
+          </button>
+          <div>
+            <h3 class="capsula__nombre">¿Intuición o Ansiedad?</h3>
+            <span class="capsula__tiempo"><span class="capsula__actual">0:00</span> / 3:39</span>
+          </div>
+          <audio controls preload="none" src="assets/audio/preguntas/intuicion-o-ansiedad.m4a">
+            Tu navegador no puede reproducir este audio.
+          </audio>
+          <div class="capsula__barra" hidden role="progressbar"
+               aria-label="Avance de ¿Intuición o Ansiedad?" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <span class="capsula__avance"></span>
+          </div>
+        </li>
+        <li class="capsula">
+          <button class="capsula__play" type="button" hidden
+                  aria-label="Reproducir Descansar es una necesidad">
+            <svg class="icono-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            <svg class="icono-pausa" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.4v14H7zm6.6 0H17v14h-3.4z"/></svg>
+          </button>
+          <div>
+            <h3 class="capsula__nombre">Descansar es una necesidad</h3>
+            <span class="capsula__tiempo"><span class="capsula__actual">0:00</span> / 3:26</span>
+          </div>
+          <audio controls preload="none" src="assets/audio/preguntas/descansar-es-una-necesidad.m4a">
+            Tu navegador no puede reproducir este audio.
+          </audio>
+          <div class="capsula__barra" hidden role="progressbar"
+               aria-label="Avance de Descansar es una necesidad" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <span class="capsula__avance"></span>
+          </div>
+        </li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="contenedor">
+    <div class="footer__grid">
+      <div>
+        <a class="logo" href="index.html">
+          <img class="logo__img logo__img--pie" src="assets/img/logo/logo-gris-lavanda.png"
+               alt="Peace—Fool Project" width="1372" height="130">
+        </a>
+        <p class="plomo" style="margin-top:1rem;font-size:.9rem">
+          Herramientas para la salud mental y el bienestar.
+        </p>
+      </div>
+      <div>
+        <h4>Explorar</h4>
+        <ul class="lista-limpia">
+          <li><a href="equipo.html">Sobre el equipo</a></li>
+          <li><a href="equipo.html#lo-que-nos-mueve">Lo que nos mueve</a></li>
+          <li><a href="recursos.html">Recursos</a></li>
+          <li><a href="meditacion.html">Meditación guiada</a></li>
+          <!-- <li><a href="fool-art.html">Fool Art</a></li> Fool Art, archivado -->
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul class="lista-limpia">
+          <li><a href="mailto:peacefoolproject@gmail.com">peacefoolproject@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__base">
+      <span>&copy; <span id="anio">2026</span> Peace—Fool Project</span>
+      <span>Loreto Aravena &middot; Constanza Rivera &middot; Antuán Guci</span>
+    </div>
+  </div>
+</footer>
+
+<section class="admin" aria-labelledby="admin-titulo">
+  <div class="contenedor admin__inner">
+    <button class="admin__toggle" type="button" aria-expanded="false" aria-controls="admin-panel">
+      ADMIN
+    </button>
+    <div class="admin__panel" id="admin-panel">
+      <h3 id="admin-titulo">Acceso del equipo</h3>
+      <form id="admin-form" novalidate>
+        <label class="campo">
+          <span>Correo</span>
+          <input type="email" name="correo" autocomplete="username" placeholder="peacefoolproject@gmail.com" required>
+        </label>
+        <label class="campo">
+          <span>Clave de acceso</span>
+          <input type="password" name="clave" autocomplete="current-password" required>
+        </label>
+        <button class="boton" type="submit">Entrar</button>
+      </form>
+      <p class="mensaje" id="admin-mensaje" role="status" hidden></p>
+    </div>
+  </div>
+</section>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/capsulas.js"></script>
+<script>document.getElementById('anio').textContent = new Date().getFullYear();</script>
+</body>
+</html>

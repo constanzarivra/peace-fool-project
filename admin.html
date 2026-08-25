@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Administración · Peace—Fool Project</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="contenedor header__inner">
+    <a class="logo" href="index.html">
+      <img class="logo__img" src="assets/img/logo/logo-manuscrito.png"
+           alt="Peace—Fool Project" width="800" height="166">
+    </a>
+    <nav class="nav" id="nav-principal" aria-label="Menú principal">
+      <a href="index.html">Volver al sitio</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+  <section>
+    <div class="contenedor">
+      <span class="kicker">Administración</span>
+      <h1 style="font-size:clamp(1.9rem,4.5vw,3rem)">Panel del equipo</h1>
+
+      <p class="mensaje" style="max-width:var(--ancho-texto)">
+        Maqueta sin funcionalidad. Todavía no hay autenticación ni base de datos:
+        esta página muestra cómo se vería el panel para decidir qué necesita.
+      </p>
+
+      <div class="grid grid--2" style="margin-top:2.75rem">
+
+        <article class="tarjeta">
+          <span class="punto punto--verde-agua"></span>
+          <h3>Cursos grabados</h3>
+          <p class="plomo">Subir videos, ordenar módulos, definir si son gratuitos o pagados.</p>
+          <span class="pista__meta">Por desarrollar</span>
+        </article>
+
+        <article class="tarjeta">
+          <span class="punto punto--azul"></span>
+          <h3>Meditaciones</h3>
+          <p class="plomo">Cargar audios, título, duración y quién la guía.</p>
+          <span class="pista__meta">Por desarrollar</span>
+        </article>
+
+        <article class="tarjeta">
+          <span class="punto punto--salvia"></span>
+          <h3>Descargables</h3>
+          <p class="plomo">Administrar PDF y láminas: subir, reemplazar, dar de baja.</p>
+          <span class="pista__meta">Por desarrollar</span>
+        </article>
+
+        <article class="tarjeta">
+          <span class="punto punto--rosa"></span>
+          <h3>Fool Art</h3>
+          <p class="plomo">Cargar obra a la galería con su ficha técnica.</p>
+          <span class="pista__meta">Por desarrollar</span>
+        </article>
+
+        <article class="tarjeta">
+          <span class="punto punto--lavanda"></span>
+          <h3>Blog</h3>
+          <p class="plomo">Escribir, editar y publicar entradas.</p>
+          <span class="pista__meta">Por desarrollar</span>
+        </article>
+
+        <article class="tarjeta">
+          <span class="punto punto--morado"></span>
+          <h3>Cuentas del equipo</h3>
+          <p class="plomo">Accesos de Loreto, Constanza y Antuán, y cambio de clave.</p>
+          <span class="pista__meta">Por desarrollar</span>
+        </article>
+
+      </div>
+
+      <hr class="regla">
+
+      <h2>Qué falta para que esto funcione de verdad</h2>
+      <ul class="plomo" style="max-width:var(--ancho-texto)">
+        <li>Un servidor o servicio de backend que valide el ingreso
+          (por ejemplo Firebase Auth, Supabase o Netlify Identity).</li>
+        <li>Almacenamiento para videos, audios y PDF.</li>
+        <li>La clave de <strong>peacefoolproject@gmail.com</strong> se configura en
+          ese servicio: nunca dentro de estos archivos, porque cualquiera que
+          abra el sitio puede leerlos.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="contenedor footer__base" style="padding-top:0">
+    <span>&copy; <span id="anio">2026</span> Peace—Fool Project</span>
+    <span><a href="index.html">Volver al sitio</a></span>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script>document.getElementById('anio').textContent = new Date().getFullYear();</script>
+</body>
+</html>
