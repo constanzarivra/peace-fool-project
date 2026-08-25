@@ -40,6 +40,7 @@
   --font-texto:  "Helvetica Neue", Helvetica, "Inter", system-ui, -apple-system,
                  "Segoe UI", Arial, sans-serif;
 
+
   /* --- Medidas --- */
   --ancho:      1180px;
   --ancho-texto: 68ch;
@@ -229,7 +230,24 @@ hr.regla {
   transition: opacity var(--tr);
 }
 .logo:hover .logo__img { opacity: .72; }
-.logo__img--pie { height: 22px; }
+/* El nombre del pie, escrito con la misma letra del título grande: la imagen
+   que iba antes era de un grosor más liviano y con las letras muy separadas,
+   y al lado del banner se veía estirada. */
+.logo--pie {
+  display: inline-flex;
+  align-items: center;
+  gap: .55em;
+  font-family: var(--font-titulo);
+  font-weight: 700;
+  font-size: clamp(1rem, 1.35vw, 1.16rem);
+  line-height: 1;
+  letter-spacing: .005em;
+  text-transform: uppercase;
+  color: var(--gris-lavanda);
+  transition: color var(--tr);
+}
+.logo--pie img { width: 1.05em; height: auto; }
+.logo--pie:hover { color: var(--morado-marca); }
 
 .nav { display: flex; align-items: center; gap: clamp(1rem, 2.4vw, 2.1rem); }
 
@@ -670,14 +688,49 @@ hr.regla {
 /* En el celular los tres óvalos en fila quedarían de 99 px: caras diminutas.
    Ahí se apilan, del tamaño en que se reconocen. */
 @media (max-width: 600px) {
+  /* En el celular los tres en fila quedarían de 99 px: caras diminutas. Y uno
+     debajo del otro quedaban lejísimos. Van en triángulo: Antuán arriba a la
+     izquierda, Constanza a la derecha —a media altura, entre los otros dos— y
+     Loreto abajo, aplomada bajo Antuán. Se pisan un poco a propósito. */
   .equipo-portada__fotos {
-    grid-template-columns: 1fr;
-    gap: clamp(1.25rem, 5vw, 2rem);
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: clamp(.4rem, 2vw, .9rem);
+    row-gap: 0;
     justify-items: center;
+    align-items: start;
+  }
+  /* Antuán solo a la izquierda, encima de la palabra amarilla; Constanza y
+     Loreto una sobre otra a la derecha. */
+  .equipo-portada__fotos > :nth-child(1) {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    align-self: center;
+  }
+  .equipo-portada__fotos > :nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+    /* aire entre el título y la primera foto */
+    margin-top: clamp(1.2rem, 6vw, 2.2rem);
+  }
+  /* Loreto baja y se corre hacia el centro: así no queda aplomada bajo la
+     foto de arriba y el trío pierde la simetría de tabla */
+  .equipo-portada__fotos > :nth-child(3) {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: start;
+    margin: clamp(1.4rem, 7vw, 2.6rem) 0 0 clamp(-3.5rem, -11vw, -1.5rem);
   }
   .retrato-ovalo,
-  .retrato-con-destello { max-width: 220px; }
-  .equipo-portada__pie { text-align: center; }
+  .retrato-con-destello { max-width: 190px; }
+  /* el destello vuelve a asomar por arriba de la foto de Loreto */
+  .retrato-con-destello .destello { top: -14%; right: -7%; width: 44%; }
+  /* la palabra amarilla llega más abajo para que el enlace quede dentro de
+     ella, y el enlace baja: pegado al final de las letras quedaba apretado */
+  .equipo-portada__palabra { height: 96%; }
+  .equipo-portada__pie {
+    text-align: center;
+    margin-top: clamp(3rem, 11vw, 4.5rem);
+  }
 }
 
 /* Palabras manuscritas de fondo, pegadas a un borde de la página: "miradas" a
@@ -733,7 +786,9 @@ hr.regla {
 @media (max-width: 900px) {
   /* de fondo y más discreta, para no pelear con el texto */
   .palabra-lateral { height: 80%; opacity: .7; }
-  .palabra-lateral--derecha { opacity: .3; }
+  /* en el celular el texto pasa justo por encima de sus trazos: casi un
+     fantasma, lo justo para que se note que hay una palabra */
+  .palabra-lateral--derecha { opacity: .14; }
 }
 
 /* La palabra también abre la página de las biografías: mismo recurso, mismo
@@ -939,7 +994,8 @@ hr.regla {
 }
 .tarjeta--ovalo:hover .ovalo__detalle,
 .tarjeta--ovalo:focus .ovalo__detalle,
-.tarjeta--ovalo:focus-within .ovalo__detalle { opacity: 1; pointer-events: auto; }
+.tarjeta--ovalo:focus-within .ovalo__detalle,
+.tarjeta--ovalo.abierto .ovalo__detalle { opacity: 1; pointer-events: auto; }
 
 .ovalo__detalle p {
   font-size: .8rem;
@@ -950,18 +1006,16 @@ hr.regla {
 .ovalo__detalle .pista__meta,
 .ovalo__detalle .enlace-flecha { font-size: .74rem; justify-content: center; }
 
-/* En pantallas sin cursor el detalle va debajo de la foto, siempre visible */
+/* En pantallas sin cursor no hay "pasar por encima": el detalle aparece
+   igual encima de la foto, pero al tocar el círculo (lo abre main.js). Antes
+   iba escrito debajo, siempre a la vista, y ensuciaba la constelación. */
 @media (hover: none) {
-  .tarjeta--ovalo { aspect-ratio: auto; }
-  .ovalo__detalle {
-    position: static;
-    inset: auto;
-    opacity: 1;
-    pointer-events: auto;
-    background: none;
-    padding: .85rem .5rem 0;
-    border-radius: 0;
-  }
+  .ovalo__detalle { padding: 11%; }
+  .ovalo__detalle p { font-size: .76rem; line-height: 1.4; }
+  .ovalo__detalle .pista__meta,
+  .ovalo__detalle .enlace-flecha { font-size: .7rem; }
+  /* el toque no debe dejar el resaltado azul del sistema encima del círculo */
+  .tarjeta--ovalo { -webkit-tap-highlight-color: transparent; }
 }
 
 /* --- Cada uno con su tamaño y su ritmo de rebote --- */
@@ -1129,15 +1183,19 @@ img.persona__retrato {
 }
 
 /* --------------------------------------------- Cápsulas de audio --------- */
-/* Cada cápsula es un cuadrado con su nombre y su botón, en vez de la barra
-   larga del navegador cruzando toda la pantalla. Los controles nativos siguen
-   en el HTML: si el JS no corre, aparecen ellos y el audio se escucha igual
-   (assets/js/capsulas.js los esconde y enciende este reproductor). */
+/* Cada cápsula es una ficha baja y ancha —botón, nombre y duración en la misma
+   línea— puestas una debajo de otra, como una lista para escuchar. Antes eran
+   cuadrados grandes y ocupaban toda la columna; así se lee lo mismo en un
+   tercio del alto. De fondo llevan la foto desenfocada, casi transparente, para
+   que la letra siga leyéndose igual que sobre el papel.
+   Los controles del navegador siguen en el HTML: si el JS no corre, aparecen
+   ellos y el audio se escucha igual (assets/js/capsulas.js los esconde y
+   enciende este reproductor). */
 
 .rejilla-capsulas {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: clamp(1rem, 2.2vw, 1.6rem);
+  grid-template-columns: 1fr;
+  gap: .7rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -1145,25 +1203,33 @@ img.persona__retrato {
 
 .capsula {
   position: relative;
-  aspect-ratio: 1 / 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: .75rem;
-  padding: clamp(1.1rem, 2.2vw, 1.6rem);
-  /* sin borde: el cuadrado se distingue por ser más claro que la franja */
-  background: var(--fondo);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: clamp(.8rem, 1.4vw, 1.15rem);
+  padding: .85rem clamp(1rem, 1.8vw, 1.35rem) .95rem;
+  /* Sin borde: la ficha se sostiene por el color. El velo deja pasar un 30 %
+     de la foto —tono franco, no un vaho— y cada franja mira un punto distinto
+     del azul, así las cuatro juntas hacen una degradación de arriba abajo. */
+  background:
+    linear-gradient(rgba(251, 249, 246, .7), rgba(251, 249, 246, .7)),
+    url("../img/blog/fondo-capsulas.jpg") var(--foco, center) / cover no-repeat,
+    var(--fondo);
   border: 0;
   border-radius: var(--radio);
   overflow: hidden;
   transition: box-shadow var(--tr);
 }
+.capsula:nth-child(1) { --foco: 50% 12%; }
+.capsula:nth-child(2) { --foco: 50% 38%; }
+.capsula:nth-child(3) { --foco: 50% 64%; }
+.capsula:nth-child(4) { --foco: 50% 90%; }
 .capsula:hover { box-shadow: 0 14px 32px -26px rgba(74, 67, 104, .45); }
 
-/* El botón manda en el cuadrado: azul lleno de entrada y, al pasar el cursor,
+/* El botón manda en la ficha: azul lleno de entrada y, al pasar el cursor,
    se da vuelta —blanco con el aro y la flecha en azul—. */
 .capsula__play {
-  width: clamp(42px, 5vw, 52px);
+  width: clamp(38px, 3.6vw, 44px);
   aspect-ratio: 1 / 1;
   flex: none;
   display: grid;
@@ -1189,9 +1255,17 @@ img.persona__retrato {
 .capsula.suena .capsula__play .icono-play { display: none; }
 .capsula.suena .capsula__play .icono-pausa { display: block; }
 
+/* Nombre y duración comparten renglón mientras quepan; si el nombre es largo,
+   la duración baja sola a la línea de abajo. */
+.capsula__texto {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .15rem 1rem;
+}
 .capsula__nombre {
-  margin: 0 0 .4em;
-  font-size: clamp(.98rem, 1.4vw, 1.1rem);
+  margin: 0;
+  font-size: clamp(.95rem, 1.3vw, 1.05rem);
   line-height: 1.25;
   letter-spacing: .02em;
   text-transform: none;
@@ -1200,17 +1274,22 @@ img.persona__retrato {
   font-family: var(--font-titulo);
   font-size: .74rem;
   letter-spacing: .12em;
-  color: var(--gris-lavanda);
+  /* sobre el azul más franco, el lavanda se perdía */
+  color: var(--tinta-suave);
+  white-space: nowrap;
+  /* pegada al borde derecho: los tiempos quedan alineados entre sí y la
+     ficha se lee de una pasada */
+  margin-left: auto;
 }
 
-/* La línea de avance vive pegada al borde de abajo del cuadrado. Se le da
+/* La línea de avance vive pegada al borde de abajo de la ficha. Se le da
    altura de sobra —invisible— para que se pueda pinchar y saltar de punto. */
 .capsula__barra {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 14px;
+  height: 12px;
   display: flex;
   align-items: flex-end;
   cursor: pointer;
@@ -1232,17 +1311,24 @@ img.persona__retrato {
   background: var(--azul-fool);
 }
 
-/* Los controles del navegador, sólo mientras el JS no los reemplaza. */
-.capsula audio { width: 100%; height: 32px; filter: saturate(.35); }
+/* Los controles del navegador, sólo mientras el JS no los reemplaza: ocupan
+   el ancho entero de la ficha, debajo del nombre. */
+.capsula audio {
+  grid-column: 1 / -1;
+  width: 100%;
+  height: 32px;
+  filter: saturate(.35);
+}
 
 @media (max-width: 600px) {
-  /* en celular siguen siendo cuadrados, pero de a dos: uno por fila dejaba
-     cuadrados enormes y medio vacíos */
-  .rejilla-capsulas { grid-template-columns: repeat(2, 1fr); gap: .8rem; }
-  .capsula { padding: .9rem .95rem 1.1rem; }
-  .capsula__play { width: 38px; }
-  .capsula__nombre { font-size: .9rem; }
-  .capsula__tiempo { font-size: .7rem; letter-spacing: .08em; }
+  .rejilla-capsulas { gap: .6rem; }
+  .capsula { padding: .7rem .85rem .8rem; gap: .75rem; }
+  .capsula__play { width: 36px; }
+  /* En celular no cabe el nombre largo y la duración en el mismo renglón: la
+     duración pasa abajo, y así las cuatro fichas miden todas lo mismo. */
+  .capsula__texto { display: block; }
+  .capsula__nombre { font-size: .92rem; margin-bottom: .25em; }
+  .capsula__tiempo { font-size: .7rem; letter-spacing: .08em; margin-left: 0; }
 }
 
 /* ------------------------------------------ El blog en dos columnas ------ */
@@ -1294,55 +1380,98 @@ img.persona__retrato {
 /* En el índice del blog sólo va el título: se pincha y lleva a la página de
    la entrada. Toda la fila es el enlace, para que sea fácil de acertar. */
 
+/* ------------------------------------- Lo escrito, entrada por entrada --- */
+/* Nada de tarjetas ni de filas con línea arriba y abajo: cada texto se
+   presenta como una página abierta. El nombre de quien escribe baja de canto
+   por el margen y hace de regla; el título manda en grande; debajo cuelga la
+   frase que engancha, sacada del propio texto y colgada de una comilla que
+   funciona como dibujo. La invitación a seguir es un renglón corto con un
+   trazo que se estira al pasar el cursor. */
+
 .lista-escritos {
   list-style: none;
-  margin: 2rem 0 0;
+  margin: clamp(1.8rem, 4vw, 2.6rem) 0 0;
   padding: 0;
-  border-top: 1px solid var(--linea);
 }
-.escrito { border-bottom: 1px solid var(--linea); }
+.escrito + .escrito { margin-top: clamp(2.2rem, 5vw, 3.4rem); }
+
 .escrito__enlace {
   display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: baseline;
-  gap: .3rem 1.5rem;
-  padding: clamp(1.4rem, 3vw, 2rem) 0;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: clamp(.9rem, 1.8vw, 1.5rem);
   color: inherit;
 }
 .escrito__autora {
-  grid-column: 1 / -1;
+  grid-column: 1;
+  grid-row: 1 / span 3;
+  align-self: start;
+  margin-top: .4rem;
+  /* de abajo hacia arriba, como el lomo de un libro */
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
   font-family: var(--font-titulo);
-  font-size: .76rem;
-  letter-spacing: .2em;
+  font-size: .68rem;
+  letter-spacing: .32em;
   text-transform: uppercase;
   color: var(--gris-lavanda);
 }
 .escrito__titulo {
+  grid-column: 2;
+  display: block;
   font-family: var(--font-titulo);
-  font-size: clamp(1.15rem, 2.4vw, 1.7rem);
-  line-height: 1.2;
-  letter-spacing: .03em;
+  font-size: clamp(1.45rem, 3.1vw, 2.15rem);
+  font-weight: 500;
+  line-height: 1.06;
+  letter-spacing: .01em;
   color: var(--morado);
   transition: color var(--tr);
 }
-.escrito__leer {
+.escrito__cita {
+  grid-column: 2;
+  position: relative;
+  display: block;
+  margin-top: clamp(.9rem, 2vw, 1.3rem);
+  padding-left: clamp(1.5rem, 2.8vw, 2.2rem);
+  font-size: clamp(.95rem, 1.25vw, 1.05rem);
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--tinta-suave);
+}
+.escrito__cita::before {
+  content: "\201C";
+  position: absolute;
+  left: -.05rem;
+  top: -.45rem;
   font-family: var(--font-titulo);
-  font-size: .76rem;
-  letter-spacing: .2em;
+  font-size: 3.2em;
+  line-height: 1;
+  color: var(--azul-fool);
+  opacity: .45;
+}
+.escrito__leer {
+  grid-column: 2;
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: .8rem;
+  margin-top: clamp(1rem, 2.2vw, 1.5rem);
+  font-family: var(--font-titulo);
+  font-size: .72rem;
+  letter-spacing: .24em;
   text-transform: uppercase;
   color: var(--azul-acero);
-  white-space: nowrap;
-  transition: transform var(--tr);
 }
-.escrito__leer::after { content: " \2192"; }
+.escrito__leer::after {
+  content: "";
+  width: clamp(2rem, 4vw, 3.2rem);
+  height: 1px;
+  background: currentColor;
+  transition: width var(--tr);
+}
 .escrito__enlace:hover .escrito__titulo,
 .escrito__enlace:focus-visible .escrito__titulo { color: var(--azul-acero); }
-.escrito__enlace:hover .escrito__leer { transform: translateX(3px); }
-
-@media (max-width: 600px) {
-  .escrito__enlace { grid-template-columns: 1fr; }
-  .escrito__leer { justify-self: start; }
-}
+.escrito__enlace:hover .escrito__leer::after,
+.escrito__enlace:focus-visible .escrito__leer::after { width: clamp(3.4rem, 7vw, 5.4rem); }
 
 /* La flecha de "volver" apunta al revés */
 .enlace-flecha--volver::after { content: none; }
@@ -1375,46 +1504,111 @@ img.persona__retrato {
 }
 
 /* ------------------------------------------- Cabecera del blog ----------- */
-/* Composición calcada de la maqueta, que mide 2000 × 720:
-     · "Fool Talks" inclinado 12,7 grados, arriba a la izquierda;
-     · la mano a su derecha y más abajo, con la línea del lápiz pasando por
-       debajo de "Talks" —sin tocar la palabra, que era el error anterior—;
-     · la frase debajo del título y todo el costado derecho libre.
-   El bloque conserva la proporción del lienzo, así que cada medida de la
-   maqueta se traduce dividiendo: la horizontal por 2000 y la vertical por 720.
-   Si algún día se mueve una pieza, basta con volver a hacer esa cuenta. */
+/* Composición sobre un lienzo de 2000 × 720:
+     · "Fool Talks" inclinado 12,7 grados, centrado en la pantalla;
+     · la mano a su derecha, girada 5,7 grados, tan grande que su línea se
+       escapa por el borde derecho —queda cortada a propósito—;
+     · el rótulo, la frase y el enlace alineados con la "F" de Fool —en el
+       28,24 % del ancho—, de modo que todo el bloque de texto cuelga del
+       mismo eje que el título y la composición entera queda centrada.
+   Cada medida de la maqueta se traduce dividiendo: la horizontal por 2000 y la
+   vertical por 720. Si algún día se mueve una pieza, basta con volver a hacer
+   esa cuenta. El grupo título + mano se movió y creció en bloque (un 24 %), así
+   que la relación entre el lápiz y la palabra es la misma de siempre. */
 
 .blog-cabecera {
   position: relative;
   aspect-ratio: 2000 / 720;
   overflow: hidden;
 }
-.blog-cabecera__kicker {
+/* El rótulo "Blog" ya no va de sombrerito sobre el título: se fue al margen
+   libre de la izquierda, con los "bla bla" debajo. */
+.blog-cabecera__rotulo {
   position: absolute;
   z-index: 2;
-  left: 4.3%;
-  top: 13.7%;
+  left: 5.6%;
+  top: 12%;
   margin: 0;
 }
+/* Los "bla bla" del margen: la letra manuscrita de Coni, recortada de su
+   propia hoja (assets/img/blog/bla-*.png). Van sueltos por el papel, cada uno
+   con su tamaño y su inclinación, y cada uno se escribe a su hora.
+   La caja mantiene la proporción 330 × 440 y las posiciones van en porcentaje
+   de esa caja, así el conjunto se achica y se agranda de una pieza. */
+.blabla {
+  position: absolute;
+  z-index: 1;
+  left: 4.6%;
+  top: 17%;
+  width: 22%;
+  aspect-ratio: 330 / 440;
+  pointer-events: none;
+}
+.blabla__palabra {
+  position: absolute;
+  height: auto;
+  overflow: visible;
+}
+/* La máscara: el esqueleto de la propia letra, recorrido en el orden en que se
+   escribió. Al descubrirlo con stroke-dashoffset, la palabra aparece por su
+   línea —como si la mano la estuviera escribiendo—, no con un barrido.
+   Va en un solo trazo a propósito: el guion de rayas del SVG vuelve a empezar
+   en cada subtrazo, y con saltos la animación no avanzaría de punta a punta. */
+.blabla__trazo {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 15;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: escribir 7s var(--d, 0s) infinite;
+}
+@keyframes escribir {
+  0%        { stroke-dashoffset: 1; }    /* nada escrito */
+  13%       { stroke-dashoffset: 0; }    /* escrita, rápido */
+  55%       { stroke-dashoffset: 0; }    /* se queda un momento */
+  68%, 100% { stroke-dashoffset: -1; }   /* se borra por donde empezó */
+}
+@media (prefers-reduced-motion: reduce) {
+  .blabla__trazo { animation: none; stroke-dashoffset: 0; }
+  .blabla__palabra { opacity: .55; }
+}
+/* Sitio e inclinación de cada palabra. La hora a la que entra cada una va en
+   el propio marcado (style="--d:..."), junto al trazo que anima. */
+.blabla--a { left: 2%;  top: 3%;  width: 30%; transform: rotate(-12deg); }
+.blabla--b { left: 52%; top: 21%; width: 24%; transform: rotate(7deg); }
+.blabla--c { left: 6%;  top: 36%; width: 34%; transform: rotate(-4deg); }
+.blabla--d { left: 50%; top: 57%; width: 26%; transform: rotate(12deg); }
+.blabla--e { left: 16%; top: 73%; width: 31%; transform: rotate(-9deg); }
+
 /* El título es una imagen: se coloca derecha y el giro lo hace el navegador
-   desde su centro, igual que estaba puesta en la maqueta. */
+   desde su centro. Su caja mide 43,32 % y arranca en 28,34 %, o sea que su
+   centro cae en la mitad de la pantalla. */
 .blog-cabecera__titulo {
   position: absolute;
   z-index: 2;
-  left: 3.272%;
-  top: 20.163%;
-  width: 34.938%;
+  left: 28.34%;
+  top: 18.06%;
+  width: 43.32%;
   margin: 0;
   transform: rotate(-12.7deg);
 }
-.blog-cabecera__titulo img { width: 100%; height: auto; }
-/* La mano va girada 5,7 grados, como en la maqueta: así la línea del lápiz
-   queda tendida y pasa por debajo de "Talks" en vez de cruzarla. */
+.blog-cabecera__titulo img { width: 100%; height: auto; display: block; }
+/* En la portada el título es el que lleva al blog: no hace falta un
+   enlace aparte debajo. */
+.blog-cabecera__titulo a { display: block; transition: opacity var(--tr); }
+.blog-cabecera__titulo a:hover,
+.blog-cabecera__titulo a:focus-visible { opacity: .74; }
+/* La mano va girada 5,7 grados: así la línea del lápiz queda tendida y pasa
+   por debajo de "Talks" en vez de cruzarla. La punta de la línea, medida sobre
+   la tinta ya girada, cae en 101 %: el trazo se corta justo en el borde, sin
+   esconder el dibujo. */
 .blog-cabecera__mano {
   position: absolute;
-  left: 24.431%;
-  top: 22.178%;
-  width: 40.534%;
+  left: 54.57%;
+  top: 20.56%;
+  width: 50.26%;
   height: auto;
   max-width: none;
   transform: rotate(5.68deg);
@@ -1422,18 +1616,19 @@ img.persona__retrato {
 /* Sólo en la portada: el enlace para entrar al blog, bajo la frase. */
 .blog-cabecera__enlace {
   position: absolute;
-  left: 5.55%;
-  top: 76%;
+  left: 28.24%;
+  top: 79.61%;
   margin: 0;
 }
 .blog-cabecera__bajada {
   position: absolute;
-  left: 5.55%;
-  top: 65.5%;
-  width: 46%;
+  left: 50%;
+  top: 73%;
+  transform: translateX(-50%);
+  width: 52%;
   max-width: none;
   margin: 0;
-  text-align: left;
+  text-align: center;
   /* la frase acompaña al dibujo: crece y se achica con la composición para
      que siempre quepa en una línea, como en la maqueta */
   font-size: clamp(.95rem, 1.45vw, 1.45rem);
@@ -1459,7 +1654,7 @@ img.persona__retrato {
     flex-direction: column;
     padding: clamp(1.5rem, 6vw, 2.5rem) clamp(1.25rem, 5vw, 3.5rem) clamp(2rem, 7vw, 3rem);
   }
-  .blog-cabecera__kicker,
+  .blog-cabecera__rotulo,
   .blog-cabecera__titulo,
   .blog-cabecera__mano,
   .blog-cabecera__enlace,
@@ -1469,17 +1664,34 @@ img.persona__retrato {
     top: auto;
     width: auto;
   }
-  .blog-cabecera__kicker { order: 1; margin-bottom: .6rem; }
+  .blog-cabecera__rotulo { order: 1; margin-bottom: .6rem; }
+  /* los "bla bla" necesitan un margen libre al costado: en el celular no lo hay */
+  .blabla { display: none; }
   .blog-cabecera__titulo {
     order: 2;
-    width: min(78%, 320px);
-    margin: 0 0 .8rem 2%;
+    width: min(88%, 360px);
+    margin: 0 0 0 2%;
     transform: rotate(-8deg);
   }
-  .blog-cabecera__bajada { order: 3; margin: clamp(1rem, 5vw, 2rem) 0 0; }
-  /* en tablet el dibujo no crece más allá de esto: a todo el ancho se comía
-     la pantalla */
-  .blog-cabecera__mano   { order: 4; width: min(100%, 480px); margin: .8rem 0 0; }
+  /* la mano sube hasta casi tocar el título: su línea hace de subrayado */
+  .blog-cabecera__mano   { order: 3; width: min(100%, 480px); margin: -1.4rem 0 0; }
+  /* La frase sube al hueco triangular que queda entre la línea del lápiz y el
+     brazo: el margen negativo la mete dentro del dibujo, que ahí está vacío.
+     Va en negrita porque encima del trazo necesita más cuerpo para leerse. */
+  .blog-cabecera__bajada {
+    order: 4;
+    position: relative;
+    z-index: 1;
+    width: auto;
+    max-width: 23ch;
+    margin: -26% 0 0;
+    transform: none;
+    text-align: left;
+    /* la misma Helvetica de todo el sitio, un punto más firme: en 600 ya es
+       otra letra —la negra— y se notaba distinta */
+    font-weight: 500;
+    color: var(--tinta);
+  }
   .blog-cabecera__enlace { order: 5; margin: 1.2rem 0 0; }
 }
 
@@ -1679,14 +1891,16 @@ img.persona__retrato {
   width: clamp(56px, 7vw, 68px);
   aspect-ratio: 1;
   border-radius: 50%;
-  background: var(--burdeo);
-  color: #fff;
+  /* El círculo pintado va de fondo; debajo queda el burdeo por si la imagen
+     tarda en cargar, para que las letras nunca queden sobre el vacío. */
+  background: url("../img/sos-circulo.jpg") center/cover no-repeat, var(--burdeo);
+  color: var(--burdeo);
   /* Tipografía redondeada: más fresca y cercana que la de los titulares.
      ui-rounded es la redonda del sistema en Mac y iPhone. */
   font-family: ui-rounded, "SF Pro Rounded", "Avenir Next Rounded",
                "Varela Round", "Trebuchet MS", var(--font-texto);
   font-size: clamp(.88rem, 1.3vw, 1.02rem);
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1;
   letter-spacing: .14em;
   /* El espaciado entre letras también se suma después de la última: se

@@ -94,6 +94,30 @@
     });
   }
 
+  /* --- Los círculos de la portada, en pantallas táctiles ---------------- */
+  /* Con cursor la descripción sale al pasar por encima. Sin cursor no hay
+     "pasar por encima": se abre al tocar el círculo y se cierra al tocar
+     fuera o al tocar otro. El enlace de adentro sólo se puede pinchar con la
+     descripción ya abierta, así el primer toque nunca navega sin querer. */
+  var tactil = window.matchMedia && window.matchMedia('(hover: none)').matches;
+  if (tactil) {
+    var ovalos = document.querySelectorAll('.tarjeta--ovalo');
+    ovalos.forEach(function (ovalo) {
+      ovalo.addEventListener('click', function (e) {
+        if (e.target.closest('a')) { return; }   // el enlace hace lo suyo
+        var abierto = ovalo.classList.contains('abierto');
+        ovalos.forEach(function (o) { o.classList.remove('abierto'); });
+        if (!abierto) { ovalo.classList.add('abierto'); }
+      });
+    });
+    if (ovalos.length) {
+      document.addEventListener('click', function (e) {
+        if (e.target.closest('.tarjeta--ovalo')) { return; }
+        ovalos.forEach(function (o) { o.classList.remove('abierto'); });
+      });
+    }
+  }
+
   /* --- Marca el enlace de la página actual en el menú ------------------- */
   var actual = location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('#nav-principal a').forEach(function (a) {
