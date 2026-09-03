@@ -415,6 +415,11 @@ hr.regla {
    perdía contra la pintura. Ahora va debajo, sobre el fondo claro, en la
    tipografía de los títulos y con las letras bien separadas: se lee de lejos y
    remata el bloque del banner sin taparlo. */
+/* Se probaron un lema en banda de borde a borde con rayas, y una estrofa en
+   diagonal con "arte" destacada y en movimiento. Ninguna de las dos era el
+   camino: aquí vuelve el lema sobrio —las tres palabras en una sola línea
+   centrada, todas en la misma letra, el mismo cuerpo y el mismo tono, y
+   quietas—. */
 .lema {
   margin: clamp(1.6rem, 3.6vw, 3rem) auto clamp(.5rem, 2vw, 1.5rem);
   max-width: none;
@@ -472,13 +477,18 @@ hr.regla {
     #eaeee0;
   border-block: 1px solid var(--linea);
 }
+/* La frase de apertura. Es el primer título después del banner, así que pesa
+   más que las cabezas de sección que vienen abajo: cuerpo mayor, renglones
+   juntos y la palabra en cursiva como único acento. */
 .portada-intro h1 {
-  max-width: 22ch;
+  max-width: 19ch;
   margin-inline: 0;
-  font-size: clamp(1.55rem, 3.6vw, 2.6rem);
+  font-size: clamp(1.7rem, 4.1vw, 3.05rem);
+  font-weight: 500;
+  line-height: 1.02;
   /* esta frase va en caja normal, no en mayúsculas */
   text-transform: none;
-  letter-spacing: .02em;
+  letter-spacing: -.005em;
 }
 /* La frase a la izquierda y, al lado, el hueco reservado para la imagen. */
 .portada-intro__grid {
@@ -590,6 +600,387 @@ hr.regla {
   padding: 1.5em 2.8em 1em;
 }
 
+/* ------------------------------------- Titulares de la portada ----------- */
+/* El banner abre con mucho carácter y después la página se apagaba: tres
+   cabezas de sección idénticas entre sí —rótulo chico, título en mayúsculas,
+   bajada— una debajo de otra. Eso es lo que se rompe aquí.
+
+   Queda un solo hilo común, la marca de margen (número, línea de pelo y
+   rótulo), y encima tres armados distintos, cada uno con su propio salto de
+   escala dentro de la misma frase:
+     01  manda una palabra en mayúsculas y la otra baja en minúscula fina
+     02  al revés: entra fina y en minúscula, y remata en mayúsculas pesadas
+     03  la palabra clave se rellena con la pintura de la casa
+
+   De dónde viene: la retícula asimétrica y las líneas de pelo de la escuela
+   suiza (Emil Ruder, Müller-Brockmann); el salto de cuerpo dentro de una misma
+   frase de Wolfgang Weingart; los rótulos diminutos y el número de sección de
+   las revistas (The Gentlewoman, Apartamento); y las palabras rellenas de
+   color de las serigrafías de Corita Kent. */
+
+/* La marca de margen. El número lleva el tono de la sección, la línea cruza
+   todo el ancho y el rótulo queda al filo derecho. Es lo único que se repite:
+   lleva la cuenta y amarra las secciones entre sí. */
+.marca-seccion {
+  display: flex;
+  align-items: center;
+  gap: clamp(.7rem, 1.6vw, 1.1rem);
+  max-width: none;
+  margin: 0 0 clamp(1.4rem, 3vw, 2.2rem);
+  font-family: var(--font-titulo);
+  font-size: .68rem;
+  font-weight: 500;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--gris-lavanda);
+}
+.marca-seccion__n {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+}
+.marca-seccion__linea {
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+  opacity: .45;
+}
+/* el interletrado deja un hueco muerto al final del rótulo; esto lo recupera
+   para que la palabra cierre a plomo con el borde de la caja */
+.marca-seccion__rotulo { margin-right: -.3em; }
+
+/* En la sección centrada la línea no cruza: es un guion a cada lado. */
+.marca-seccion--centrada { justify-content: center; }
+.marca-seccion--centrada .marca-seccion__linea {
+  flex: none;
+  width: clamp(1.4rem, 4.5vw, 2.8rem);
+}
+
+/* Base de los titulares: sin las mayúsculas ni el interletrado que llevan
+   todos los h2 del sitio. Cada armado pone lo suyo. */
+.titular {
+  margin: 0;
+  text-transform: none;
+  letter-spacing: normal;
+  text-wrap: balance;
+  color: var(--morado);
+}
+.titular__mayor,
+.titular__menor { display: block; }
+
+/* 01 — Cabeza en dos columnas: el título a la izquierda y la nota corta a la
+   derecha, las dos apoyadas en la misma línea de abajo. Deja de ser una pila
+   de tres renglones y pasa a ser una retícula. */
+.cabeza-seccion--par {
+  display: grid;
+  grid-template-columns: minmax(0, 1.24fr) minmax(0, .76fr);
+  gap: clamp(1rem, 3.5vw, 3rem);
+  align-items: end;
+  margin-bottom: clamp(2.2rem, 5vw, 3.6rem);
+}
+.titular--apilado .titular__mayor {
+  font-size: clamp(2.3rem, 5.6vw, 4.05rem);
+  font-weight: 600;
+  line-height: .9;
+  letter-spacing: -.012em;
+  text-transform: uppercase;
+}
+.titular--apilado .titular__menor {
+  margin-top: .1em;
+  padding-left: .18em;
+  font-size: clamp(1.15rem, 2.7vw, 1.95rem);
+  font-weight: 300;
+  line-height: 1.02;
+  letter-spacing: .012em;
+  color: var(--tono-seccion, var(--verde-agua));
+}
+/* La nota va en columna angosta, así que aquí no se justifica: a tres
+   renglones de este ancho, los bordes parejos abren huecos entre palabras. */
+.titular__nota {
+  max-width: 34ch;
+  margin: 0 0 .5rem;
+  font-size: clamp(.97rem, 1.2vw, 1.06rem);
+  line-height: 1.6;
+  color: var(--tinta-suave);
+  text-wrap: pretty;
+}
+
+/* 02 — El rótulo de canto en el margen (el mismo recurso que ya firma los
+   textos del blog) y el título al revés que el anterior: entra en minúscula
+   fina y remata pesado. */
+.cabeza-seccion--canto {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: clamp(.9rem, 2vw, 1.5rem);
+  align-items: start;
+}
+.rotulo-canto {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  margin: 0;
+  font-family: var(--font-titulo);
+  font-size: .66rem;
+  font-weight: 500;
+  letter-spacing: .32em;
+  text-transform: uppercase;
+  color: var(--gris-lavanda);
+}
+.titular--invertido .titular__menor {
+  font-size: clamp(1.05rem, 2.35vw, 1.72rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: .015em;
+  padding-left: .3em;
+  color: var(--tinta-suave);
+}
+.titular--invertido .titular__mayor {
+  margin-top: .05em;
+  font-size: clamp(2.25rem, 5.6vw, 4.2rem);
+  font-weight: 700;
+  line-height: .88;
+  letter-spacing: -.022em;
+  text-transform: uppercase;
+  color: var(--tono-seccion, var(--azul-acero));
+}
+
+/* 03 — Manifiesto: la frase entra chica y fina, y la palabra que importa cae
+   debajo al triple de cuerpo. */
+/* La caja se ciñe a la palabra grande (width: max-content) y se centra. Así
+   la frase de arriba no queda centrada respecto de la página sino alineada al
+   canto izquierdo de la palabra: el bloque se lee compuesto y no "centrado por
+   defecto", que es justo lo que hacía parecer esto un documento. */
+.titular--manifiesto {
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto clamp(1rem, 2.4vw, 1.6rem);
+  text-align: left;
+}
+.titular__previo {
+  display: block;
+  padding-left: .06em;
+  font-size: clamp(1.15rem, 2.5vw, 1.8rem);
+  font-weight: 300;
+  line-height: 1.12;
+  letter-spacing: .015em;
+  color: var(--tinta-suave);
+}
+/* La palabra grande del manifiesto. Va sola, en su propio renglón, al triple
+   de cuerpo que la frase que la presenta. */
+.titular__grande,
+.titular__pintado {
+  display: block;
+  margin-top: .02em;
+  font-size: clamp(2.6rem, 7.4vw, 5.5rem);
+  font-weight: 800;
+  line-height: .92;
+  letter-spacing: -.03em;
+  text-transform: uppercase;
+  color: var(--tono-seccion, var(--oliva));
+}
+/* La palabra se rellena con la misma pintura que va detrás de la presentación:
+   la letra deja de ser texto y pasa a ser imagen, como el título del banner
+   con su círculo pintado. El velo oscuro por encima es para que el verde del
+   agua pese lo suficiente contra el beige.
+   Si el navegador no sabe recortar un fondo contra la letra, se queda en oliva
+   y no se pierde nada. */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .titular__pintado {
+    background-image:
+      linear-gradient(rgba(38, 50, 32, .45), rgba(38, 50, 32, .45)),
+      url("../img/banner-nenufares.jpg");
+    /* la pintura va bien ampliada: a tamaño "cover" el agua se aplasta dentro
+       de la letra y se ve como una mancha lisa. Este encuadre —la masa de
+       nenúfares oscuros— es el que llena las nueve letras parejo; corrido
+       hacia la derecha, las últimas se aclaran y se pierden contra el beige. */
+    background-size: 340% auto;
+    background-position: 16% 58%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+@media (max-width: 900px) {
+  /* en una columna, la nota se despega del título y no se pega al borde */
+  .cabeza-seccion--par { grid-template-columns: 1fr; gap: clamp(.9rem, 3vw, 1.4rem); }
+  .titular__nota { max-width: 44ch; margin-bottom: 0; }
+  .marca-seccion { font-size: .62rem; letter-spacing: .24em; }
+  .marca-seccion__n { font-size: .95rem; }
+}
+
+@media (max-width: 600px) {
+  /* el rótulo de canto se endereza: de pie ocupaba media pantalla de alto */
+  .cabeza-seccion--canto { grid-template-columns: 1fr; }
+  .rotulo-canto {
+    writing-mode: horizontal-tb;
+    transform: none;
+    margin-bottom: .75rem;
+  }
+}
+
+
+/* --- El mismo sistema en las páginas interiores -------------------------- */
+/* La portada lleva la marca de margen con la línea de pelo; las páginas de
+   adentro llevan la cuenta en una cifra grande y pálida colgada en el margen.
+   Son dos caras del mismo recurso: así se sabe, sin leer, si uno está en la
+   portada o dentro de una sección. */
+
+/* Cabeza de página: la marca va sin número —el número es de las secciones, no
+   de la página— y el título entra en cuerpo de portada. */
+.cabeza-pagina .titular { max-width: none; }
+/* la columna del título pesa más que en las secciones: aquí el titular es más
+   grande y, con el reparto de abajo, se partía en dos renglones */
+.cabeza-pagina.cabeza-seccion--par {
+  grid-template-columns: minmax(0, 1.44fr) minmax(0, .56fr);
+}
+/* Cuando la cabeza no va en dos columnas —por ejemplo en "Sobre el equipo",
+   donde la palabra amarilla del fondo se come un cuarto del ancho— la bajada
+   cae debajo del título y recupera una medida cómoda. */
+.cabeza-pagina > .titular__nota {
+  margin-top: clamp(1rem, 2.2vw, 1.5rem);
+  max-width: 48ch;
+}
+.cabeza-pagina .titular--apilado .titular__mayor {
+  font-size: clamp(2.35rem, 6.1vw, 4.6rem);
+}
+.cabeza-pagina .titular--apilado .titular__menor {
+  font-size: clamp(1.2rem, 2.95vw, 2.2rem);
+}
+
+/* La cifra de sección: grande, pálida y apoyada en la primera línea del
+   título, no en su caja. */
+.cabeza-seccion--cifra {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: clamp(.85rem, 2.2vw, 1.9rem);
+  align-items: start;
+  margin-bottom: clamp(1.5rem, 3.2vw, 2.4rem);
+}
+.cifra-seccion {
+  font-family: var(--font-titulo);
+  font-size: clamp(2.3rem, 5.4vw, 4.2rem);
+  font-weight: 600;
+  line-height: .74;
+  letter-spacing: -.04em;
+  opacity: .32;
+  color: var(--tono-seccion, var(--gris-lavanda));
+}
+
+/* Los tintes: se ponen en la caja de la cabeza y de ahí los toman la cifra, la
+   palabra clave y la parte destacada del título. Así el tono de la sección se
+   dice una sola vez. */
+.tinte-verde-agua { --tono-seccion: var(--verde-agua); }
+.tinte-azul       { --tono-seccion: var(--azul); }
+.tinte-azul-acero { --tono-seccion: var(--azul-acero); }
+.tinte-verde      { --tono-seccion: var(--verde); }
+.tinte-oliva      { --tono-seccion: var(--oliva); }
+.tinte-morado     { --tono-seccion: var(--morado); }
+.titular__rotulo {
+  display: block;
+  margin-bottom: .8em;
+  font-family: var(--font-titulo);
+  font-size: .66rem;
+  font-weight: 500;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--gris-lavanda);
+}
+
+/* Tercer armado: para las frases que no se parten en dos. Van enteras, en
+   caja normal y cuerpo grande, con una sola palabra en negrita y en el tono de
+   la sección. Lo que marca es el peso, no el color solo: por eso no se parece
+   a la palabra coloreada de antes. */
+.titular--pleno {
+  max-width: 21ch;
+  font-size: clamp(1.8rem, 4.3vw, 3.05rem);
+  font-weight: 300;
+  line-height: 1.03;
+  letter-spacing: -.008em;
+}
+.titular__clave { font-weight: 700; color: var(--tono-seccion, var(--morado)); }
+
+/* En media página —las dos columnas del blog— los mismos armados entran un
+   par de puntos más chicos; a tamaño entero se comían cuatro renglones. */
+.titular--menudo .titular__mayor { font-size: clamp(1.6rem, 3.1vw, 2.45rem); }
+.titular--menudo .titular__menor { font-size: clamp(.95rem, 1.5vw, 1.15rem); }
+.titular--menudo.titular--pleno  { font-size: clamp(1.35rem, 2.5vw, 1.9rem); }
+.cabeza-seccion--cifra.cabeza-seccion--menuda .cifra-seccion {
+  font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+}
+
+@media (max-width: 600px) {
+  /* la cifra se achica: al lado de un título de dos renglones en celular
+     quedaba tan alta como el título entero */
+  .cifra-seccion { font-size: clamp(1.9rem, 9vw, 2.6rem); }
+}
+
+
+/* --------------------------------------------- La bajada de la portada --- */
+/* Era un párrafo justificado en gris sobre la pintura de "sácalo": el bloque
+   que más se parecía a un documento en toda la página. Ahora la misma frase se
+   abre en tres partes —qué es el proyecto, quiénes lo hacen, desde dónde— y las
+   tres disciplinas bajan a una lista, cada una con su raya y su tono. Es el
+   mismo texto, pero se lee de un vistazo en vez de haber que recorrerlo.
+   El recurso es de manual de identidad: sacar los datos de dentro de la
+   oración y ponerlos en una tabla. */
+
+.declaracion {
+  margin-left: auto;
+  max-width: 31rem;
+}
+.declaracion__frase {
+  max-width: none;
+  margin: 0 0 clamp(1.5rem, 3.2vw, 2.4rem);
+  font-family: var(--font-titulo);
+  font-size: clamp(1.22rem, 2.45vw, 1.82rem);
+  font-weight: 300;
+  line-height: 1.18;
+  letter-spacing: -.005em;
+  color: var(--tinta);
+}
+.declaracion__marca { font-weight: 600; color: var(--morado); }
+.declaracion__pie {
+  max-width: none;
+  margin: 0 0 .95rem;
+  font-family: var(--font-titulo);
+  font-size: .68rem;
+  font-weight: 500;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+.disciplinas { list-style: none; margin: 0; padding: 0; }
+.disciplinas__item {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(.75rem, 1.5vw, 1.15rem);
+  padding: .42rem 0;
+  /* van con la tipografía de los títulos: se leen como un índice de oficios,
+     no como la continuación del párrafo de arriba */
+  font-family: var(--font-titulo);
+  font-size: clamp(1.02rem, 1.62vw, 1.28rem);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: .005em;
+  color: var(--tinta);
+}
+/* la raya de cada disciplina lleva su propio tono: tres oficios, tres colores
+   de la paleta, los mismos que ordenan las secciones */
+.disciplinas__item::before {
+  content: "";
+  flex: none;
+  width: clamp(2rem, 4vw, 3.4rem);
+  height: 2px;
+  background: var(--tono-seccion, var(--gris-lavanda));
+  transform: translateY(-.34em);
+}
+
+@media (max-width: 900px) {
+  /* la pintura pasa a la derecha, así que el bloque vuelve al borde izquierdo */
+  .declaracion { margin-left: 0; }
+}
+
 /* -------------------------------------------- Equipo en la portada ------- */
 /* La palabra "miradas" pegada al borde izquierdo (se sale por arriba, abajo y
    por la izquierda, como en la maqueta), el título arrimado a ella y los tres
@@ -630,9 +1021,13 @@ hr.regla {
   gap: clamp(.75rem, 2.2vw, 1.75rem);
   width: 59.5%;
   max-width: 1020px;
-  /* el margen derecho corre la fila hacia la izquierda, para que quede
-     centrada en el blanco que deja la palabra del fondo */
-  margin: 0 9% 0 auto;
+  /* El margen derecho corre la fila hacia la izquierda, para que quede
+     centrada en el blanco que deja la palabra del fondo. Y el margen de arriba
+     es negativo: el rótulo de canto es más alto que el título y era él —no el
+     título— el que empujaba los retratos hacia abajo. Subiéndolos quedan
+     centrados en el hueco que dejan el título arriba y la "s" de la palabra
+     amarilla abajo. */
+  margin: clamp(-6rem, -6vw, -2.5rem) 9% 0 auto;
 }
 /* Óvalo: la caja es más alta que ancha y el redondeo al 50 % la convierte en
    elipse. La foto se recorta dentro, centrada en la cara. */
@@ -693,6 +1088,8 @@ hr.regla {
      izquierda, Constanza a la derecha —a media altura, entre los otros dos— y
      Loreto abajo, aplomada bajo Antuán. Se pisan un poco a propósito. */
   .equipo-portada__fotos {
+    /* aquí el rótulo ya va horizontal y no sobra alto: sin margen negativo */
+    margin-top: 0;
     grid-template-columns: repeat(2, 1fr);
     column-gap: clamp(.4rem, 2vw, .9rem);
     row-gap: 0;
@@ -1212,7 +1609,8 @@ img.persona__retrato {
      de la foto —tono franco, no un vaho— y cada franja mira un punto distinto
      del azul, así las cuatro juntas hacen una degradación de arriba abajo. */
   background:
-    linear-gradient(rgba(251, 249, 246, .7), rgba(251, 249, 246, .7)),
+    linear-gradient(rgba(251, 249, 246, var(--velo, .7)),
+                    rgba(251, 249, 246, var(--velo, .7))),
     url("../img/blog/fondo-capsulas.jpg") var(--foco, center) / cover no-repeat,
     var(--fondo);
   border: 0;
@@ -1225,6 +1623,21 @@ img.persona__retrato {
 .capsula:nth-child(3) { --foco: 50% 64%; }
 .capsula:nth-child(4) { --foco: 50% 90%; }
 .capsula:hover { box-shadow: 0 14px 32px -26px rgba(74, 67, 104, .45); }
+
+/* Ya escuchada, sin decirlo con palabras: la ficha sube de color —el velo se
+   abre y el azul de la foto entra franco— y el filo de abajo queda subrayado
+   de lado a lado en el mismo azul del botón. Encima de ese subrayado sigue
+   corriendo la línea de avance cuando se vuelve a reproducir, así que las dos
+   cosas conviven: la de abajo dice "ya la escuchaste" y la de arriba dice
+   "vas por aquí". La marca la pone assets/js/capsulas.js y se guarda en el
+   navegador de quien escucha. */
+.capsula.escuchada { --velo: .5; }
+.capsula.escuchada .capsula__barra::before {
+  height: 3px;
+  background: var(--azul-fool);
+  opacity: .42;
+}
+.capsula.escuchada .capsula__avance { height: 3px; }
 
 /* El botón manda en la ficha: azul lleno de entrada y, al pasar el cursor,
    se da vuelta —blanco con el aro y la flecha en azul—. */

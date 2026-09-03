@@ -9,7 +9,7 @@
      Cuando este lista, borra esta linea de las 6 paginas publicas. -->
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body class="portada">
@@ -80,23 +80,44 @@
        El dibujo ocupa el costado izquierdo, así que el texto va a la derecha. -->
   <section class="franja franja--bajada revelar">
     <div class="contenedor">
-      <p class="lead franja__texto">
-        Peace—Fool Project es un espacio de herramientas para la salud mental y el
-        bienestar, creado por tres profesionales desde la terapia energética, el
-        arte visual y la psicología.
-      </p>
+      <!-- La misma frase de siempre, abierta en tres partes: qué es el
+           proyecto, quiénes lo hacen y desde dónde. Las tres disciplinas dejan
+           de estar escondidas dentro de una oración y se ven de un vistazo. -->
+      <div class="declaracion">
+        <p class="declaracion__frase">
+          <span class="declaracion__marca">Peace&mdash;Fool Project</span> es un
+          espacio de herramientas para la salud mental y el bienestar.
+        </p>
+        <p class="declaracion__pie">Creado por tres profesionales, desde</p>
+        <ul class="disciplinas">
+          <li class="disciplinas__item tinte-verde-agua">la terapia energ&eacute;tica</li>
+          <li class="disciplinas__item tinte-oliva">el arte visual</li>
+          <li class="disciplinas__item tinte-azul-acero">la psicolog&iacute;a</li>
+        </ul>
+      </div>
     </div>
   </section>
 
   <!-- ============================ QUÉ HAY =========================== -->
   <section class="seccion--alt revelar" id="herramientas">
     <div class="contenedor">
-      <span class="kicker tono-verde">Lo que encontrarás</span>
-      <h2>Herramientas, en un mismo <span class="tono-verde-agua">lugar</span></h2>
-      <p class="lead">
-        Cuatro formatos para entrar por donde te acomode: ver, escuchar,
-        escribir o mirar.
+      <!-- Cabeza 01: la marca de margen cruza todo el ancho y debajo el
+           título manda con una sola palabra grande, con la nota al costado. -->
+      <p class="marca-seccion">
+        <span class="marca-seccion__n tono-verde-agua">01</span>
+        <span class="marca-seccion__linea"></span>
+        <span class="marca-seccion__rotulo">Lo que encontrar&aacute;s</span>
       </p>
+      <div class="cabeza-seccion cabeza-seccion--par">
+        <h2 class="titular titular--apilado">
+          <span class="titular__mayor">Herramientas</span>
+          <span class="titular__menor">en un mismo lugar</span>
+        </h2>
+        <p class="titular__nota">
+          Cuatro formatos para entrar por donde te acomode: ver, escuchar,
+          escribir o mirar.
+        </p>
+      </div>
 
       <!-- Los cuatro formatos, cada uno en su foto redonda. Al pasar el
            cursor aparece la descripción encima; en celular va debajo. -->
@@ -148,9 +169,16 @@
          alt="" aria-hidden="true" width="750" height="1000" loading="lazy" decoding="async">
 
     <div class="contenedor equipo-portada__inner">
-      <div class="equipo-portada__titulo">
-        <span class="kicker tono-azul-acero">Sobre el equipo</span>
-        <h2>Tres miradas que <span class="tono-azul-acero">se cruzan</span></h2>
+      <!-- Cabeza 02: el rótulo se pone de canto en el margen y el título va
+           al revés que el anterior — entra fino y remata pesado. -->
+      <div class="equipo-portada__titulo cabeza-seccion--canto">
+        <span class="rotulo-canto">
+          <span class="tono-azul-acero">02</span> &mdash; Sobre el equipo
+        </span>
+        <h2 class="titular titular--invertido">
+          <span class="titular__menor">Tres miradas que</span>
+          <span class="titular__mayor">se cruzan</span>
+        </h2>
       </div>
     </div>
 
@@ -183,8 +211,17 @@
   <section class="seccion--alt revelar" style="padding-bottom:clamp(2.5rem,5vw,4rem)">
     <div class="contenedor centrado">
       <img class="estrella--sola" src="assets/img/estrella.png" alt="" aria-hidden="true" width="440" height="445">
-      <span class="kicker tono-oliva">Lo que nos mueve</span>
-      <h2>Que cuidarse sea <span class="tono-oliva">accesible</span></h2>
+      <!-- Cabeza 03: la frase entra chica y la palabra que importa cae
+           debajo al triple de cuerpo, rellena con la pintura de la casa. -->
+      <p class="marca-seccion marca-seccion--centrada">
+        <span class="marca-seccion__n tono-oliva">03</span>
+        <span class="marca-seccion__linea"></span>
+        <span class="marca-seccion__rotulo">Lo que nos mueve</span>
+      </p>
+      <h2 class="titular titular--manifiesto">
+        <span class="titular__previo">Que cuidarse sea</span>
+        <span class="titular__pintado">accesible</span>
+      </h2>
       <p class="lead">
         Creemos en herramientas simples, honestas y disponibles: que alguien pueda
         entrar, encontrar lo que necesita hoy y volver mañana.
@@ -200,7 +237,9 @@
        sólo se agrega el enlace para entrar al blog. -->
   <section class="revelar blog-portada">
     <div class="blog-cabecera blog-cabecera--adelanto">
-      <span class="kicker tono-azul blog-cabecera__rotulo">Blog</span>
+      <span class="kicker tono-azul blog-cabecera__rotulo">
+        <span class="marca-seccion__n">04</span> &mdash; Blog
+      </span>
       <!-- El margen del blog: los "bla bla" de puño y letra de Coni, sueltos por la
            hoja. Cada palabra se escribe siguiendo su propia línea —la máscara es
            el esqueleto de la letra, sacado de la imagen y recorrido en el orden en

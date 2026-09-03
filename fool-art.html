@@ -9,7 +9,7 @@
      Cuando este lista, borra esta linea de las 6 paginas publicas. -->
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
@@ -45,8 +45,16 @@
   <section class="hero" style="padding-block:clamp(3rem,8vw,6rem)">
     <img class="hero__wash" src="assets/img/aguada.svg" alt="" aria-hidden="true">
     <div class="contenedor hero__inner">
-      <span class="kicker tono-verde">Fool Art</span>
-      <h1>El arte como parte del <span class="tono-verde-agua">proceso</span></h1>
+      <p class="marca-seccion">
+        <span class="marca-seccion__linea"></span>
+        <span class="marca-seccion__rotulo">Fool Art</span>
+      </p>
+      <div class="cabeza-pagina tinte-verde-agua">
+        <h1 class="titular titular--apilado">
+          <span class="titular__mayor">El arte</span>
+          <span class="titular__menor">como parte del proceso</span>
+        </h1>
+      </div>
       <p class="lead">
         Obra, texturas y láminas que acompañan las prácticas del proyecto: pintar
         también es una forma de mirar hacia adentro.
@@ -57,8 +65,16 @@
 
   <section class="seccion--alt revelar" style="padding-top:clamp(2.5rem,6vw,4rem)">
     <div class="contenedor">
-      <span class="kicker tono-azul-acero">Galería</span>
-      <h2>Obra y <span class="tono-azul-acero">texturas</span></h2>
+      <div class="cabeza-seccion cabeza-seccion--cifra tinte-azul-acero">
+        <span class="cifra-seccion">01</span>
+        <div>
+          <span class="titular__rotulo">Galería</span>
+          <h2 class="titular titular--invertido">
+            <span class="titular__menor">Obra y</span>
+            <span class="titular__mayor">texturas</span>
+          </h2>
+        </div>
+      </div>
 
       <!-- ================================================================
            CÓMO AGREGAR UNA IMAGEN
@@ -94,8 +110,13 @@
 
   <section class="revelar">
     <div class="contenedor">
-      <span class="kicker tono-oliva">Talleres y láminas</span>
-      <h2>Lo que <span class="tono-oliva">viene</span></h2>
+      <div class="cabeza-seccion cabeza-seccion--cifra tinte-oliva">
+        <span class="cifra-seccion">02</span>
+        <div>
+          <span class="titular__rotulo">Talleres y láminas</span>
+          <h2 class="titular titular--pleno">Lo que <span class="titular__clave">viene</span></h2>
+        </div>
+      </div>
       <div class="grid grid--2" style="margin-top:2.5rem">
         <article class="tarjeta">
           <span class="punto punto--rosa"></span>
@@ -116,7 +137,15 @@
   <section class="seccion--alt revelar">
     <div class="contenedor centrado">
       <img class="estrella--sola" src="assets/img/estrella.png" alt="" aria-hidden="true" width="440" height="445">
-      <h2>La <span class="tono-verde-agua">paleta</span> del proyecto</h2>
+      <div class="cabeza-seccion cabeza-seccion--cifra tinte-verde-agua">
+        <span class="cifra-seccion">03</span>
+        <div>
+          <h2 class="titular titular--apilado">
+            <span class="titular__mayor">La paleta</span>
+            <span class="titular__menor">del proyecto</span>
+          </h2>
+        </div>
+      </div>
       <p class="lead">Los tonos que sostienen todo lo que hacemos.</p>
       <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-top:2rem">
         <span class="punto punto--verde-agua" style="width:46px;height:46px"></span>

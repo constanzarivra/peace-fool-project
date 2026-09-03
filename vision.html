@@ -14,7 +14,7 @@
      Cuando este lista, borra esta linea de las 6 paginas publicas. -->
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
@@ -50,8 +50,16 @@
   <section class="hero" style="padding-block:clamp(3rem,8vw,6rem)">
     <img class="hero__wash" src="assets/img/aguada.svg" alt="" aria-hidden="true">
     <div class="contenedor hero__inner">
-      <span class="kicker tono-oliva">Visión</span>
-      <h1>Lo que <span class="tono-oliva">nos mueve</span></h1>
+      <p class="marca-seccion">
+        <span class="marca-seccion__linea"></span>
+        <span class="marca-seccion__rotulo">Visión</span>
+      </p>
+      <div class="cabeza-pagina tinte-oliva">
+        <h1 class="titular titular--apilado">
+          <span class="titular__mayor">Lo que</span>
+          <span class="titular__menor">nos mueve</span>
+        </h1>
+      </div>
       <p class="lead">
         Entendemos la salud mental y emocional desde un enfoque integral,
         espiritual y energético.
@@ -66,8 +74,16 @@
 
   <section class="seccion--alt revelar">
     <div class="contenedor">
-      <span class="kicker tono-verde">Principios</span>
-      <h2>Cómo elegimos lo que <span class="tono-verde">ofrecemos</span></h2>
+      <div class="cabeza-seccion cabeza-seccion--cifra tinte-verde">
+        <span class="cifra-seccion">01</span>
+        <div>
+          <span class="titular__rotulo">Principios</span>
+          <h2 class="titular titular--apilado">
+            <span class="titular__mayor">Cómo elegimos</span>
+            <span class="titular__menor">lo que ofrecemos</span>
+          </h2>
+        </div>
+      </div>
       <div class="grid grid--3" style="margin-top:2.5rem">
         <article class="tarjeta tarjeta--principio">
           <span class="punto punto--verde"></span>
@@ -90,7 +106,15 @@
 
   <section class="revelar">
     <div class="contenedor">
-      <h2>Nuestro <span class="tono-azul-acero">punto de partida</span></h2>
+      <div class="cabeza-seccion cabeza-seccion--cifra tinte-azul-acero">
+        <span class="cifra-seccion">02</span>
+        <div>
+          <h2 class="titular titular--invertido">
+            <span class="titular__menor">Nuestro</span>
+            <span class="titular__mayor">punto de partida</span>
+          </h2>
+        </div>
+      </div>
       <p class="lead"><!-- TODO: relato del origen del proyecto --></p>
       <p><!-- TODO: continuación --></p>
       <hr class="regla">

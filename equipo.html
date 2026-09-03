@@ -9,7 +9,7 @@
      Cuando este lista, borra esta linea de las 6 paginas publicas. -->
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
@@ -47,13 +47,21 @@
     <img class="equipo-portada__palabra" src="assets/img/portada/miradas.png"
          alt="" aria-hidden="true" width="750" height="1000" loading="lazy" decoding="async">
     <div class="contenedor hero__inner">
-      <span class="kicker tono-azul-acero">Sobre el equipo</span>
-      <h1>Quiénes estamos <span class="tono-azul-acero">detrás</span></h1>
-      <p class="lead">
-        Tres profesionales de disciplinas distintas, reunidos por una misma
-        pregunta: cómo hacer que el cuidado esté al alcance.
-        <!-- TODO: párrafo de presentación del equipo -->
+      <p class="marca-seccion">
+        <span class="marca-seccion__linea"></span>
+        <span class="marca-seccion__rotulo">Sobre el equipo</span>
       </p>
+      <div class="cabeza-pagina tinte-azul-acero">
+        <h1 class="titular titular--apilado">
+          <span class="titular__mayor">Quiénes estamos</span>
+          <span class="titular__menor">detrás</span>
+        </h1>
+        <p class="titular__nota">
+          Tres profesionales de disciplinas distintas, reunidos por una misma
+          pregunta: cómo hacer que el cuidado esté al alcance.
+          <!-- TODO: párrafo de presentación del equipo -->
+        </p>
+      </div>
     </div>
   </section>
 
@@ -161,7 +169,10 @@
   <section class="revelar" style="padding-top:clamp(1.75rem,4.5vw,3.5rem)">
     <div class="contenedor centrado">
       <img class="estrella--sola" src="assets/img/estrella.png" alt="" aria-hidden="true" width="440" height="445">
-      <h2>Cómo trabajamos <span class="tono-verde">juntos</span></h2>
+      <h2 class="titular titular--manifiesto tinte-verde">
+        <span class="titular__previo">Cómo trabajamos</span>
+        <span class="titular__grande">juntos</span>
+      </h2>
       <p class="lead">
         <!-- TODO: texto sobre la metodología o el cruce entre las tres disciplinas -->
       </p>
@@ -177,8 +188,13 @@
            style="padding-block:clamp(3rem,8vw,5rem)">
     <img class="hero__wash" src="assets/img/aguada.svg" alt="" aria-hidden="true">
     <div class="contenedor hero__inner">
-      <span class="kicker tono-oliva">Visión</span>
-      <h2>Lo que <span class="tono-oliva">nos mueve</span></h2>
+      <div class="cabeza-seccion cabeza-seccion--cifra tinte-oliva">
+        <span class="cifra-seccion">01</span>
+        <div>
+          <span class="titular__rotulo">Visión</span>
+          <h2 class="titular titular--pleno">Lo que <span class="titular__clave">nos mueve</span></h2>
+        </div>
+      </div>
       <p class="lead">
         Entendemos la salud mental y emocional desde un enfoque integral,
         espiritual y energético.
@@ -193,8 +209,16 @@
 
   <section class="revelar">
     <div class="contenedor">
-      <span class="kicker tono-verde">Principios</span>
-      <h2>Cómo elegimos lo que <span class="tono-verde">ofrecemos</span></h2>
+      <div class="cabeza-seccion cabeza-seccion--cifra tinte-verde">
+        <span class="cifra-seccion">02</span>
+        <div>
+          <span class="titular__rotulo">Principios</span>
+          <h2 class="titular titular--apilado">
+            <span class="titular__mayor">Cómo elegimos</span>
+            <span class="titular__menor">lo que ofrecemos</span>
+          </h2>
+        </div>
+      </div>
       <div class="grid grid--3" style="margin-top:2.5rem">
         <article class="tarjeta tarjeta--principio">
           <span class="punto punto--verde"></span>
@@ -217,7 +241,15 @@
 
   <section class="revelar">
     <div class="contenedor">
-      <h2>Nuestro <span class="tono-azul-acero">punto de partida</span></h2>
+      <div class="cabeza-seccion cabeza-seccion--cifra tinte-azul-acero">
+        <span class="cifra-seccion">03</span>
+        <div>
+          <h2 class="titular titular--invertido">
+            <span class="titular__menor">Nuestro</span>
+            <span class="titular__mayor">punto de partida</span>
+          </h2>
+        </div>
+      </div>
       <p class="lead"><!-- TODO: relato del origen del proyecto --></p>
       <p><!-- TODO: continuación --></p>
       <hr class="regla">

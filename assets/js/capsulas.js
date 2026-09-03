@@ -14,6 +14,43 @@
 
   var sonando = null;   // sólo una cápsula suena a la vez
 
+  /* --- Las que ya se escucharon -----------------------------------------
+     Una cápsula queda marcada cuando se reproduce hasta el final. La marca se
+     guarda en el navegador de quien escucha (nunca sale de ahí), así al volver
+     a la página sigue sabiendo por dónde iba. Se guarda por el nombre de la
+     cápsula, que es corto y no cambia. Si el navegador no deja guardar —modo
+     privado, permisos— la marca igual funciona durante la visita. */
+  var LLAVE = 'pfp:capsulas-escuchadas';
+
+  function leerEscuchadas() {
+    try {
+      var crudo = window.localStorage.getItem(LLAVE);
+      var lista = crudo ? JSON.parse(crudo) : [];
+      return Object.prototype.toString.call(lista) === '[object Array]' ? lista : [];
+    } catch (e) { return []; }
+  }
+
+  function guardarEscuchada(nombre) {
+    try {
+      var lista = leerEscuchadas();
+      if (lista.indexOf(nombre) === -1) {
+        lista.push(nombre);
+        window.localStorage.setItem(LLAVE, JSON.stringify(lista));
+      }
+    } catch (e) { /* sin memoria: la marca dura lo que dure la visita */ }
+  }
+
+  var yaEscuchadas = leerEscuchadas();
+
+  /* La marca no lleva ninguna palabra: la ficha sube de color y el borde de
+     abajo queda subrayado de lado a lado. Lo único escrito es para quien
+     navega con lector de pantalla, en la etiqueta del botón. */
+  function marcar(tarjeta, texto) {
+    if (tarjeta.classList.contains('escuchada')) { return; }
+    tarjeta.classList.add('escuchada');
+    if (texto) { guardarEscuchada(texto); }
+  }
+
   function reloj(segundos) {
     if (!isFinite(segundos)) { return '0:00'; }
     var s = Math.max(0, Math.round(segundos));
@@ -33,6 +70,17 @@
 
     var titulo = nombre ? nombre.textContent.trim() : 'el audio';
 
+    function etiqueta(accion) {
+      return accion + ' ' + titulo +
+             (tarjeta.classList.contains('escuchada') ? ' (ya escuchada)' : '');
+    }
+
+    // si ya se escuchó en una visita anterior, entra marcada
+    if (yaEscuchadas.indexOf(titulo) !== -1) {
+      marcar(tarjeta, null);
+      boton.setAttribute('aria-label', etiqueta('Reproducir'));
+    }
+
     // a partir de aquí manda el reproductor propio
     audio.removeAttribute('controls');
     boton.hidden = false;
@@ -50,12 +98,12 @@
     audio.addEventListener('play', function () {
       sonando = audio;
       tarjeta.classList.add('suena');
-      boton.setAttribute('aria-label', 'Pausar ' + titulo);
+      boton.setAttribute('aria-label', etiqueta('Pausar'));
     });
 
     audio.addEventListener('pause', function () {
       tarjeta.classList.remove('suena');
-      boton.setAttribute('aria-label', 'Reproducir ' + titulo);
+      boton.setAttribute('aria-label', etiqueta('Reproducir'));
     });
 
     audio.addEventListener('timeupdate', function () {
@@ -71,6 +119,9 @@
       if (avance) { avance.style.width = '0'; }
       if (actual) { actual.textContent = '0:00'; }
       if (barra) { barra.setAttribute('aria-valuenow', '0'); }
+      // llegó hasta el final: queda marcada como escuchada
+      marcar(tarjeta, titulo);
+      boton.setAttribute('aria-label', etiqueta('Reproducir'));
     });
 
     // pinchar la barra salta a ese punto del audio
